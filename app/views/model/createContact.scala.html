@@ -1,6 +1,7 @@
 @(contactForm: Form[Contact])
 
 @import helper._
+@import views.html.components._
 
 @main("Добавить Контакт"){
   <h2>Добавить контакт</h2>
@@ -9,17 +10,13 @@
     <fieldset>
 
     @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
-    <a href="#" data-toggle="modal" data-target="#myModal">
+    <label for="contractor">Контрагент</label>
+    <a href="#" data-toggle="modal" id="contractor" name="contractor" data-target="#myModal">
       <div class="input-group">
       <input type="text" class="form-control" aria-label="Контрагент">
       <span class="input-group-addon">...</span>
       </div>
     </a>
-
-    @select(contactForm("contractor.id"),
-      options(Contractor.list), '_label -> "Конрагент",
-      '_default -> "- Выбрать контрагента -", '_showConstraints -> false)
-
     @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
     @inputText(contactForm("phone"), '_label -> "Телефон", 'class -> "form-control")
     @inputText(contactForm("adress"), '_label -> "Адрес", 'class -> "form-control")
@@ -36,17 +33,7 @@
           <h4 class="modal-title" id="myModalLabel">Контрагенты<a class="anchorjs-link" href="#myModalLabel"><span class="anchorjs-icon"></span></a></h4>
         </div>
         <div class="modal-body">
-          <div class="list-group">
-            @select(contactForm("contractor.id"),
-              options(Contractor.list), '_label -> "Конрагент",
-              '_default -> "- Выбрать контрагента -", '_showConstraints -> false)
-
-            <a href="#" class="list-group-item">Cras justo odio</a>
-            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-            <a href="#" class="list-group-item">Morbi leo risus</a>
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
-          </div>
+          @selected(contactForm, Contractor.findAll())
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

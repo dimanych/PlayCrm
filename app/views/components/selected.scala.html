@@ -1,0 +1,7 @@
+@(contactForm: Form[Contact], contractors: List[Contractor])
+
+<div class="list-group">
+  @for(contractor<-contractors){
+    <a href="#" class="list-group-item">@contractor.getName</a>
+  }
+</div>
