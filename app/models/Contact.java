@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 /**
- * <p>Entity contacts </p>
+ * <p>Entity contacts</p>
  *
  * @author Dmitriy Grigoriev
  */
