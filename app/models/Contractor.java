@@ -13,9 +13,6 @@ import java.util.Map;
 @Entity
 public class Contractor extends BaseModel {
 
-  private String name;
-
-
   public static Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);
 
   public static List<Contractor> findAll() {
@@ -38,12 +35,4 @@ public class Contractor extends BaseModel {
     return options;
   }
 
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
 }

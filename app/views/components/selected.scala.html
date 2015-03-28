@@ -1,7 +1,7 @@
-@(contactForm: Form[Contact], contractors: List[Contractor])
+@(models: List[_ <: BaseModel])
 
 <div class="list-group">
-  @for(contractor<-contractors){
-    <a href="#" class="list-group-item">@contractor.getName</a>
+  @for(model<-models){
+    <a href="#" class="list-group-item">@model.getName</a>
   }
 </div>

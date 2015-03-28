@@ -13,7 +13,6 @@ import java.util.List;
  */
 @Entity
 public class Contact extends BaseModel {
-  private String name;
   private Contractor contractor;
   private String post;
   private String phone;
@@ -22,8 +21,7 @@ public class Contact extends BaseModel {
   public Contact() {
   }
 
-  public Contact(String name, Contractor contractor, String post, String phone, String adress) {
-    this.name = name;
+  public Contact(Contractor contractor, String post, String phone, String adress) {
     this.contractor = contractor;
     this.post = post;
     this.phone = phone;
@@ -42,14 +40,6 @@ public class Contact extends BaseModel {
 
   public static Contact findByName(String name) {
     return find.where().eq("name", name).findUnique();
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   @OneToOne
