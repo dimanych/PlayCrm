@@ -8,6 +8,8 @@ GET         /                               controllers.Application.index()
 # Contacts
 GET         /contacts                       controllers.Contacts.contacts()
 GET         /contacts/$id<[0-9]+>           controllers.Contacts.contact(id: Long)
+
+# Contacts add
 GET         /contacts/add                   controllers.Contacts.add()
 POST        /contacts                       controllers.Contacts.save()
 
