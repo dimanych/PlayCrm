@@ -1,0 +1,27 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                               controllers.Application.index()
+
+# Contacts
+GET         /contacts                       controllers.Contacts.contacts()
+GET         /contacts/$id<[0-9]+>           controllers.Contacts.contact(id: Long)
+GET         /contacts/add                   controllers.Contacts.add()
+POST        /contacts                       controllers.Contacts.save()
+
+
+# Contractors - organization or individual for contracts
+# list
+GET         /contractors                    controllers.Contractors.contractors()
+
+# Contractor page
+GET         /contractors/$id<[0-9]+>        controllers.Contractors.contractor(id: Long)
+
+# add Contractor
+GET         /contractors/add                controllers.Contractors.add()
+POST        /contractors                    controllers.Contractors.save()
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                   controllers.Assets.at(path="/public", file)

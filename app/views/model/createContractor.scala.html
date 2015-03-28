@@ -1,0 +1,14 @@
+@(contractorForm: Form[Contractor])
+
+@import helper._
+
+@main("Contractor"){
+  <h2>Добавить контрагента</h2>
+
+  @form(routes.Contractors.save()) {
+    <fieldset>
+      @inputText(contractorForm("name"), '_label -> "Имя", 'class -> "form-control")
+    </fieldset>
+    <input type="submit" value="Создать" class="btn primary">
+  }
+}
