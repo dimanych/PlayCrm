@@ -1,4 +1,4 @@
-name := """PlayCrm"""
+name := """playcrm"""
 
 version := "1.0-SNAPSHOT"
 
