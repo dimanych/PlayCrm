@@ -29,7 +29,6 @@ public class Contacts extends Controller {
     if (contractorForm.hasErrors()) {
       return badRequest(contacts.render(Contact.findAll()));
     }
-    contractorForm.get().setContractor(Contractor.findById(1L));
     contractorForm.get().save();
     return ok(contacts.render(Contact.findAll()));
   }

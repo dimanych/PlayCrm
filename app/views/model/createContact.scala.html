@@ -8,6 +8,11 @@
   @form(routes.Contacts.save()) {
     <fieldset>
     @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
+
+    @select(contactForm("contractor.id"),
+      options(Contractor.list), '_label -> "Конрагент",
+      '_default -> "- Выбрать контрагента -", '_showConstraints -> false)
+
     @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
     @inputText(contactForm("phone"), '_label -> "Телефон", 'class -> "form-control")
     @inputText(contactForm("adress"), '_label -> "Адрес", 'class -> "form-control")
