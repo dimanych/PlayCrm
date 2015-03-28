@@ -17,19 +17,6 @@ import static play.data.Form.form;
  * @author Dmitriy Grigoriev
  */
 public class Contractors extends Controller {
-  public static Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);
-
-  public static List<Contractor> findAll() {
-    return find.all();
-  }
-
-  public static Contractor findById(Long id) {
-    return find.byId(id);
-  }
-
-  public static Contractor findByName(String name) {
-    return find.where().eq("name", name).findUnique();
-  }
 
   public static Result add() {
 //    Contact contact = new Contact();
@@ -46,17 +33,17 @@ public class Contractors extends Controller {
   public static Result save() {
     Form<Contractor> contractorForm = form(Contractor.class).bindFromRequest();
     if (contractorForm.hasErrors()) {
-      return badRequest(contractors.render(findAll()));
+      return badRequest(contractors.render(Contractor.findAll()));
     }
     contractorForm.get().save();
-    return ok(contractors.render(findAll()));
+    return ok(contractors.render(Contractor.findAll()));
   }
 
   public static Result contractors() {
-    return ok(contractors.render(findAll()));
+    return ok(contractors.render(Contractor.findAll()));
   }
 
   public static Result contractor(Long id) {
-    return ok(contractor.render(Contractors.findById(id)));
+    return ok(contractor.render(Contractor.findById(id)));
   }
 }

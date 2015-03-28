@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Contact;
+import models.Contractor;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
@@ -17,19 +18,6 @@ import static play.data.Form.form;
  * @author Dmitriy Grigoriev
  */
 public class Contacts extends Controller {
-  public static Model.Finder<Long, Contact> find = new Model.Finder<Long, Contact>(Long.class, Contact.class);
-
-  public static List<Contact> findAll() {
-    return find.all();
-  }
-
-  public static Contact findById(Long id) {
-    return find.byId(id);
-  }
-
-  public static Contact findByName(String name) {
-    return find.where().eq("name", name).findUnique();
-  }
 
   public static Result add() {
     Form<Contact> contactForm = form(Contact.class);
@@ -39,18 +27,18 @@ public class Contacts extends Controller {
   public static Result save() {
     Form<Contact> contractorForm = form(Contact.class).bindFromRequest();
     if (contractorForm.hasErrors()) {
-      return badRequest(contacts.render(findAll()));
+      return badRequest(contacts.render(Contact.findAll()));
     }
-    contractorForm.get().setContractor(Contractors.findById(1L));
+    contractorForm.get().setContractor(Contractor.findById(1L));
     contractorForm.get().save();
-    return ok(contacts.render(findAll()));
+    return ok(contacts.render(Contact.findAll()));
   }
 
   public static Result contacts() {
-    return ok(contacts.render(Contacts.findAll()));
+    return ok(contacts.render(Contact.findAll()));
   }
 
   public static Result contact(Long id) {
-    return ok(contact.render(Contacts.findById(id)));
+    return ok(contact.render(Contact.findById(id)));
   }
 }

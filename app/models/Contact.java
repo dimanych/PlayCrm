@@ -1,7 +1,10 @@
 package models;
 
+import play.db.ebean.Model;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import java.util.List;
 
 /**
  * <p>Entity contacts</p>
@@ -25,6 +28,20 @@ public class Contact extends BaseModel {
     this.post = post;
     this.phone = phone;
     this.adress = adress;
+  }
+
+  public static Model.Finder<Long, Contact> find = new Model.Finder<Long, Contact>(Long.class, Contact.class);
+
+  public static List<Contact> findAll() {
+    return find.all();
+  }
+
+  public static Contact findById(Long id) {
+    return find.byId(id);
+  }
+
+  public static Contact findByName(String name) {
+    return find.where().eq("name", name).findUnique();
   }
 
   public String getName() {
