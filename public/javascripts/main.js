@@ -1,11 +1,12 @@
-$(function () {
-    var url = window.location.pathname;
-    var activePage = url.substring(url.lastIndexOf('/') + 1);
-        $('.nav-pills li a').each(function () {
-            var linkPage = this.href.substring(this.href.lastIndexOf('/') + 1);
+// Выбор из списка-листа
+function selectItem(obj) {
+  if($(obj).hasClass("active")) {
+    $("#myModal").modal("hide");
+    $('#contractorName').val($(obj).text());
+    $('#contractor_id').val($(obj).attr("id"));
+  } else {
+    $("#modal-list>a.active").removeClass("active");
+    $(obj).addClass("active");
 
-            if (activePage == linkPage) {
-                $(this).parent().addClass('active');
-            }
-        });
-})
+  }
+}

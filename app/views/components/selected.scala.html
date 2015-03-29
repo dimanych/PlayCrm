@@ -3,23 +3,5 @@
 <div id="modal-list" class="list-group">
   @for(model<-models){
     <a href="#" onclick="selectItem(this)" id="@model.getId" class="list-group-item">@model.getName</a>
-
   }
 </div>
-
-<script type="text/javascript">
-function selectItem(obj) {
-  if($(obj).hasClass("active")) {
-    $("#myModal").modal("hide");
-    $('#contractorName').val($(obj).text());
-    $('#contractor_id').val($(obj).attr("id"));
-  } else {
-    $("#modal-list>a.active").removeClass("active");
-    $(obj).addClass("active");
-
-  }
-}
-$( "#ololo" ).dblclick(function() {
-  alert( "Handler for .dblclick() called." );
-});
-</script>
