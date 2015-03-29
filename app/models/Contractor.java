@@ -3,6 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.Map;
  */
 @Entity
 public class Contractor extends BaseModel {
+  private ContractorType contractorType;
 
   public static Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);
 
@@ -35,4 +37,12 @@ public class Contractor extends BaseModel {
     return options;
   }
 
+  @OneToOne
+  public ContractorType getContractorType() {
+    return contractorType;
+  }
+
+  public void setContractorType(ContractorType contractorType) {
+    this.contractorType = contractorType;
+  }
 }
