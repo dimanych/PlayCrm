@@ -30,7 +30,7 @@ public class Contacts extends Controller {
       return badRequest(contacts.render(Contact.findAll()));
     }
     contactForm.get().save();
-    return ok(contacts.render(Contact.findAll()));
+    return redirect(controllers.routes.Contacts.contacts());
   }
 
   public static Result contacts() {

@@ -19,13 +19,6 @@ import static play.data.Form.form;
 public class Contractors extends Controller {
 
   public static Result add() {
-//    Contact contact = new Contact();
-//    contact.setName("jklkj");
-//    contact.setPhone("5555");
-//    contact.setPost("director");
-//    contact.setContractor(Contractors.findById(1L));
-//    Ebean.save(contact);
-//    return redirect(routes.Application.contacts());
     Form<Contractor> contractorForm = form(Contractor.class);
     return ok(createContractor.render(contractorForm));
   }
@@ -36,7 +29,7 @@ public class Contractors extends Controller {
       return badRequest(contractors.render(Contractor.findAll()));
     }
     contractorForm.get().save();
-    return ok(contractors.render(Contractor.findAll()));
+    return redirect(controllers.routes.Contractors.contractors());
   }
 
   public static Result contractors() {
