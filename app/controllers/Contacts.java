@@ -6,9 +6,7 @@ import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.model.contact;
-import views.html.model.contacts;
-import views.html.model.createContact;
+import views.html.model.contact.*;
 
 import java.util.List;
 

@@ -12,7 +12,11 @@
     <div class="panel-body">
       <p>@contact.getPost</p>
       <p>@contact.getPhone</p>
-      <p>@contact.getContractor().getName()</p>
+      <p>@contact.getAdress</p>
+      @if(contact.getContractor()!=null) {
+        <p>@contact.getContractor().getName()</p>
+      }
+
     </div>
   </div>
 
