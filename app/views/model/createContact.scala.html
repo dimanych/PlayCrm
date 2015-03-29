@@ -10,13 +10,17 @@
     <fieldset>
 
     @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
-    <label for="contractor">Контрагент</label>
-    <a href="#" data-toggle="modal" id="contractor" name="contractor" data-target="#myModal">
+    <label for="contractorName">Контрагент</label>
+    <a href="#" data-toggle="modal" data-target="#myModal">
       <div class="input-group">
-      <input type="text" class="form-control" aria-label="Контрагент">
-      <span class="input-group-addon">...</span>
+      <input type="text" class="form-control" id="contractorName" aria-label="Контрагент">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
       </div>
     </a>
+    @inputText(
+      contactForm("contractor.id"),
+      '_label -> null,
+      'style -> "display: none")
     @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
     @inputText(contactForm("phone"), '_label -> "Телефон", 'class -> "form-control")
     @inputText(contactForm("adress"), '_label -> "Адрес", 'class -> "form-control")
@@ -43,4 +47,11 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div>
+  <script type="text/javascript">
+  $('#myModal').on('hidden', function() {
+    console.log('username : '+$("#main-username").val());
+    console.log('result : '+$("#main-result").val());
+})
+</script>
+
 }

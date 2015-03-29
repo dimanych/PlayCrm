@@ -25,11 +25,11 @@ public class Contacts extends Controller {
   }
 
   public static Result save() {
-    Form<Contact> contractorForm = form(Contact.class).bindFromRequest();
-    if (contractorForm.hasErrors()) {
+    Form<Contact> contactForm = form(Contact.class).bindFromRequest();
+    if (contactForm.hasErrors()) {
       return badRequest(contacts.render(Contact.findAll()));
     }
-    contractorForm.get().save();
+    contactForm.get().save();
     return ok(contacts.render(Contact.findAll()));
   }
 
