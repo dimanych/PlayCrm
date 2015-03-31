@@ -15,18 +15,8 @@ import java.util.List;
 public class Contact extends BaseModel {
   private Contractor contractor;
   private String post;
-  private String phone;
+  private Communication communication;
   private String adress;
-
-  public Contact() {
-  }
-
-  public Contact(Contractor contractor, String post, String phone, String adress) {
-    this.contractor = contractor;
-    this.post = post;
-    this.phone = phone;
-    this.adress = adress;
-  }
 
   public static Model.Finder<Long, Contact> find = new Model.Finder<Long, Contact>(Long.class, Contact.class);
 
@@ -59,12 +49,13 @@ public class Contact extends BaseModel {
     this.post = post;
   }
 
-  public String getPhone() {
-    return phone;
+  @OneToOne
+  public Communication getCommunication() {
+    return communication;
   }
 
-  public void setPhone(String phone) {
-    this.phone = phone;
+  public void setCommunication(Communication communication) {
+    this.communication = communication;
   }
 
   public String getAdress() {

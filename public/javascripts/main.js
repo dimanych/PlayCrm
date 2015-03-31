@@ -12,11 +12,10 @@ function selectItem(obj) {
 }
 
 function setItem() {
-var f1 = document.getElementById('modal-list').getElementsByClassName('active')
+var f1 = document.getElementById('modal-list').getElementsByClassName('active');
 for (var i=0; i<f1.length; i++)
 selectItem(f1[i]);
 }
-
 
 $(function () {
     var url = window.location.pathname;
@@ -28,4 +27,4 @@ $(function () {
                 $(this).parent().addClass('active');
             }
         });
-  })
+  });

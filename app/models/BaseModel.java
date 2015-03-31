@@ -1,8 +1,5 @@
 package models;
 
-import play.db.ebean.Model;
-
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
@@ -11,18 +8,9 @@ import javax.persistence.MappedSuperclass;
  * @author Dmitriy Grigoriev
  */
 @MappedSuperclass
-public class BaseModel extends Model {
-  @Id
-  private Long id;
+public class BaseModel extends AbstractModel {
+
   private String name;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
 
   public String getName() {
     return name;
