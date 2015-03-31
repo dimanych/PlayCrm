@@ -8,6 +8,11 @@
   @form(routes.Contractors.save()) {
     <fieldset>
       @inputText(contractorForm("name"), '_label -> "Имя", 'class -> "form-control")
+      @select(
+        contractorForm("contractorType.id"),
+        options(ContractorTypes.options),
+        '_label -> "Тип", '_default -> "-- Выбрать --",
+        '_showConstraints -> false, 'class -> "form-control")
     </fieldset>
     <input type="submit" value="Создать" class="btn primary">
   }

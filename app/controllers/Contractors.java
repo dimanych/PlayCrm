@@ -6,8 +6,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.model.contractor.*;
 
-import java.util.List;
-
 import static play.data.Form.form;
 
 /**
