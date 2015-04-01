@@ -1,4 +1,25 @@
 @(contact: Contact)
 @main("Контакты"){
     <p>@contact.getName</p>
+    <p>@contact.getAdress</p>
+    @if(contact.getContractor != null) {
+        <p>@contact.getContractor.getName</p>
+    } else {
+        <p>Контрагент отстутствует</p>
+    }
+    <p>@contact.getPost</p>
+    @if(contact.getCommunication != null) {
+        <p>@contact.getCommunication.getEmail</p>
+        <p>@contact.getCommunication.getHomePhone</p>
+        <p>@contact.getCommunication.getMobilePhone</p>
+        <p>@contact.getCommunication.getSkype</p>
+        <p>@contact.getCommunication.getSocialAccount</p>
+        <p>@contact.getCommunication.getWorkPhone</p>
+        <p>@contact.getCommunication.getWww</p>
+        <p>@contact.getCommunication.getOther</p>
+    } else {
+        <p>Контакты отсутствуют</p>
+    }
+
+
 }
