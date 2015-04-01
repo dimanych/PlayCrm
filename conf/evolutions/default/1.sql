@@ -39,22 +39,12 @@ create table contractor_type (
   constraint pk_contractor_type primary key (id))
 ;
 
-create table sale (
-  id                        bigint auto_increment not null,
-  name                      varchar(255),
-  contractor_id             bigint,
-  phase                     varchar(255),
-  constraint pk_sale primary key (id))
-;
-
 alter table contact add constraint fk_contact_contractor_1 foreign key (contractor_id) references contractor (id) on delete restrict on update restrict;
 create index ix_contact_contractor_1 on contact (contractor_id);
 alter table contact add constraint fk_contact_communication_2 foreign key (communication_id) references communication (id) on delete restrict on update restrict;
 create index ix_contact_communication_2 on contact (communication_id);
 alter table contractor add constraint fk_contractor_contractorType_3 foreign key (contractor_type_id) references contractor_type (id) on delete restrict on update restrict;
 create index ix_contractor_contractorType_3 on contractor (contractor_type_id);
-alter table sale add constraint fk_sale_contractor_4 foreign key (contractor_id) references contractor (id) on delete restrict on update restrict;
-create index ix_sale_contractor_4 on sale (contractor_id);
 
 
 
@@ -69,8 +59,6 @@ drop table contact;
 drop table contractor;
 
 drop table contractor_type;
-
-drop table sale;
 
 SET FOREIGN_KEY_CHECKS=1;
 
