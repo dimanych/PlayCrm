@@ -1,25 +1,47 @@
 @(contact: Contact)
 @main("Контакты"){
-    <p>@contact.getName</p>
+
+    <dl class="dl-horizontal">
+        <dt>ФИО</dt>
+        <dd>@contact.getName</dd>
+        <dt>Контрагент</dt>
+        @if(contact.getContractor != null) {
+            <dd>@contact.getContractor.getName</dd>
+        } else {
+            <dd>Контрагент не указан</dd>
+        }
+    </dl>
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#general" role="tab" data-toggle="tab">Общее</a></li>
+        <li role="presentation"><a href="#work" role="tab" data-toggle="tab">Место работы</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="general">
+        @if(contact.getCommunication != null) {
+            <p>@contact.getCommunication.getEmail</p>
+            <p>@contact.getCommunication.getHomePhone</p>
+            <p>@contact.getCommunication.getMobilePhone</p>
+            <p>@contact.getCommunication.getSkype</p>
+            <p>@contact.getCommunication.getSocialAccount</p>
+            <p>@contact.getCommunication.getWorkPhone</p>
+            <p>@contact.getCommunication.getWww</p>
+            <p>@contact.getCommunication.getOther</p>
+        } else {
+            <p>Контакты отсутствуют</p>
+        }
+        </div>
+        <div class="tab-pane fade" id="work">
+            <p>@contact.getPost</p>
+        </div>
+
+    </div>
+
     <p>@contact.getAdress</p>
-    @if(contact.getContractor != null) {
-        <p>@contact.getContractor.getName</p>
-    } else {
-        <p>Контрагент отстутствует</p>
-    }
+
     <p>@contact.getPost</p>
-    @if(contact.getCommunication != null) {
-        <p>@contact.getCommunication.getEmail</p>
-        <p>@contact.getCommunication.getHomePhone</p>
-        <p>@contact.getCommunication.getMobilePhone</p>
-        <p>@contact.getCommunication.getSkype</p>
-        <p>@contact.getCommunication.getSocialAccount</p>
-        <p>@contact.getCommunication.getWorkPhone</p>
-        <p>@contact.getCommunication.getWww</p>
-        <p>@contact.getCommunication.getOther</p>
-    } else {
-        <p>Контакты отсутствуют</p>
-    }
+
 
 
 }
