@@ -7,7 +7,7 @@
   @for(contact<-contacts){
   <div class="panel panel-info">
     <div class="panel-heading">
-      <a href="/contacts/@contact.getId"><h3 class="panel-title">@contact.getName</h3></a>
+      <a href="@routes.Contacts.contact(contact.getId)"><h3 class="panel-title">@contact.getName</h3></a>
     </div>
     <div class="panel-body">
       <p>@contact.getPost</p>
