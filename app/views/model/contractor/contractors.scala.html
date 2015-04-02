@@ -4,14 +4,27 @@
 
   <a href="@routes.Contractors.add()" class="btn btn-primary">Добавить контрагента</a>
 
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Номер</th>
+        <th>Имя</th>
+        <th>Тип</th>
+      </tr>
+    </thead>
+    <tbody>
+      @{val i=0 }
   @for(contractor<-contractors){
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <a href="/contractors/@contractor.getId"><h3 class="panel-title">@contractor.getName</h3></a>
-      </div>
-      <div class="panel-body">
-  </div>
-    </div>
-
-}
+    <tr>
+      <th scope="row">@contractor.getId</th>
+      <td>@contractor.getName</td>
+      <td>
+      @if(contractor.getContractorType != null) {
+        @contractor.getContractorType.getName
+      }
+      </td>
+    </tr>
+  }
+  </tbody>
+  </table>
 }

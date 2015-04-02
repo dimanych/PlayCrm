@@ -19,29 +19,29 @@
 
     <div class="tab-content">
         <div class="tab-pane fade active in" id="general">
-        @if(contact.getCommunication != null) {
-            <p>@contact.getCommunication.getEmail</p>
-            <p>@contact.getCommunication.getHomePhone</p>
-            <p>@contact.getCommunication.getMobilePhone</p>
-            <p>@contact.getCommunication.getSkype</p>
-            <p>@contact.getCommunication.getSocialAccount</p>
-            <p>@contact.getCommunication.getWorkPhone</p>
-            <p>@contact.getCommunication.getWww</p>
-            <p>@contact.getCommunication.getOther</p>
-        } else {
-            <p>Контакты отсутствуют</p>
-        }
+            <div class="panel-body">
+
+                <p>@contact.getAdress</p>
+                @if(contact.getCommunication != null) {
+                    <p>@contact.getCommunication.getEmail</p>
+                    <p>@contact.getCommunication.getHomePhone</p>
+                    <p>@contact.getCommunication.getMobilePhone</p>
+                    <p>@contact.getCommunication.getSkype</p>
+                    <p>@contact.getCommunication.getSocialAccount</p>
+                    <p>@contact.getCommunication.getWorkPhone</p>
+                    <p>@contact.getCommunication.getWww</p>
+                    <p>@contact.getCommunication.getOther</p>
+                } else {
+                    <p>Контакты отсутствуют</p>
+                }
+            </div>
+
         </div>
         <div class="tab-pane fade" id="work">
             <p>@contact.getPost</p>
         </div>
 
     </div>
-
-    <p>@contact.getAdress</p>
-
-    <p>@contact.getPost</p>
-
 
 
 }
