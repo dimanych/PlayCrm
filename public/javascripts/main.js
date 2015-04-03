@@ -19,11 +19,10 @@ selectItem(f1[i]);
 
 $(function () {
     var url = window.location.pathname;
-    var activePage = url.substring(url.lastIndexOf('/') + 1);
+    var activePage = url.substring(url + 1);
         $('.nav-pills li a').each(function () {
-            var linkPage = this.href.substring(this.href.lastIndexOf('/') + 1);
-
-            if (activePage == linkPage) {
+            var linkPage = this.pathname.substring(this.pathname + 1);
+            if (activePage.indexOf(linkPage) > -1 ) {
                 $(this).parent().addClass('active');
             }
         });
