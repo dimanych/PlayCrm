@@ -5,7 +5,7 @@
   <a href="@routes.Contacts.add()" class="btn btn-primary">Добавить контакт</a>
 
   @for(contact<-contacts){
-  <div class="panel panel-info">
+    <div class="panel panel-default">
     <div class="panel-heading">
       <a href="@routes.Contacts.contact(contact.getId)"><h3 class="panel-title">@contact.getName</h3></a>
     </div>
@@ -15,9 +15,8 @@
       @if(contact.getContractor()!=null) {
         <p>@contact.getContractor().getName()</p>
       }
-
     </div>
-  </div>
+    </div>
 
   }
 }
