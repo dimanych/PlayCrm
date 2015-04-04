@@ -12,7 +12,9 @@
           <a href="@routes.Contacts.contact(contact.getId)"><h4>@contact.getName</h4></a>
           @if(contact.getContractor()!=null) {
             <span class="text-muted">Контрагент</span><br>
-            <p>@contact.getContractor().getName()</p>
+            <a href="@routes.Contractors.contractor(contact.getContractor.getId)">
+              @contact.getContractor().getName()
+            </a>
           }
         </div>
         <div class="col-md-4">
