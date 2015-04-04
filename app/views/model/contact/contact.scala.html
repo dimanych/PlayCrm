@@ -2,46 +2,77 @@
 @main("Контакты"){
 
     <dl class="dl-horizontal">
-        <dt>ФИО</dt>
-        <dd>@contact.getName</dd>
-        <dt>Контрагент</dt>
+        <dt><h4 class="text-muted">ФИО</h4></dt>
+        <dd><h4>@contact.getName</h4></dd>
+        <dt><h4 class="text-muted">Контрагент</h4></dt>
         @if(contact.getContractor != null) {
-            <dd>@contact.getContractor.getName</dd>
+            <dd><h4><a href="@routes.Contractors.contractor(contact.getContractor.getId)">
+            @contact.getContractor().getName()
+            </a></h4></dd>
         } else {
             <dd>Контрагент не указан</dd>
         }
     </dl>
-
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#general" role="tab" data-toggle="tab">Общее</a></li>
-        <li role="presentation"><a href="#work" role="tab" data-toggle="tab">Место работы</a></li>
-    </ul>
-
-    <div class="tab-content">
         <div class="tab-pane fade active in" id="general">
             <div class="panel-body">
+                <h4>Должность</h4>
+                @contact.getPost
+                <hr>
+                <h4>Средства связи</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                    @if(contact.getCommunication != null) {
+                        @if(contact.getCommunication.getWorkPhone != "") {
+                            <span class="text-muted">Рабочий телефон</span>
+                            <p><abbr title="Рабочий телефон"><i class="fa fa-phone fa-lg"></i></abbr>
+                                @contact.getCommunication.getWorkPhone</p>
+                        }
+                        @if(contact.getCommunication.getMobilePhone != "") {
+                            <span class="text-muted">Мобильный телефон</span><br>
+                            <p><abbr title="Мобильный телефон"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></abbr>
+                                @contact.getCommunication.getWorkPhone<p>
+                            }
+                        @if(contact.getCommunication.getHomePhone != "") {
+                            <span class="text-muted">Домашний телефон</span><br>
+                            <p><abbr title="Домашний телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
+                                @contact.getCommunication.getHomePhone</p>
+                        }
 
-                <p>@contact.getAdress</p>
-                @if(contact.getCommunication != null) {
-                    <p>@contact.getCommunication.getEmail</p>
-                    <p>@contact.getCommunication.getHomePhone</p>
-                    <p>@contact.getCommunication.getMobilePhone</p>
-                    <p>@contact.getCommunication.getSkype</p>
-                    <p>@contact.getCommunication.getSocialAccount</p>
-                    <p>@contact.getCommunication.getWorkPhone</p>
-                    <p>@contact.getCommunication.getWww</p>
-                    <p>@contact.getCommunication.getOther</p>
-                } else {
-                    <p>Контакты отсутствуют</p>
-                }
+                    }
+                    </div>
+                    <div class="col-md-4">
+                    @if(contact.getCommunication != null) {
+                        <span class="text-muted">Электронная почта</span><br>
+                        <p><abbr title="Электронная почта"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></abbr>
+                            @contact.getCommunication.getEmail</p>
+                        <span class="text-muted">Skype</span><br>
+                        <p><abbr title="Скайп"><span class="fa fa-skype fa-lg"></span></abbr>
+                            @contact.getCommunication.getSkype</p>
+                        <span class="text-muted">Другой вид связи</span><br>
+                        <p><abbr title="Другой вид связи"><i class="fa fa-bullhorn fa-lg"></i></abbr>
+                            @contact.getCommunication.getOther</p>
+                    }
+                    </div>
+                    <div class="col-md-4">
+                        @if(contact.getCommunication != null) {
+                            <span class="text-muted">Сайт</span><br>
+                            <p><abbr title="Сайт"><i class="fa fa-globe fa-lg"></i></abbr>
+                                @contact.getCommunication.getWww</p>
+                            <span class="text-muted">Профиль в соцсетях</span><br>
+                            <p><abbr title="Соцсети"><i class="fa fa-vk fa-lg"></i></abbr>
+                                @contact.getCommunication.getSocialAccount</p>
+
+                        }
+                    </div>
+                </div>
+                <hr>
+                <h4>Адрес</h4>
+                <p><abbr title="Адрес"><i class="fa fa-map-marker fa-lg"></i></abbr>
+                    @contact.getAdress</p>
+
             </div>
-
-        </div>
-        <div class="tab-pane fade" id="work">
-            <p>@contact.getPost</p>
         </div>
 
-    </div>
 
 
 }
