@@ -6,17 +6,52 @@
 
   @for(contact<-contacts){
     <div class="panel panel-default">
-    <div class="panel-heading">
-      <a href="@routes.Contacts.contact(contact.getId)"><h3 class="panel-title">@contact.getName</h3></a>
-    </div>
     <div class="panel-body">
-      <p>@contact.getPost</p>
-      <p>@contact.getAdress</p>
-      @if(contact.getContractor()!=null) {
-        <p>@contact.getContractor().getName()</p>
-      }
+      <div class="row">
+        <div class="col-md-4">
+          <a href="@routes.Contacts.contact(contact.getId)"><h4>@contact.getName</h4></a>
+          @if(contact.getContractor()!=null) {
+            <span class="text-muted">Контрагент</span><br>
+            <p>@contact.getContractor().getName()</p>
+          }
+        </div>
+        <div class="col-md-4">
+        @if(contact.getCommunication != null) {
+          @if(contact.getCommunication.getWorkPhone != null) {
+            <span class="text-muted">Рабочий телефон</span>
+            <p><abbr title="Рабочий телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
+            @contact.getCommunication.getWorkPhone</p>
+          }
+          @if(contact.getCommunication.getMobilePhone != null) {
+            <span class="text-muted">Мобильный телефон</span><br>
+            <p><abbr title="Мобильный телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
+            @contact.getCommunication.getWorkPhone<p>
+          }
+          @if(contact.getCommunication.getHomePhone != null) {
+            <span class="text-muted">Домашний телефон</span><br>
+            <p><abbr title="Домашний телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
+            @contact.getCommunication.getHomePhone</p>
+          }
+
+        }
+        </div>
+        <div class="col-md-4">
+          <address>
+            <span class="text-muted">Адрес</span><br>
+            <p><abbr title="Адрес"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></abbr>
+            @contact.getAdress</p>
+
+            @if(contact.getCommunication != null) {
+              <span class="text-muted">Электронная почта</span><br>
+              <p><abbr title="Электронная почта"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></abbr>
+              @contact.getCommunication.getEmail</p>
+            }
+          </address>
+        </div>
+      </div>
     </div>
     </div>
+
 
   }
 }

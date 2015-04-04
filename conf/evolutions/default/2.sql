@@ -14,14 +14,14 @@ insert into sale_phase (id,name) values (3,'Презентация товара'
 insert into sale_phase (id,name) values (4,'Работа с возражениями');
 insert into sale_phase (id,name) values (5,'Завершение сделки');
 
-insert into communication (id,home_phone,mobile_phone,work_phone,skype,email,www,social_account,other) values (1,'+1','+2','+3','skype','email','www','socalAccount','other');
+insert into communication (id,home_phone,mobile_phone,work_phone,skype,email,www,social_account,other) values (1,'+1323','+2332','+3','skype','email','www','socalAccount','other');
 
-insert into contractor (id,name,contractor_type_id) values (1,'Тони Старк',1);
-insert into contractor (id,name,contractor_type_id) values (2,'Черная Вдова',2);
-insert into contractor (id,name,contractor_type_id) values (3,'Питер Пен',3);
-insert into contractor (id,name,contractor_type_id) values (4,'Питер Паркер',2);
-insert into contractor (id,name,contractor_type_id) values (5,'Шерлок Холмс',4);
-insert into contractor (id,name,contractor_type_id) values (6,'Вуди Харельсон',5);
+insert into contractor (id,name,contractor_type_id) values (1,'Ололо-Софт',1);
+insert into contractor (id,name,contractor_type_id) values (2,'Apple',2);
+insert into contractor (id,name,contractor_type_id) values (3,'General Motors Inc',3);
+insert into contractor (id,name,contractor_type_id) values (4,'Газпром',2);
+insert into contractor (id,name,contractor_type_id) values (5,'Рога и копыта',4);
+insert into contractor (id,name,contractor_type_id) values (6,'Международный банк',5);
 
 insert into sale (id,name,contractor_id,sale_phase_id) values (1,'Альфабизнес Продажа услуг',1,3);
 insert into sale (id,name,contractor_id,sale_phase_id) values (2,'Бетабизнес Продажа услуг',2,4);
