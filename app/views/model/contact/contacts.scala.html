@@ -17,17 +17,17 @@
         </div>
         <div class="col-md-4">
         @if(contact.getCommunication != null) {
-          @if(contact.getCommunication.getWorkPhone != null) {
+          @if(contact.getCommunication.getWorkPhone != "") {
             <span class="text-muted">Рабочий телефон</span>
             <p><abbr title="Рабочий телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
             @contact.getCommunication.getWorkPhone</p>
           }
-          @if(contact.getCommunication.getMobilePhone != null) {
+          @if(contact.getCommunication.getMobilePhone != "") {
             <span class="text-muted">Мобильный телефон</span><br>
-            <p><abbr title="Мобильный телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
+            <p><abbr title="Мобильный телефон"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></abbr>
             @contact.getCommunication.getWorkPhone<p>
           }
-          @if(contact.getCommunication.getHomePhone != null) {
+          @if(contact.getCommunication.getHomePhone != "") {
             <span class="text-muted">Домашний телефон</span><br>
             <p><abbr title="Домашний телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
             @contact.getCommunication.getHomePhone</p>
