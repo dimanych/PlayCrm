@@ -8,8 +8,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.model.contact.*;
 
-import java.util.List;
-
 import static play.data.Form.form;
 
 /**
@@ -37,5 +35,9 @@ public class Contacts extends Controller {
 
   public static Result contact(Long id) {
     return ok(contact.render(Contact.findById(id)));
+  }
+
+  public static String contactByContractor(Contractor contractor) {
+    return Contact.findByContractor(contractor);
   }
 }

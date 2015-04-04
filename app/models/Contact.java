@@ -32,6 +32,10 @@ public class Contact extends BaseModel {
     return find.where().eq("name", name).findUnique();
   }
 
+  public static String findByContractor(Contractor contractor) {
+    return find.where().eq("contractor", contractor).findUnique().getName();
+  }
+
   @OneToOne
   public Contractor getContractor() {
     return contractor;

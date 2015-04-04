@@ -7,6 +7,7 @@
   <div class="row">
     <div class="col-md-1"><strong>Номер</strong></div>
     <div class="col-md-2"><strong>Имя</strong></div>
+    <div class="col-md-2"><strong>Основной контакт</strong></div>
     <div class="col-md-2"><strong>Тип</strong></div>
   </div>
   <hr class="min">
@@ -16,6 +17,7 @@
       <div class="row ">
         <div class="col-md-1">@contractor.getId</div>
         <div class="col-md-2">@contractor.getName</div>
+        <div class="col-md-2">@controllers.Contacts.contactByContractor(contractor)</div>
         <div class="col-md-2">@if(contractor.getContractorType != null) {
           @contractor.getContractorType.getName
         }</div>
