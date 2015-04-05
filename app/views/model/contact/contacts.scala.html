@@ -8,7 +8,7 @@
     <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
           <a href="@routes.Contacts.contact(contact.getId)"><h4>@contact.getName</h4></a>
           @if(contact.getContractor()!=null) {
             <span class="text-muted">Контрагент</span><br>
@@ -17,7 +17,7 @@
             </a>
           }
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
         @if(contact.getCommunication != null) {
           @if(contact.getCommunication.getWorkPhone != "") {
             <span class="text-muted">Рабочий телефон</span>
@@ -32,7 +32,7 @@
 
         }
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <address>
             <span class="text-muted">Адрес</span><br>
             <p><abbr title="Адрес"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></abbr>
@@ -44,6 +44,16 @@
               @contact.getCommunication.getEmail</p>
             }
           </address>
+
+        </div>
+        <div class="col-md-1">
+          <p>
+          <button type="button" class="btn btn-primary btn-sm">
+            <i class="fa fa-eye"></i>
+          </button></p>
+          <button type="button" class="btn btn-default btn-sm">
+            <i class="fa fa-trash-o fa-lg"></i>
+          </button>
         </div>
       </div>
     </div>
