@@ -1,14 +1,18 @@
 @(contractors: List[Contractor])
 
+@import helper._
+
 @main("Контакты"){
 
   <a href="@routes.Contractors.add()" class="btn btn-primary">Добавить контрагента</a>
 
   <div class="row">
     <div class="col-md-1"><strong>Номер</strong></div>
-    <div class="col-md-2"><strong>Имя</strong></div>
+    <div class="col-md-3"><strong>Имя</strong></div>
     <div class="col-md-2"><strong>Основной контакт</strong></div>
     <div class="col-md-2"><strong>Тип</strong></div>
+    <div class="col-md-2"><strong>Телефон</strong></div>
+    <div class="col-md-2"><strong></strong></div>
   </div>
   <hr class="min">
   @for(contractor<-contractors){
@@ -16,11 +20,23 @@
     <a href="@routes.Contractors.contractor(contractor.getId)">
       <div class="row ">
         <div class="col-md-1">@contractor.getId</div>
-        <div class="col-md-2">@contractor.getName</div>
+        <div class="col-md-3">@contractor.getName</div>
         <div class="col-md-2">@controllers.Contacts.contactByContractor(contractor)</div>
         <div class="col-md-2">@if(contractor.getContractorType != null) {
           @contractor.getContractorType.getName
         }</div>
+        <div class="col-md-2">@controllers.Contacts.phoneByContractor(contractor)</div>
+        <div class="col-md-2 btn-toolbar" role="toolbar">
+          <div class="btn-toolbar" role="toolbar">
+            <a href="@routes.Contractors.contractor(contractor.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+            <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm"><i class="fa fa-trash-o fa-lg"></i></button>
+          </div>
+          @form(routes.Contractors.delete(contractor.getId)) {
+            <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
+              <i class="fa fa-trash-o fa-lg"></i>
+            </button>
+          }
+        </div>
       </div>
     </a>
     <hr class="min">

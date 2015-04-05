@@ -47,4 +47,8 @@ public class Contacts extends Controller {
   public static String contactByContractor(Contractor contractor) {
     return Contact.findByContractor(contractor);
   }
+
+  public static String phoneByContractor(Contractor contractor) {
+    return Contact.findPhoneByContractor(contractor);
+  }
 }
