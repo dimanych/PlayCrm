@@ -13,6 +13,8 @@ import static play.data.Form.form;
  */
 public class Contractors extends Controller {
 
+public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.contractors());
+
   public static Result add() {
     Form<Contractor> contractorForm = form(Contractor.class);
     return ok(createContractor.render(contractorForm));
@@ -24,7 +26,12 @@ public class Contractors extends Controller {
       return badRequest(contractors.render(Contractor.findAll()));
     }
     contractorForm.get().save();
-    return redirect(controllers.routes.Contractors.contractors());
+    return GO_CONTRACTORS;
+  }
+
+  public static Result delete(Long id) {
+    Contractor.findById(id).delete();
+    return GO_CONTRACTORS;
   }
 
   public static Result contractors() {

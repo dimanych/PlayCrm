@@ -12,7 +12,8 @@ GET         /contacts/$id<[0-9]+>           controllers.Contacts.contact(id: Lon
 # Contacts add
 GET         /contacts/add                   controllers.Contacts.add()
 POST        /contacts                       controllers.Contacts.save()
-
+# Contacts delete
+POST        /contacts/:id/delete            controllers.Contacts.delete(id:Long)
 
 # Contractors - organization or individual for contracts
 # list
@@ -24,6 +25,8 @@ GET         /contractors/$id<[0-9]+>        controllers.Contractors.contractor(i
 # add Contractor
 GET         /contractors/add                controllers.Contractors.add()
 POST        /contractors                    controllers.Contractors.save()
+# delete Contractor
+POST        /contractors/:id/delete         controllers.Contractors.delete(id:Long)
 
 # Sales
 GET         /sales                          controllers.Sales.sales()

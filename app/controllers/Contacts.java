@@ -15,6 +15,8 @@ import static play.data.Form.form;
  */
 public class Contacts extends Controller {
 
+  public static Result GO_CONTACTS = redirect(controllers.routes.Contacts.contacts());
+
   public static Result add() {
     Form<Contact> contactForm = form(Contact.class);
     return ok(createContact.render(contactForm));
@@ -26,7 +28,12 @@ public class Contacts extends Controller {
       return badRequest(contacts.render(Contact.findAll()));
     }
     contactForm.get().save();
-    return redirect(controllers.routes.Contacts.contacts());
+    return GO_CONTACTS;
+  }
+
+  public static Result delete(Long id) {
+    Contact.findById(id).delete();
+    return GO_CONTACTS;
   }
 
   public static Result contacts() {

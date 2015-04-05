@@ -1,5 +1,7 @@
 @(contacts: List[Contact])
 
+@import helper._
+
 @main("Контакты"){
 
   <a href="@routes.Contacts.add()" class="btn btn-primary">Добавить контакт</a>
@@ -48,12 +50,15 @@
         </div>
         <div class="col-md-1">
           <p>
-          <button type="button" class="btn btn-primary btn-sm">
+          <a href="@routes.Contacts.contact(contact.getId)" class="btn btn-primary btn-sm">
             <i class="fa fa-eye"></i>
-          </button></p>
-          <button type="button" class="btn btn-default btn-sm">
-            <i class="fa fa-trash-o fa-lg"></i>
-          </button>
+          </a></p>
+          @form(routes.Contacts.delete(contact.getId)) {
+            <button class="btn btn-default btn-sm" type="submit">
+              <i class="fa fa-trash-o fa-lg"></i>
+            </button>
+          }
+
         </div>
       </div>
     </div>
