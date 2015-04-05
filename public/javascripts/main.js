@@ -28,10 +28,10 @@ $(function () {
         });
   });
 
-$('button[name="deleteBtn"]').on('click', function(e){
+$('button[name="continueBtn"]').on('click', function(e){
     var $form=$(this).closest('form');
     e.preventDefault();
-    $('#confirmModal').modal({ backdrop: 'static', keyboard: false })
+    $('#showModal').modal({ backdrop: 'static', keyboard: false })
         .one('click', '#yesButton', function() {
             $form.trigger('submit'); // отправка формы
         });

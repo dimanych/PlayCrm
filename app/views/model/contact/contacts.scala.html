@@ -1,6 +1,7 @@
 @(contacts: List[Contact])
 
 @import helper._
+@import views.html.components._
 
 @main("Контакты"){
 
@@ -54,7 +55,7 @@
             <i class="fa fa-eye"></i>
           </a></p>
           @form(routes.Contacts.delete(contact.getId)) {
-            <button name="deleteBtn"  data-toggle="modal" class="btn btn-default btn-sm">
+            <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
               <i class="fa fa-trash-o fa-lg"></i>
             </button>
           }
@@ -63,26 +64,9 @@
     </div>
     </div>
 
-
   }
-  <div id="confirmModal" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">Удалить контакт?</h4>
-        </div>
-        <div class="modal-body">
-          <h5 id="text-in-a-modal">Подтвертите, если хотите удалить контакт. Удаленные данные будет невозможно восстановить</h5>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" id="yesButton">Удалить</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-        </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div>
-
-
+  @confirm("Удалить контакт?",
+    "Подтвертите, если хотите удалить контакт. Удаленные данные будет невозможно восстановить",
+    "danger",
+    "Удалить")
 }
