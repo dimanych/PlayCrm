@@ -18,8 +18,8 @@ selectItem(f1[i]);
 }
 
 $(function () {
-    var url = window.location.pathname;
-    var activePage = url.substring(url + 1);
+  var url = window.location.pathname;
+  var activePage = url.substring(url + 1);
         $('.nav-pills li a').each(function () {
             var linkPage = this.pathname.substring(this.pathname + 1);
             if (activePage.indexOf(linkPage) > -1 ) {
@@ -28,7 +28,7 @@ $(function () {
         });
   });
 
-$('button[name="deleteContact"]').on('click', function(e){
+$('button[name="deleteBtn"]').on('click', function(e){
     var $form=$(this).closest('form');
     e.preventDefault();
     $('#confirmModal').modal({ backdrop: 'static', keyboard: false })
