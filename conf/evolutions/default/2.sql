@@ -14,7 +14,8 @@ insert into sale_phase (id,name) values (3,'Презентация товара'
 insert into sale_phase (id,name) values (4,'Работа с возражениями');
 insert into sale_phase (id,name) values (5,'Завершение сделки');
 
-insert into communication (id,home_phone,mobile_phone,work_phone,skype,email,www,social_account,other) values (1,'+1323','+2332','+3','skype','email','www','socalAccount','other');
+insert into communication (id,home_phone,mobile_phone,work_phone,skype,email,www,social_account,other) values (1,'(323) 323-432','(233) 222-122','(212) 959-988','skypeNick','email@site.com','www.ololo.cpm,','socalAccoun2','other');
+insert into communication (id,home_phone,mobile_phone,work_phone,skype,email,www,social_account,other) values (2,'(363) 343-734','(733) 242-172','(414) 141-921','skyIrom','jo@jack.com','yandex.ru','socalAccount1','other');
 
 insert into contractor (id,name,contractor_type_id) values (1,'Ололо-Софт',1);
 insert into contractor (id,name,contractor_type_id) values (2,'Apple',2);
@@ -29,9 +30,9 @@ insert into sale (id,name,contractor_id,sale_phase_id) values (3,'Альфаби
 insert into sale (id,name,contractor_id,sale_phase_id) values (4,'Альфанес342 Продажа услуг',4,2);
 
 insert into contact (id,name,contractor_id,post,communication_id,adress) values (1,'Брюс Уэйн',1,'миллиардер',1,'Британия, поместье Бэтмена');
-insert into contact (id,name,contractor_id,post,communication_id,adress) values (2,'Младший брат Тора',2,'сын короля',1,'Асгард, дворец Одина');
+insert into contact (id,name,contractor_id,post,communication_id,adress) values (2,'Младший брат Тора',2,'сын короля',2,'Асгард, дворец Одина');
 insert into contact (id,name,contractor_id,post,communication_id,adress) values (3,'Рон Уизли',3,'друг Поттера',1,'г.Москва, ул.Стрелецкая');
-insert into contact (id,name,contractor_id,post,communication_id,adress) values (4,'Зеленый Гоблин',4,'злодей',1,'хз');
+insert into contact (id,name,contractor_id,post,communication_id,adress) values (4,'Зеленый Гоблин',4,'злодей',2,'хз');
 insert into contact (id,name,contractor_id,post,communication_id,adress) values (5,'Профессор Мориарти',5,'математик-злодей',1,'Лондон, Оксфорд');
 
 # --- !Downs
