@@ -31,7 +31,7 @@ $(function () {
 $('button[name="continueBtn"]').on('click', function(e){
     var $form=$(this).closest('form');
     e.preventDefault();
-    $('#showModal').modal({ backdrop: 'static', keyboard: false })
+    $('#confirmModal').modal({ backdrop: 'static', keyboard: false })
         .one('click', '#yesButton', function() {
             $form.trigger('submit'); // отправка формы
         });
