@@ -23,19 +23,24 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
   public static Result save() {
     Form<Contractor> contractorForm = form(Contractor.class).bindFromRequest();
     if (contractorForm.hasErrors()) {
-      return badRequest(contractors.render(Contractor.findAll()));
+      return badRequest(contractors.render(Contractor.findAll(), contractorForm));
     }
     contractorForm.get().save();
     return GO_CONTRACTORS;
   }
 
   public static Result delete(Long id) {
-    Contractor.findById(id).delete();
+    Form<Contractor> contractorForm = form(Contractor.class).fill(Contractor.findById(id));
+    if (contractorForm.hasErrors()) {
+      return badRequest(contractors.render(Contractor.findAll(), contractorForm));
+    }
+    contractorForm.get().delete();
     return GO_CONTRACTORS;
   }
 
   public static Result contractors() {
-    return ok(contractors.render(Contractor.findAll()));
+    Form<Contractor> contractorForm = form(Contractor.class).bindFromRequest();
+    return ok(contractors.render(Contractor.findAll(), contractorForm));
   }
 
   public static Result contractor(Long id) {

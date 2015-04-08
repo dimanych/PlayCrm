@@ -1,9 +1,16 @@
-@(contractors: List[Contractor])
+@(contractors: List[Contractor], contractorForm: Form[Contractor])
 
 @import helper._
 @import components._
 
 @main("Контакты"){
+
+  @if(contractorForm.hasErrors){
+
+    @for(error <- contractorForm("name").errors) {
+      <p>@error.message</p>
+    }
+  }
 
   <a href="@routes.Contractors.add()" class="btn btn-primary">Добавить контрагента</a>
 
