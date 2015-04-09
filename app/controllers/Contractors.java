@@ -4,6 +4,7 @@ import models.Contractor;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.ContractorForm;
 import views.html.model.contractor.*;
 
 import static play.data.Form.form;
@@ -23,16 +24,16 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
   public static Result save() {
     Form<Contractor> contractorForm = form(Contractor.class).bindFromRequest();
     if (contractorForm.hasErrors()) {
-      return badRequest(contractors.render(Contractor.findAll(), contractorForm));
+      return badRequest(contractors.render(Contractor.findAll()));
     }
     contractorForm.get().save();
     return GO_CONTRACTORS;
   }
 
   public static Result delete(Long id) {
-    Form<Contractor> contractorForm = form(Contractor.class).fill(Contractor.findById(id));
+    Form<ContractorForm> contractorForm = form(ContractorForm.class).fill(Contractor.findById(id));
     if (contractorForm.hasErrors()) {
-      return badRequest(contractors.render(Contractor.findAll(), contractorForm));
+      return badRequest(contractors.render(Contractor.findAll()));
     }
     contractorForm.get().delete();
     return GO_CONTRACTORS;
@@ -40,7 +41,7 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
 
   public static Result contractors() {
     Form<Contractor> contractorForm = form(Contractor.class).bindFromRequest();
-    return ok(contractors.render(Contractor.findAll(), contractorForm));
+    return ok(contractors.render(Contractor.findAll()));
   }
 
   public static Result contractor(Long id) {
