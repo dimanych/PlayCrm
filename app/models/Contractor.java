@@ -1,8 +1,6 @@
 package models;
 
-import play.data.validation.ValidationError;
 import play.db.ebean.Model;
-import utils.ContractorUtil;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -37,10 +35,6 @@ public class Contractor extends BaseModel {
       options.put(c.getId().toString(), c.getName());
     }
     return options;
-  }
-
-  public List<ValidationError> validate() {
-    return ContractorUtil.checkBeforeDelete();
   }
 
   @OneToOne

@@ -1,5 +1,6 @@
 package utils;
 
+import models.Contractor;
 import play.data.validation.ValidationError;
 
 import java.util.ArrayList;
@@ -12,9 +13,11 @@ import java.util.List;
  */
 public class ContractorUtil {
 
-  public static List<ValidationError> checkBeforeDelete(){
+  public static Boolean unableDelete(Contractor contractor){
     List<ValidationError> errors = new ArrayList<ValidationError>();
-
-    return errors.isEmpty() ? null : errors;
+    if (errors.isEmpty()) {
+      throw new RuntimeException("Удалять нельзя");
+    }
+    return errors.isEmpty();
   }
 }
