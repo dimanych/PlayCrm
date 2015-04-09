@@ -1,8 +1,7 @@
-package views;
+package utils;
 
 import play.data.validation.ValidationError;
 import play.db.ebean.Model;
-import utils.ContractorUtil;
 
 import java.util.List;
 
