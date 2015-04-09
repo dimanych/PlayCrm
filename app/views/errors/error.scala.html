@@ -1,10 +1,14 @@
 @(t: Throwable)
 
-@main("Contractor"){
-    <h2>Error</h2>
-    <div class="alert alert-danger" role="alert">
-        <p>@t.getCause</p>
-    </div>
+@import components._
 
+@main("Contractor"){
+    @returnedModal("Ошибка", t.getCause.toString)
 }
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $('#returnedModal').modal('show');
+    })
+</script>
 

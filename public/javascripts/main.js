@@ -36,3 +36,7 @@ $('button[name="continueBtn"]').on('click', function(e){
             $form.trigger('submit'); // отправка формы
         });
 });
+
+$('#returnedModal').modal({ backdrop: 'static', keyboard: false }).one('click', '#returnBtn', function() {
+  parent.history.back();
+});
