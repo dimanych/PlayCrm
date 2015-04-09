@@ -32,7 +32,7 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
 
   public static Result delete(Long id) {
     Contractor contractor = Contractor.findById(id);
-    if (unableDelete(contractor)) {
+    if (ableDelete(contractor)) {
       contractor.delete();
     }
     return GO_CONTRACTORS;
@@ -46,7 +46,7 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
     return ok(contractor.render(Contractor.findById(id)));
   }
 
-  private static Boolean unableDelete(Contractor contractor) {
-    return ContractorUtil.unableDelete(contractor);
+  private static Boolean ableDelete(Contractor contractor) {
+    return ContractorUtil.ableDelete(contractor);
   }
 }

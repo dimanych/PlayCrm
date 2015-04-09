@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ContractorUtil {
 
-  public static Boolean unableDelete(Contractor contractor){
+  public static Boolean ableDelete(Contractor contractor){
     List<ValidationError> errors = new ArrayList<ValidationError>();
     if (errors.isEmpty()) {
       throw new RuntimeException("Удалять нельзя");
