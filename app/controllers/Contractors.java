@@ -4,7 +4,6 @@ import models.Contractor;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import utils.ContractorForm;
 import views.html.model.contractor.*;
 
 import static play.data.Form.form;
