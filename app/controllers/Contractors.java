@@ -1,11 +1,15 @@
 package controllers;
 
+import exceptions.UserException;
 import models.Contractor;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import utils.ContractorUtil;
-import views.html.model.contractor.*;
+import views.html.model.contractor.contractor;
+import views.html.model.contractor.contractors;
+import views.html.model.contractor.createContractor;
+
+import javax.persistence.PersistenceException;
 
 import static play.data.Form.form;
 
@@ -32,9 +36,12 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
 
   public static Result delete(Long id) {
     Contractor contractor = Contractor.findById(id);
-    if (ableDelete(contractor)) {
+    try{
       contractor.delete();
+    } catch (PersistenceException ex) {
+      throw new UserException(ex, "Невозможно удалить");
     }
+
     return GO_CONTRACTORS;
   }
 
@@ -44,9 +51,5 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
 
   public static Result contractor(Long id) {
     return ok(contractor.render(Contractor.findById(id)));
-  }
-
-  private static Boolean ableDelete(Contractor contractor) {
-    return ContractorUtil.ableDelete(contractor);
   }
 }

@@ -11,6 +11,7 @@ import static play.mvc.Results.internalServerError;
  * @author Dmitriy Grigoriev
  */
 public class Global extends GlobalSettings {
+
   @Override
   public Promise<Result> onError(RequestHeader request, Throwable t) {
     return Promise.<Result>pure(internalServerError(
