@@ -1,6 +1,5 @@
 package controllers;
 
-import exceptions.UserException;
 import models.Contractor;
 import play.data.Form;
 import play.mvc.Controller;
@@ -39,7 +38,7 @@ public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.co
     try{
       contractor.delete();
     } catch (PersistenceException ex) {
-      throw new UserException(ex, "Невозможно удалить");
+      throw new RuntimeException("Невозможно удалить", ex);
     }
 
     return GO_CONTRACTORS;
