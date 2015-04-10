@@ -3,7 +3,7 @@
 @import components._
 
 @main("Contractor"){
-    @returnedModal("Ошибка", t.getLocalizedMessage)
+    @returnedModal("Ошибка", t.getCause.getLocalizedMessage)
 }
 
 <script type="text/javascript">
