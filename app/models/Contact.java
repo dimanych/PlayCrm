@@ -39,7 +39,7 @@ public class Contact extends BaseModel {
 
   public static String findPhoneByContractor(Contractor contractor) {
     Contact contact = find.where().eq("contractor", contractor).findUnique();
-    return contact == null ? null : contact.getCommunication().getWorkPhone();
+    return contact == null ? null : contact.getCommunication() == null ? null : contact.getCommunication().getWorkPhone();
   }
 
   @OneToOne
