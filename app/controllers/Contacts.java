@@ -44,7 +44,7 @@ public class Contacts extends Controller {
     return ok(contact.render(Contact.findById(id)));
   }
 
-  public static String contactByContractor(Contractor contractor) {
+  public static Contact contactByContractor(Contractor contractor) {
     return Contact.findByContractor(contractor);
   }
 

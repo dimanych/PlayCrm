@@ -32,9 +32,8 @@ public class Contact extends BaseModel {
     return find.where().eq("name", name).findUnique();
   }
 
-  public static String findByContractor(Contractor contractor) {
-    Contact contact = find.where().eq("contractor", contractor).findUnique();
-    return contact == null ? null : contact.getName();
+  public static Contact findByContractor(Contractor contractor) {
+    return find.where().eq("contractor", contractor).findUnique();
   }
 
   public static String findPhoneByContractor(Contractor contractor) {

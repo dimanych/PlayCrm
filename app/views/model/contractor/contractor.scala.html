@@ -1,4 +1,30 @@
 @(contractor: Contractor)
 @main("Contractor"){
-@contractor.getName
+  <div class="col-md-8">
+    <div class="col-md-3 row">
+      <h4 class="text-muted">Наименование</h4>
+    </div>
+    <div class="col-md-5">
+      <h4>@contractor.getName</h4>
+    </div>
+    <div class="clearfix"></div>
+    @if(controllers.Contacts.contactByContractor(contractor) != null) {
+    <div class="col-md-3 row">
+      <h4 class="text-muted">Основной контакт</h4>
+    </div>
+    <div class="col-md-5">
+        <h4><a href="@routes.Contacts.contact(controllers.Contacts.contactByContractor(contractor).getId)">
+        @controllers.Contacts.contactByContractor(contractor).getName
+        </a></h4>
+    </div>
+    }
+  </div>
+  <div class="col-md-4">
+    <h4>Тип</h4>
+    @if(contractor.getContractorType != null) {
+      @contractor.getContractorType.getName
+    }
+  </div>
+
+
 }
