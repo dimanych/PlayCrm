@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
- * <p></p>
+ * <p>Abstract Entity</p>
  *
  * @author Dmitriy Grigoriev
  */
