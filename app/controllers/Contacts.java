@@ -3,7 +3,6 @@ package controllers;
 import models.Contact;
 import models.Contractor;
 import play.data.Form;
-import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.model.contact.*;
