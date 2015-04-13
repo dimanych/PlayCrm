@@ -22,6 +22,10 @@ public class Sale extends BaseModel {
     return find.all();
   }
 
+  public static List<Sale> findByContractor(Contractor contractor) {
+    return find.where().eq("contractor", contractor).findList();
+  }
+
   @OneToOne
   public Contractor getContractor() {
     return contractor;

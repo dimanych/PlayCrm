@@ -40,6 +40,9 @@
     <h4>Адрес</h4>
     <p><abbr title="Адрес"><i class="fa fa-map-marker"></i></abbr>
       @contractor.getAdress</p>
-
+    <h4><i class="icon-briefcase"></i> Продажи</h4>
+    @for(sale <- Sales.salesByContractor(contractor)) {
+      <p>@sale.getName  |  @sale.getSalePhase.getName</p>
+    }
   </div>
 }
