@@ -48,6 +48,11 @@ public class Contacts extends Controller {
     return Contact.findByContractor(contractor);
   }
 
+  public static String contactNameByContractor(Contractor contractor) {
+    Contact contact = contactByContractor(contractor);
+    return contact == null ? "" : contact.getName();
+  }
+
   public static String phoneByContractor(Contractor contractor) {
     return Contact.findPhoneByContractor(contractor);
   }
