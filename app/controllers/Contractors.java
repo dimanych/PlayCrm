@@ -13,6 +13,8 @@ import javax.persistence.PersistenceException;
 import static play.data.Form.form;
 
 /**
+ * Controller of Contractors.
+ *
  * @author Dmitriy Grigoriev
  */
 public class Contractors extends Controller {

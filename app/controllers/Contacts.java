@@ -10,6 +10,8 @@ import views.html.model.contact.*;
 import static play.data.Form.form;
 
 /**
+ * Controller of Contacts
+ *
  * @author Dmitriy Grigoriev
  */
 public class Contacts extends Controller {
