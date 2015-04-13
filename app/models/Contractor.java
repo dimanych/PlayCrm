@@ -14,6 +14,7 @@ import java.util.Map;
 @Entity
 public class Contractor extends BaseModel {
   private ContractorType contractorType;
+  private String adress;
 
   public static Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);
 
@@ -44,5 +45,13 @@ public class Contractor extends BaseModel {
 
   public void setContractorType(ContractorType contractorType) {
     this.contractorType = contractorType;
+  }
+
+  public String getAdress() {
+    return adress;
+  }
+
+  public void setAdress(String adress) {
+    this.adress = adress;
   }
 }

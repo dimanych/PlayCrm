@@ -30,6 +30,7 @@ create table contractor (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   contractor_type_id        bigint,
+  adress                    varchar(255),
   constraint pk_contractor primary key (id))
 ;
 

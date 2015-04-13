@@ -28,11 +28,18 @@
   <div class="clearfix"></div>
   <div class="col-md-8">
     <div class="col-md-4 row">
-      <h4 class="text-muted">Телефон</h4>
+      <h4 class="text-muted"><p>Телефон</h4>
     </div>
     <div class="col-md-4">
-      <h4>@controllers.Contacts.phoneByContractor(contractor)</h4>
+      <h4><i class="fa fa-phone fa-lg"></i> @controllers.Contacts.phoneByContractor(contractor)</h4>
     </div>
   </div>
   <div class="clearfix"></div>
+  <hr>
+  <div class="panel-body">
+    <h4>Адрес</h4>
+    <p><abbr title="Адрес"><i class="fa fa-map-marker"></i></abbr>
+      @contractor.getAdress</p>
+
+  </div>
 }
