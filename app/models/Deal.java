@@ -12,17 +12,17 @@ import java.util.List;
  * @author Dmitriy Grigoriev
  */
 @Entity
-public class Sale extends BaseModel {
+public class Deal extends BaseModel {
   private Contractor contractor;
-  private SalePhase salePhase;
+  private DealPhase dealPhase;
 
-  public static Model.Finder<Long, Sale> find = new Model.Finder<Long, Sale>(Long.class, Sale.class);
+  public static Model.Finder<Long, Deal> find = new Model.Finder<Long, Deal>(Long.class, Deal.class);
 
-  public static List<Sale> findAll() {
+  public static List<Deal> findAll() {
     return find.all();
   }
 
-  public static List<Sale> findByContractor(Contractor contractor) {
+  public static List<Deal> findByContractor(Contractor contractor) {
     return find.where().eq("contractor", contractor).findList();
   }
 
@@ -36,11 +36,11 @@ public class Sale extends BaseModel {
   }
 
   @OneToOne
-  public SalePhase getSalePhase() {
-    return salePhase;
+  public DealPhase getDealPhase() {
+    return dealPhase;
   }
 
-  public void setSalePhase(SalePhase salePhase) {
-    this.salePhase = salePhase;
+  public void setDealPhase(DealPhase dealPhase) {
+    this.dealPhase = dealPhase;
   }
 }

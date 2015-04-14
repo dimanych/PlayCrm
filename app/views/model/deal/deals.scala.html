@@ -1,6 +1,6 @@
-@(sales: List[Sale])
+@(deals: List[Deal])
 
-@main("Продажи"){
+@main("Сделки"){
 
 
   <table class="table table-hover">
@@ -12,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      @for(sale<-sales){
+      @for(deal<-deals){
         <tr>
-          <th scope="row">@sale.getId</th>
-          <td>@sale.getName</td>
+          <th scope="row">@deal.getId</th>
+          <td>@deal.getName</td>
           <td>
-          @if(sale.getContractor != null) {
-            @sale.getContractor.getName
+          @if(deal.getContractor != null) {
+            @deal.getContractor.getName
           }
           </td>
         </tr>

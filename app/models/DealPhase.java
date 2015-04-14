@@ -8,5 +8,5 @@ import javax.persistence.Entity;
  * @author Dmitriy Grigoriev
  */
 @Entity
-public class SalePhase extends BaseModel {
+public class DealPhase extends BaseModel {
 }

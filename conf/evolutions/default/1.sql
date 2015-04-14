@@ -40,18 +40,18 @@ create table contractor_type (
   constraint pk_contractor_type primary key (id))
 ;
 
-create table sale (
+create table deal (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   contractor_id             bigint,
-  sale_phase_id             bigint,
-  constraint pk_sale primary key (id))
+  deal_phase_id             bigint,
+  constraint pk_deal primary key (id))
 ;
 
-create table sale_phase (
+create table deal_phase (
   id                        bigint auto_increment not null,
   name                      varchar(255),
-  constraint pk_sale_phase primary key (id))
+  constraint pk_deal_phase primary key (id))
 ;
 
 alter table contact add constraint fk_contact_contractor_1 foreign key (contractor_id) references contractor (id) on delete restrict on update restrict;
@@ -60,10 +60,10 @@ alter table contact add constraint fk_contact_communication_2 foreign key (commu
 create index ix_contact_communication_2 on contact (communication_id);
 alter table contractor add constraint fk_contractor_contractorType_3 foreign key (contractor_type_id) references contractor_type (id) on delete restrict on update restrict;
 create index ix_contractor_contractorType_3 on contractor (contractor_type_id);
-alter table sale add constraint fk_sale_contractor_4 foreign key (contractor_id) references contractor (id) on delete restrict on update restrict;
-create index ix_sale_contractor_4 on sale (contractor_id);
-alter table sale add constraint fk_sale_salePhase_5 foreign key (sale_phase_id) references sale_phase (id) on delete restrict on update restrict;
-create index ix_sale_salePhase_5 on sale (sale_phase_id);
+alter table deal add constraint fk_deal_contractor_4 foreign key (contractor_id) references contractor (id) on delete restrict on update restrict;
+create index ix_deal_contractor_4 on deal (contractor_id);
+alter table deal add constraint fk_deal_dealPhase_5 foreign key (deal_phase_id) references deal_phase (id) on delete restrict on update restrict;
+create index ix_deal_dealPhase_5 on deal (deal_phase_id);
 
 
 
@@ -79,9 +79,9 @@ drop table contractor;
 
 drop table contractor_type;
 
-drop table sale;
+drop table deal;
 
-drop table sale_phase;
+drop table deal_phase;
 
 SET FOREIGN_KEY_CHECKS=1;
 
