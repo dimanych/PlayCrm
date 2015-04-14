@@ -30,5 +30,9 @@ POST        /contractors/:id/delete         controllers.Contractors.delete(id:Lo
 GET         /deals                          controllers.Deals.deals()
 GET         /deals/$id<[0-9]+>              controllers.Deals.deal(id:Long)
 
+GET         /deals/add                      controllers.Deals.add()
+POST        /deals                          controllers.Deals.save()
+POST        /deals/:id/delete               controllers.Deals.delete(id:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                   controllers.Assets.at(path="/public", file)

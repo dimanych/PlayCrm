@@ -1,0 +1,26 @@
+@(models: List[_ <: BaseModel], modalId: String)
+
+@import components.selected
+
+<div id="@modalId" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="selectModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="selectModalLabel">Выбрать контрагента
+          <a class="anchorjs-link" href="#selectModalLabel"><span class="anchorjs-icon"></span></a>
+        </h4>
+      </div>
+      <div class="modal-body">
+      @selected(models)
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="setItem()" class="btn btn-primary">Выбрать</button>
+      </div>
+
+    </div>
+  </div>
+</div>

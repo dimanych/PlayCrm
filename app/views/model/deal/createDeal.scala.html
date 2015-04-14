@@ -1,0 +1,32 @@
+@(dealForm: Form[Deal])
+
+@import helper._
+@import components._
+
+@main(""){
+  <h2>@Messages("actions.addDeal")</h2>
+
+  @form(routes.Deals.save()) {
+    <fieldset>
+      @inputText(dealForm("name"), '_label -> "Наименование", 'class -> "form-control")
+      @select(
+        dealForm("dealPhase.id"),
+        options(DealPhases.options),
+        '_label -> "Стадия", '_default -> "-- Выбрать --",
+        '_showConstraints -> false, 'class -> "form-control")
+      <a href="#" data-toggle="modal" data-target="#selectContractor">
+        <div class="input-group">
+          <input type="text" class="form-control" id="caption" aria-label="Контрагент">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        </div>
+      </a>
+      @inputText(
+        dealForm("contractor.id"),
+        '_label -> null,
+        'style -> "display: none")
+    </fieldset>
+    <input type="submit" value="Создать" class="btn primary">
+  }
+
+  @listModal(Contractor.findAll(), "selectContractor")
+}

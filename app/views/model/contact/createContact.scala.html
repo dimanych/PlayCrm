@@ -11,9 +11,9 @@
 
     @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
     <label for="contractorName">Контрагент</label>
-    <a href="#" data-toggle="modal" data-target="#myModal">
+    <a href="#" data-toggle="modal" data-target="#selectContractor">
       <div class="input-group">
-      <input type="text" class="form-control" id="contractorName" aria-label="Контрагент">
+      <input type="text" class="form-control" id="caption" aria-label="Контрагент">
       <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
       </div>
     </a>
@@ -27,23 +27,6 @@
     <input type="submit" value="Создать" class="btn primary">
   }
 
-  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span aria-hidden="true">×</span></button>
-          <h4 class="modal-title" id="myModalLabel">Выбрать контрагента<a class="anchorjs-link" href="#myModalLabel"><span class="anchorjs-icon"></span></a></h4>
-        </div>
-        <div class="modal-body">
-          @selected(Contractor.findAll())
-        </div>
-        <div class="modal-footer">
-          <button type="button" onclick="setItem()" class="btn btn-primary">Выбрать</button>
-        </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div>
+  @listModal(Contractor.findAll(), "selectContractor")
 
 }
