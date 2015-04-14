@@ -15,7 +15,7 @@
       @for(deal<-deals){
         <tr>
           <th scope="row">@deal.getId</th>
-          <td>@deal.getName</td>
+          <td><a href="@routes.Deals.deal(deal.getId)">@deal.getName</a></td>
           <td>
           @if(deal.getContractor != null) {
             @deal.getContractor.getName

@@ -4,6 +4,7 @@ import models.Contractor;
 import models.Deal;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.model.deal.deal;
 import views.html.model.deal.deals;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public class Deals extends Controller {
 
   public static Result deals() {
     return ok(deals.render(Deal.findAll()));
+  }
+
+  public static Result deal(Long id) {
+    return ok(deal.render(Deal.findById(id)));
   }
 
   public static List<Deal> dealsByContractor(Contractor contractor) {

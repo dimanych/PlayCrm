@@ -10,4 +10,6 @@ actions.close=Закрыть
 
 titles.error=Ошибка
 
+info.null=Не указано
+
 contact.name=ФИО

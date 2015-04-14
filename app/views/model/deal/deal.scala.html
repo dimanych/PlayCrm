@@ -1,0 +1,13 @@
+@(deal: Deal)
+
+@main(""){
+  <p>Название @deal.getName</p>
+  <p>Контрагент @deal.getContractor.getName</p>
+  <p>Стадия
+  @if(deal.getDealPhase != null) {
+    @deal.getDealPhase.getName
+  } else {
+    @Messages("info.null")
+  }
+  </p>
+}

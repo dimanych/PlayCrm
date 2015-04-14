@@ -66,6 +66,7 @@
                 <th>Номер</th>
                 <th>Имя</th>
                 <th>Контрагент</th>
+                <th>Стадия сделки</th>
               </tr>
             </thead>
             <tbody>
@@ -77,6 +78,13 @@
                 @if(deal.getContractor != null) {
                   @deal.getContractor.getName
                 }
+                </td>
+                <td>
+                  @if(deal.getDealPhase != null) {
+                    @deal.getDealPhase.getName
+                  } else {
+                    @Messages("info.null")
+                  }
                 </td>
               </tr>
             }

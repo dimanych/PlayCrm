@@ -22,6 +22,10 @@ public class Deal extends BaseModel {
     return find.all();
   }
 
+  public static Deal findById(Long id) {
+    return find.byId(id);
+  }
+
   public static List<Deal> findByContractor(Contractor contractor) {
     return find.where().eq("contractor", contractor).findList();
   }
