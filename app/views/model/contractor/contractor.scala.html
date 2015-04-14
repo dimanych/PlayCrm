@@ -1,45 +1,48 @@
 @(contractor: Contractor)
+
 @main("Contractor"){
-  <div class="col-md-8">
-    <div class="col-md-4 row">
-      <h4 class="text-muted">Наименование</h4>
-    </div>
-    <div class="col-md-4">
-      <h4>@contractor.getName</h4>
-    </div>
-    <div class="clearfix"></div>
-    @if(controllers.Contacts.contactByContractor(contractor) != null) {
-    <div class="col-md-4 row">
-      <h4 class="text-muted">Основной контакт</h4>
-    </div>
-    <div class="col-md-4">
-        <h4><a href="@routes.Contacts.contact(controllers.Contacts.contactByContractor(contractor).getId)">
-        @controllers.Contacts.contactNameByContractor(contractor)
-        </a></h4>
-    </div>
-    }
-  </div>
-  <div class="col-md-4">
-    <h4>Тип</h4>
-    @if(contractor.getContractorType != null) {
-      @contractor.getContractorType.getName
-    }
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-md-8">
-    <div class="col-md-4 row">
-      <h4 class="text-muted"><p>Телефон</h4>
-    </div>
-    <div class="col-md-4">
-      <h4><i class="fa fa-phone fa-lg"></i> @if(controllers.Contacts.phoneByContractor(contractor) != null) {
-      @controllers.Contacts.phoneByContractor(contractor)
-      } else {
-        Не указан
+  <div class="col-md-6">
+    <dl class="dl-horizontal">
+      <dt>Наименование</dt>
+      <dd><p>@contractor.getName</p></dd>
+      @if(controllers.Contacts.contactByContractor(contractor) != null) {
+        <dt>Основной контакт</dt>
+        <dd>
+          <p>
+            <a href="@routes.Contacts.contact(controllers.Contacts.contactByContractor(contractor).getId)">
+            @controllers.Contacts.contactNameByContractor(contractor)
+            </a>
+          </p>
+        </dd>
       }
-      </h4>
-    </div>
+      <dt>Телефон</dt>
+      <dd>
+        <p>
+        @if(controllers.Contacts.phoneByContractor(contractor) != null) {
+          <i class="fa fa-phone fa-lg"></i> @controllers.Contacts.phoneByContractor(contractor)
+        } else {
+          Не указан
+        }
+        </p>
+      </dd>
+    </dl>
   </div>
-  <div class="clearfix"></div>
+
+  <div class="col-md-6">
+    <dl class="dl-horizontal">
+      <dt>Тип</dt>
+      <dd>
+        <p>
+        @if(contractor.getContractorType != null) {
+          @contractor.getContractorType.getName
+        }
+        </p>
+      </dd>
+
+    </dl>
+
+  </div>
+    <div class="clearfix"></div>
   <div class="panel-body">
 
     <ul class="nav nav-tabs">
@@ -49,9 +52,11 @@
 
     <div class="tab-content">
       <div id="general" class="tab-pane fade in active">
-        <h4>Адрес</h4>
-        <p><abbr title="Адрес"><i class="fa fa-map-marker"></i></abbr>
-          @contractor.getAdress</p>
+                  <div class="col-md-4">
+            <h4>Адрес</h4>
+            <p><abbr title="Адрес"><i class="fa fa-map-marker"></i></abbr>
+              @contractor.getAdress</p>
+          </div>
       </div>
       <div id="sales" class="tab-pane fade">
         @if(Sales.salesByContractor(contractor).size() > 0) {
@@ -78,6 +83,7 @@
             </tbody>
           </table>
         } else {
+          <br>
           <p>Продаж пока нет</p>
         }
 
