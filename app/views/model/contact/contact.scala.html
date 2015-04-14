@@ -1,8 +1,8 @@
 @(contact: Contact)
-@main("Контакты"){
+@main(Messages("menu.contacts")){
     <div class="col-md-8">
         <div class="col-md-3 row">
-            <h4 class="text-muted">ФИО</h4>
+            <h4 class="text-muted">@Messages("contact.name")</h4>
         </div>
         <div class="col-md-5">
             <h4>@contact.getName</h4>
