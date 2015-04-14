@@ -1,1 +1,4 @@
-graphics=Graphics
+menu.graphics=Graphics
+menu.contacts=Contacts
+menu.contractors=Contractors
+menu.deals=Deals
