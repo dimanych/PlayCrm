@@ -40,3 +40,7 @@ $('button[name="continueBtn"]').on('click', function(e){
 $('#returnedModal').modal({ backdrop: 'static', keyboard: false }).one('click', '#returnBtn', function() {
   parent.history.back();
 });
+
+jQuery(function($){
+  $("#communication_workPhone").mask("(999) 999-9999");
+});

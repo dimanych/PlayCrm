@@ -41,6 +41,12 @@ public class Contact extends BaseModel {
     return contact == null ? null : contact.getCommunication() == null ? null : contact.getCommunication().getWorkPhone();
   }
 
+  @Override
+  public void save() {
+    this.communication.save();
+    super.save();
+  }
+
   @OneToOne
   public Contractor getContractor() {
     return contractor;
