@@ -3,7 +3,7 @@
 @import helper._
 @import components._
 
-@main("Контакты"){
+@main("Контрагенты"){
 
   <a href="@routes.Contractors.add()" class="btn btn-primary">@Messages("actions.addContractor")</a>
 
@@ -24,16 +24,20 @@
           </a>
         </div>
         <div class="col-md-3">
-          @if(controllers.Contacts.contactByContractor(contractor) != null) {
-            <a href="@routes.Contacts.contact(controllers.Contacts.contactByContractor(contractor).getId)">
-              @controllers.Contacts.contactNameByContractor(contractor)
-            </a>
-          }
+          @if(controllers.Contacts.contactsByContractor(contractor).size() > 0) {
+              <a href="@routes.Contacts.contact(controllers.Contacts.contactsByContractor(contractor).get(0).getId)">
+                @controllers.Contacts.contactsByContractor(contractor).get(0).getName
+              </a>
+            }
         </div>
         <div class="col-md-2">@if(contractor.getContractorType != null) {
           @contractor.getContractorType.getName
         }</div>
-        <div class="col-md-2">@controllers.Contacts.phoneByContractor(contractor)</div>
+        <div class="col-md-2">
+        @if(controllers.Contacts.contactsByContractor(contractor).size() > 0) {
+          @controllers.Contacts.contactsByContractor(contractor).get(0).getCommunication.getWorkPhone
+        }
+        </div>
         <div class="col-md-2 btn-toolbar" role="toolbar">
           <a href="@routes.Contractors.contractor(contractor.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
           @form(routes.Contractors.delete(contractor.getId), 'style ->"display:inline") {

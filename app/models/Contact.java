@@ -3,6 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.util.List;
 
@@ -28,12 +29,8 @@ public class Contact extends BaseModel {
     return find.byId(id);
   }
 
-  public static Contact findByName(String name) {
-    return find.where().eq("name", name).findUnique();
-  }
-
-  public static Contact findByContractor(Contractor contractor) {
-    return find.where().eq("contractor", contractor).findUnique();
+  public static List<Contact> findByContractor(Contractor contractor) {
+    return find.where().eq("contractor", contractor).findList();
   }
 
   public static String findPhoneByContractor(Contractor contractor) {
@@ -47,7 +44,7 @@ public class Contact extends BaseModel {
     super.save();
   }
 
-  @OneToOne
+  @ManyToOne
   public Contractor getContractor() {
     return contractor;
   }

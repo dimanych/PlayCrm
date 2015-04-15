@@ -5,26 +5,7 @@
     <dl class="dl-horizontal">
       <dt>Наименование</dt>
       <dd><p>@contractor.getName</p></dd>
-      @if(controllers.Contacts.contactByContractor(contractor) != null) {
-        <dt>Основной контакт</dt>
-        <dd>
-          <p>
-            <a href="@routes.Contacts.contact(controllers.Contacts.contactByContractor(contractor).getId)">
-            @controllers.Contacts.contactNameByContractor(contractor)
-            </a>
-          </p>
-        </dd>
-      }
-      <dt>Телефон</dt>
-      <dd>
-        <p>
-        @if(controllers.Contacts.phoneByContractor(contractor) != null) {
-          <i class="fa fa-phone fa-lg"></i> @controllers.Contacts.phoneByContractor(contractor)
-        } else {
-          Не указан
-        }
-        </p>
-      </dd>
+
     </dl>
   </div>
 
@@ -52,11 +33,25 @@
 
     <div class="tab-content">
       <div id="general" class="tab-pane fade in active">
-                  <div class="col-md-4">
-            <h4>Адрес</h4>
-            <p><abbr title="Адрес"><i class="fa fa-map-marker"></i></abbr>
-              @contractor.getAdress</p>
-          </div>
+        <div class="col-md-4">
+          <h4>Адрес</h4>
+          <p><abbr title="Адрес"><i class="fa fa-map-marker"></i></abbr>
+            @contractor.getAdress</p>
+          <h4>Контакты:</h4>
+          @if(controllers.Contacts.contactsByContractor(contractor).size() > 0) {
+            @for(contact <- controllers.Contacts.contactsByContractor(contractor)) {
+              <p>
+              <a href="@routes.Contacts.contact(contact.getId)">
+              @contact.getName
+              </a>
+              @if(contact.getCommunication != null) {
+                @contact.getCommunication.getWorkPhone
+              }
+              </p>
+            }
+          }
+
+        </div>
       </div>
       <div id="deals" class="tab-pane fade">
         @if(Deals.dealsByContractor(contractor).size() > 0) {

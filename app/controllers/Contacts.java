@@ -1,11 +1,16 @@
 package controllers;
 
+import org.apache.commons.lang3.StringUtils;
 import models.Contact;
 import models.Contractor;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.model.contact.*;
+import views.html.model.contact.contact;
+import views.html.model.contact.contacts;
+import views.html.model.contact.createContact;
+
+import java.util.List;
 
 import static play.data.Form.form;
 
@@ -45,12 +50,13 @@ public class Contacts extends Controller {
     return ok(contact.render(Contact.findById(id)));
   }
 
-  public static Contact contactByContractor(Contractor contractor) {
+  public static List<Contact> contactsByContractor(Contractor contractor) {
     return Contact.findByContractor(contractor);
   }
 
+
   public static String contactNameByContractor(Contractor contractor) {
-    Contact contact = contactByContractor(contractor);
+    Contact contact = contactsByContractor(contractor).get(0);
     return contact == null ? "" : contact.getName();
   }
 
