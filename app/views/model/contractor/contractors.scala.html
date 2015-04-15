@@ -8,21 +8,28 @@
   <a href="@routes.Contractors.add()" class="btn btn-primary">@Messages("actions.addContractor")</a>
 
   <div class="row">
-    <div class="col-md-1"><strong>Номер</strong></div>
     <div class="col-md-3"><strong>Наименование</strong></div>
-    <div class="col-md-2"><strong>Основной контакт</strong></div>
+    <div class="col-md-3"><strong>Основной контакт</strong></div>
     <div class="col-md-2"><strong>Тип</strong></div>
     <div class="col-md-2"><strong>Телефон</strong></div>
     <div class="col-md-2"><strong></strong></div>
   </div>
-  <hr class="min">
+  <hr class="min col-md-11">
   @for(contractor<-contractors){
 
-    <a href="@routes.Contractors.contractor(contractor.getId)">
       <div class="row ">
-        <div class="col-md-1">@contractor.getId</div>
-        <div class="col-md-3">@contractor.getName</div>
-        <div class="col-md-2">@controllers.Contacts.contactNameByContractor(contractor)</div>
+        <div class="col-md-3">
+          <a href="@routes.Contractors.contractor(contractor.getId)">
+            @contractor.getName
+          </a>
+        </div>
+        <div class="col-md-3">
+          @if(controllers.Contacts.contactByContractor(contractor) != null) {
+            <a href="@routes.Contacts.contact(controllers.Contacts.contactByContractor(contractor).getId)">
+              @controllers.Contacts.contactNameByContractor(contractor)
+            </a>
+          }
+        </div>
         <div class="col-md-2">@if(contractor.getContractorType != null) {
           @contractor.getContractorType.getName
         }</div>
@@ -36,8 +43,7 @@
           }
         </div>
       </div>
-    </a>
-    <hr class="min">
+    <hr class="min col-md-11">
   }
 
   @confirm("Удалить контрагента?",

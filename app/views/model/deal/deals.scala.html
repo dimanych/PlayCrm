@@ -1,16 +1,20 @@
 @(deals: List[Deal])
 
+@import helper._
+@import components._
+
 @main("Сделки"){
 
   <a href="@routes.Deals.add()" class="btn btn-primary">@Messages("actions.addDeal")</a>
   <p>&nbsp;</p>
-  <table class="table table-bordered">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Название сделки</th>
         <th>Контрагент</th>
         <th>Стадия</th>
         <th>Бюджет, &#8381;</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -30,8 +34,19 @@
             @Messages("info.null")
           }</td>
           <td>@deal.getBudgetFormatted</td>
+          <td> <a href="@routes.Deals.deal(deal.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+            @form(routes.Deals.delete(deal.getId), 'style ->"display:inline") {
+              <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
+                <i class="fa fa-trash-o fa-lg"></i>
+              </button>
+            }</td>
         </tr>
       }
     </tbody>
   </table>
+
+  @confirm("Удалить сделку?",
+    "Удаленные данные будет невозможно восстановить",
+    "danger",
+    "Удалить")
 }
