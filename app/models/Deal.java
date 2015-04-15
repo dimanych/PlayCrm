@@ -1,6 +1,7 @@
 package models;
 
 import play.db.ebean.Model;
+import utils.Util;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -75,5 +76,10 @@ public class Deal extends BaseModel {
 
   public void setBudget(BigDecimal budget) {
     this.budget = budget;
+  }
+
+
+  public String getBudgetFormatted() {
+    return Util.getNumberFormatted(getBudget());
   }
 }

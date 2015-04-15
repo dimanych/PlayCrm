@@ -10,7 +10,7 @@
         <th>Название сделки</th>
         <th>Контрагент</th>
         <th>Стадия</th>
-        <th>Бюджет</th>
+        <th>Бюджет, &#8381;</th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
           } else {
             @Messages("info.null")
           }</td>
-          <td>@deal.getBudget</td>
+          <td>@deal.getBudgetFormatted</td>
         </tr>
       }
     </tbody>
