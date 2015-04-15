@@ -1,13 +1,16 @@
 @(deal: Deal)
 
 @main(""){
-  <p>Название @deal.getName</p>
-  <p>Контрагент @deal.getContractor.getName</p>
-  <p>Стадия
+  <p>Название: @deal.getName</p>
+  <p>Контрагент: @deal.getContractor.getName</p>
+  <p>Стадия:
   @if(deal.getDealPhase != null) {
     @deal.getDealPhase.getName
   } else {
     @Messages("info.null")
   }
   </p>
+  <p>Начало: @deal.getStartDate.format("dd.MM.yyyy")</p>
+  <p>Завершение: @deal.getEndDate.format("dd.MM.yyyy")</p>
+  <p>Бюджет: @deal.getBudget  </p>
 }

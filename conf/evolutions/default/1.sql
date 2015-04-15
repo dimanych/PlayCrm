@@ -45,6 +45,9 @@ create table deal (
   name                      varchar(255),
   contractor_id             bigint,
   deal_phase_id             bigint,
+  start_date                datetime,
+  end_date                  datetime,
+  budget                    decimal(38),
   constraint pk_deal primary key (id))
 ;
 

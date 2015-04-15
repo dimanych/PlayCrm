@@ -24,10 +24,10 @@ insert into contractor (id,name,contractor_type_id,adress) values (4,'Газпр
 insert into contractor (id,name,contractor_type_id,adress) values (5,'Рога и копыта',4,'Atlantida');
 insert into contractor (id,name,contractor_type_id,adress) values (6,'Международный банк',5,'Урюпинск');
 
-insert into deal (id,name,contractor_id,deal_phase_id) values (1,'Альфабизнес Продажа услуг',1,3);
-insert into deal (id,name,contractor_id,deal_phase_id) values (2,'Бетабизнес Продажа услуг',2,4);
-insert into deal (id,name,contractor_id,deal_phase_id) values (3,'Альфабизнес23 Продажа услуг',3,1);
-insert into deal (id,name,contractor_id,deal_phase_id) values (4,'Альфанес342 Продажа услуг',4,2);
+insert into deal (id,name,contractor_id,deal_phase_id,start_date,end_date,budget) values (1,'Альфабизнес Продажа услуг',1,3,'03.04.2015','06.04.2015',3213);
+insert into deal (id,name,contractor_id,deal_phase_id,start_date,end_date,budget) values (2,'Бетабизнес Продажа услуг',2,4,'03.04.2015','06.04.2015',12356);
+insert into deal (id,name,contractor_id,deal_phase_id,start_date,end_date,budget) values (3,'Альфабизнес23 Продажа услуг',3,1,'03.04.2015','06.04.2015',35445);
+insert into deal (id,name,contractor_id,deal_phase_id,start_date,end_date,budget) values (4,'Альфанес342 Продажа услуг',4,2,'03.04.2015','06.04.2015',9534);
 
 insert into contact (id,name,contractor_id,post,communication_id,adress) values (1,'Брюс Уэйн',1,'миллиардер',1,'Британия, поместье Бэтмена');
 insert into contact (id,name,contractor_id,post,communication_id,adress) values (2,'Младший брат Тора',2,'сын короля',2,'Асгард, дворец Одина');

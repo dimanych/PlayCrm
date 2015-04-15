@@ -4,6 +4,8 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,6 +17,9 @@ import java.util.List;
 public class Deal extends BaseModel {
   private Contractor contractor;
   private DealPhase dealPhase;
+  private Date startDate;
+  private Date endDate;
+  private BigDecimal budget;
 
   public static Model.Finder<Long, Deal> find = new Model.Finder<Long, Deal>(Long.class, Deal.class);
 
@@ -46,5 +51,29 @@ public class Deal extends BaseModel {
 
   public void setDealPhase(DealPhase dealPhase) {
     this.dealPhase = dealPhase;
+  }
+
+  public Date getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
+  }
+
+  public BigDecimal getBudget() {
+    return budget;
+  }
+
+  public void setBudget(BigDecimal budget) {
+    this.budget = budget;
   }
 }
