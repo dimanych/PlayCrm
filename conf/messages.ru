@@ -5,6 +5,7 @@ menu.deals=Сделки
 
 actions.addContact=Добавить контакт
 actions.addContractor=Добавить контрагента
+actions.deleteContractor=Удалить контрагента?
 actions.addDeal=Добавить сделку
 actions.ok=Ок
 actions.cancel=Отмена
