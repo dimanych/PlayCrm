@@ -33,7 +33,7 @@ public class Contractor extends BaseModel {
   public static Map<String,String> list() {
     LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
     for(Contractor c: Contractor.find.orderBy("name").findList()) {
-      options.put(c.getId().toString(), c.getName());
+      options.put(String.valueOf(c.getId()), c.getName());
     }
     return options;
   }

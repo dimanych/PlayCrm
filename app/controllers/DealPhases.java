@@ -15,7 +15,7 @@ public class DealPhases extends Controller {
   public static Map<String,String> options() {
     LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
     for(DealPhase contractorType: DealPhase.find.orderBy("name").findList()) {
-      options.put(contractorType.getId().toString(), contractorType.getName());
+      options.put(String.valueOf(contractorType.getId()), contractorType.getName());
     }
     return options;
   }
