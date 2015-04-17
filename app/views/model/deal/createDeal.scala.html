@@ -24,14 +24,10 @@
         dealForm("contractor.id"),
         '_label -> null,
         'class -> "hide")
-      <div class="input-group">
-        <div class="input-group-addon">$</div>
-        <input type="text" class="form-control" id="budget" placeholder="Бюджет">
-      </div>
 
-      @inputText(dealForm("budget"),'_label -> null, 'value -> "16.04.2015", 'style -> "display: none")
-      @inputText(dealForm("startDate"),'_label -> null, 'value -> "16.04.2015", 'style -> "display: none")
-      @inputText(dealForm("endDate"),'_label -> "Дата завершения сделки", 'placeholder  -> "16.04.2015", 'class -> "form-control")
+      @inputText(dealForm("budget"),'_label -> "Бюджет", 'class -> "form-control")
+      @inputText(dealForm("startDate").copy(value=Some("2006-04-20")),'_label -> null, 'class -> "hide")
+      @inputText(dealForm("endDate").copy(value = Some("2006-04-20")),'_label -> "Дата завершения сделки", 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" class="btn primary">
   }
