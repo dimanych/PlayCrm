@@ -8,6 +8,7 @@ actions.addContractor=Добавить контрагента
 actions.deleteContractor=Удалить контрагента?
 actions.addDeal=Добавить сделку
 actions.ok=Ок
+actions.create=Создать
 actions.cancel=Отмена
 actions.close=Закрыть
 

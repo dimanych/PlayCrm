@@ -8,7 +8,7 @@
 
   @form(routes.Deals.save()) {
     <fieldset>
-      @inputText(dealForm("name"), '_label -> "Наименование", 'class -> "form-control")
+      @inputText(dealForm("name"), '_label -> null, 'class -> "form-control", 'placeholder -> "Наименование")
       @select(
         dealForm("dealPhase.id"),
         options(DealPhases.options),
@@ -16,16 +16,21 @@
         '_showConstraints -> false, 'class -> "form-control")
       <a href="#" data-toggle="modal" data-target="#selectContractor">
         <div class="input-group">
-          <input type="text" class="form-control" id="caption" aria-label="Контрагент">
+          <input type="text" class="form-control" id="caption" aria-label="Контрагент" placeholder="Контрагент">
           <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
         </div>
       </a>
       @inputText(
         dealForm("contractor.id"),
         '_label -> null,
-        'style -> "display: none")
+        'class -> "hide")
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input type="text" class="form-control" id="budget" placeholder="Бюджет">
+      </div>
+      @inputText(dealForm("startDate"),'_label -> null, 'value -> "16.04.2015", 'style -> "display: none")
     </fieldset>
-    <input type="submit" value="Создать" class="btn primary">
+    <input type="submit" value="@Messages("actions.create")" class="btn primary">
   }
 
   @listModal(Contractor.findAll(), "selectContractor")

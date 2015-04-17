@@ -12,7 +12,7 @@ public class Util {
 
   public static String getNumberFormatted(BigDecimal val) {
     NumberFormat formatter = NumberFormat.getCurrencyInstance();
-    return formatter.format(val);
+    return val == null ? "" : formatter.format(val);
   }
 
 }
