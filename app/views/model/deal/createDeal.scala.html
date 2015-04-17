@@ -28,6 +28,8 @@
         <div class="input-group-addon">$</div>
         <input type="text" class="form-control" id="budget" placeholder="Бюджет">
       </div>
+
+      @inputText(dealForm("budget"),'_label -> null, 'value -> "16.04.2015", 'style -> "display: none")
       @inputText(dealForm("startDate"),'_label -> null, 'value -> "16.04.2015", 'style -> "display: none")
       @inputText(dealForm("endDate"),'_label -> "Дата завершения сделки", 'placeholder  -> "16.04.2015", 'class -> "form-control")
     </fieldset>
