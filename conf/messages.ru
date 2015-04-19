@@ -15,5 +15,6 @@ actions.close=Закрыть
 titles.error=Ошибка
 
 info.null=Не указано
+info.deals.default=Сделок пока нет
 
 contact.name=ФИО

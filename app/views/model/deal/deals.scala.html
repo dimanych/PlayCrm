@@ -7,17 +7,19 @@
 
   <a href="@routes.Deals.add()" class="btn btn-primary"><i class="fa fa-plus"></i> @Messages("actions.addDeal")</a>
   <p>&nbsp;</p>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Название сделки</th>
-        <th>Контрагент</th>
-        <th>Стадия</th>
-        <th>Бюджет, &#8381;</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
+
+  @if(deals.size > 0) {
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Название сделки</th>
+          <th>Контрагент</th>
+          <th>Стадия</th>
+          <th>Бюджет</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
       @for(deal<-deals){
         <tr>
           <td><a href="@routes.Deals.deal(deal.getId)">@deal.getName</a></td>
@@ -42,8 +44,13 @@
             }</td>
         </tr>
       }
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  } else {
+    <p>@Messages("info.deals.default")</p>
+  }
+
+
 
   @confirm("Удалить сделку?",
     "Удаленные данные будет невозможно восстановить",

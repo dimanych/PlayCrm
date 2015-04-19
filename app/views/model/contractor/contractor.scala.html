@@ -57,7 +57,7 @@
         </div>
       </div>
       <div id="deals" class="tab-pane fade">
-        @if(Deals.dealsByContractor(contractor).size() > 0) {
+        @if(Deals.dealsByContractor(contractor).size > 0) {
           <table class="table table-hover">
             <thead>
               <tr>
@@ -91,7 +91,7 @@
           </table>
         } else {
           <br>
-          <p>Продаж пока нет</p>
+          <p>@Messages("info.deals.default")</p>
         }
 
       </div>
