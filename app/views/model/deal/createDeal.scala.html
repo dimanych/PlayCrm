@@ -1,13 +1,13 @@
 @(dealForm: Form[Deal])
 
-@import controllers.Application.getDate
+@import controllers.Application.getCurrentDate
 @import helper._
 @import components._
 
 @main(""){
   <h2>@Messages("actions.addDeal")</h2>
 
-  @form(routes.Deals.save()) {
+  @form(routes.Deals.save(), 'id -> "formSender") {
     <fieldset>
       @inputText(dealForm("name"), '_label -> null, 'class -> "form-control", 'placeholder -> "Наименование")
       @select(
@@ -27,12 +27,17 @@
         'class -> "hide")
 
       @inputText(dealForm("budget"),'_label -> "Бюджет", 'class -> "form-control")
-      @inputText(dealForm("startDate").copy(value=Some(getDate())),'_label -> null, 'class -> "hide")
-      @inputText(dealForm("endDate").copy(value = Some(getDate())),'_label -> "Дата завершения сделки", 'class -> "form-control date-picker")
-      @calendar("endDate", "Дата завершения сделки")
+      @inputText(dealForm("startDate").copy(value=Some(getCurrentDate)),'_label -> null, 'class -> "hide date-picker")
+
+      <div class="input-group">
+      @inputText(dealForm("endDate").copy(value=Some(getCurrentDate)),
+        '_label -> "Дата завершения сделки",
+        'class -> "form-control date-picker")
+      </div>
+
 
     </fieldset>
-    <input type="submit" value="@Messages("actions.create")" class="btn primary">
+    <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn primary">
   }
 
   @listModal(Contractor.findAll(), "selectContractor")

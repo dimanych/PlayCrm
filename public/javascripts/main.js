@@ -44,6 +44,15 @@ $('#returnedModal').modal({ backdrop: 'static', keyboard: false }).one('click', 
 jQuery(function($){
   $("#communication_workPhone").mask("(999) 999-9999");
   $('.date-picker').datetimepicker({
-    locale: 'ru'
+  locale: 'ru',
+  format: "DD.MM.YYYY"
   });
 });
+
+function convertDate() {
+  var list = $("form").find('input.date-picker');
+  for(i=0; i<list.length;i++) {
+    list[i].value = moment(list[i].value, "DD.MM.YYYY").format("YYYY-MM-DD");
+  }
+
+}

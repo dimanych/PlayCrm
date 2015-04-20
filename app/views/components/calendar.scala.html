@@ -1,9 +1,18 @@
-@(name: String, title: String)
+@(form: Form[_ <: BaseModel], formName: String, title: String)
 
-<div class="input-group">
-  <input type='text' class="form-control date-picker" />
-  <span class="input-group-addon date-picker">
-    <span class="glyphicon glyphicon-calendar"></span>
-  </span>
-</div>
+@import components.container
+
+@container{
+  <div class="input-group">
+    @helper.input(form(formName)) { (id, name, value, args) =>
+      <input type="text" id="@name" class="form-control date-picker" @toHtmlArgs(args)>
+      <span class="input-group-addon date-picker">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    }
+
+  </div>
+}
+
+
 

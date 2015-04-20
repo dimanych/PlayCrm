@@ -9,6 +9,8 @@ import views.html.model.deal.createDeal;
 import views.html.model.deal.deal;
 import views.html.model.deal.deals;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static play.data.Form.form;

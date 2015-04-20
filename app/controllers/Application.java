@@ -14,8 +14,8 @@ public class Application extends Controller {
     return ok(index.render("Hi"));
   }
 
-  public static String getDate() {
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+  public static String getCurrentDate() {
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     Date date = new Date();
     return dateFormat.format(date);
   }
