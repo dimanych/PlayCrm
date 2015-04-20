@@ -27,7 +27,11 @@
         'class -> "hide")
 
       @inputText(dealForm("budget"),'_label -> "Бюджет", 'class -> "form-control")
-      @inputText(dealForm("startDate").copy(value=Some(getCurrentDate)),'_label -> null, 'class -> "hide date-picker")
+      <div class="input-group">
+      @inputText(dealForm("startDate").copy(value=Some(getCurrentDate)),
+        '_label -> "Дата регистрации сделки",
+        'class -> "form-control date-picker")
+      </div>
 
       <div class="input-group">
       @inputText(dealForm("endDate").copy(value=Some(getCurrentDate)),
