@@ -28,7 +28,9 @@
 
       @inputText(dealForm("budget"),'_label -> "Бюджет", 'class -> "form-control")
       @inputText(dealForm("startDate").copy(value=Some(getDate())),'_label -> null, 'class -> "hide")
-      @inputText(dealForm("endDate").copy(value = Some(getDate())),'_label -> "Дата завершения сделки", 'class -> "form-control")
+      @inputText(dealForm("endDate").copy(value = Some(getDate())),'_label -> "Дата завершения сделки", 'class -> "form-control date-picker")
+      @calendar("endDate", "Дата завершения сделки")
+
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" class="btn primary">
   }

@@ -43,4 +43,7 @@ $('#returnedModal').modal({ backdrop: 'static', keyboard: false }).one('click', 
 
 jQuery(function($){
   $("#communication_workPhone").mask("(999) 999-9999");
+  $('.date-picker').datetimepicker({
+    locale: 'ru'
+  });
 });

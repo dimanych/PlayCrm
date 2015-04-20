@@ -5,62 +5,63 @@
 @communication = @{contact.getCommunication}
 
 @main(Messages("menu.contacts")){
-    <div class="col-md-8">
-        <div class="col-md-3 row">
-            <h4 class="text-muted">@Messages("contact.name")</h4>
-        </div>
-        <div class="col-md-5">
-            <h4>@contact.getName</h4>
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-md-3 row">
-            <h4 class="text-muted">Контрагент</h4>
-        </div>
-        <div class="col-md-5">
-        @if(contact.getContractor != null) {
-            <h4><a href="@routes.Contractors.contractor(contact.getContractor.getId)">
-            @contact.getContractor().getName()
-            </a></h4>
-        } else {
-            Контрагент не указан
-        }
-        </div>
-
+  
+  <div class="col-md-8">
+    <div class="col-md-3 row">
+      <h4 class="text-muted">@Messages("contact.name")</h4>
     </div>
-    <div class="col-md-4">
-        <h4>Должность</h4>
-        @contact.getPost
+    <div class="col-md-5">
+      <h4>@contact.getName</h4>
     </div>
     <div class="clearfix"></div>
-    <hr>
-    <div class="tab-pane fade active in" id="general">
-        <div class="panel-body">
-
-            <h4>Средства связи</h4>
-            <div class="row">
-                <div class="col-md-4">
-                    @iconField(communication.getWorkPhone, "Рабочий телефон", "fa-phone")
-                    @iconField(communication.getMobilePhone, "Мобильный телефон", "fa-mobile")
-                    @iconField(communication.getHomePhone, "Домашний телефон", "fa-phone-square")
-                </div>
-                <div class="col-md-4">
-                    @iconField(communication.getEmail, "Электронная почта", "fa-envelope-o")
-                    @iconField(communication.getSkype, "Skype", "fa-skype")
-                    @iconField(communication.getOther, "Другой вид связи", "fa-bullhorn")
-                </div>
-                <div class="col-md-4">
-                    @iconField(communication.getWww, "Сайт", "fa-globe")
-                    @iconField(communication.getSocialAccount, "Профиль в соцсетях", "fa-vk")
-                </div>
-
-            </div>
-            <hr>
-            <h4>Адрес</h4>
-            <p><abbr title="Адрес"><i class="fa fa-map-marker fa-lg"></i></abbr>
-                @contact.getAdress</p>
-
-        </div>
+    <div class="col-md-3 row">
+      <h4 class="text-muted">Контрагент</h4>
     </div>
+    <div class="col-md-5">
+    @if(contact.getContractor != null) {
+      <h4><a href="@routes.Contractors.contractor(contact.getContractor.getId)">
+      @contact.getContractor().getName()
+      </a></h4>
+    } else {
+      Контрагент не указан
+    }
+    </div>
+
+  </div>
+  <div class="col-md-4">
+    <h4>Должность</h4>
+    @contact.getPost
+  </div>
+  <div class="clearfix"></div>
+  <hr>
+  <div class="tab-pane fade active in" id="general">
+    <div class="panel-body">
+
+      <h4>Средства связи</h4>
+      <div class="row">
+        <div class="col-md-4">
+          @iconField(communication.getWorkPhone, "Рабочий телефон", "fa-phone")
+          @iconField(communication.getMobilePhone, "Мобильный телефон", "fa-mobile")
+          @iconField(communication.getHomePhone, "Домашний телефон", "fa-phone-square")
+        </div>
+        <div class="col-md-4">
+          @iconField(communication.getEmail, "Электронная почта", "fa-envelope-o")
+          @iconField(communication.getSkype, "Skype", "fa-skype")
+          @iconField(communication.getOther, "Другой вид связи", "fa-bullhorn")
+        </div>
+        <div class="col-md-4">
+          @iconField(communication.getWww, "Сайт", "fa-globe")
+          @iconField(communication.getSocialAccount, "Профиль в соцсетях", "fa-vk")
+        </div>
+
+      </div>
+      <hr>
+      <h4>Адрес</h4>
+      <p><abbr title="Адрес"><i class="fa fa-map-marker fa-lg"></i></abbr>
+        @contact.getAdress</p>
+
+    </div>
+  </div>
 
 
 
