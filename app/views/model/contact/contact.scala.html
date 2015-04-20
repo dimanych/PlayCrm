@@ -1,4 +1,9 @@
 @(contact: Contact)
+
+@import components.fields.iconField
+
+@communication = @{contact.getCommunication}
+
 @main(Messages("menu.contacts")){
     <div class="col-md-8">
         <div class="col-md-3 row">
@@ -28,63 +33,39 @@
     </div>
     <div class="clearfix"></div>
     <hr>
-        <div class="tab-pane fade active in" id="general">
-            <div class="panel-body">
+    <div class="tab-pane fade active in" id="general">
+        <div class="panel-body">
 
-                <h4>Средства связи</h4>
-                <div class="row">
-                    <div class="col-md-4">
-                    @if(contact.getCommunication != null) {
-                        @if(contact.getCommunication.getWorkPhone != "") {
-                            <span class="text-muted">Рабочий телефон</span>
-                            <p><abbr title="Рабочий телефон"><i class="fa fa-phone fa-lg"></i></abbr>
-                                @contact.getCommunication.getWorkPhone</p>
-                        }
-                        @if(contact.getCommunication.getMobilePhone != "") {
-                            <span class="text-muted">Мобильный телефон</span><br>
-                            <p><abbr title="Мобильный телефон"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></abbr>
-                                @contact.getCommunication.getMobilePhone<p>
-                            }
-                        @if(contact.getCommunication.getHomePhone != "") {
-                            <span class="text-muted">Домашний телефон</span><br>
-                            <p><abbr title="Домашний телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
-                                @contact.getCommunication.getHomePhone</p>
-                        }
-
-                    }
-                    </div>
-                    <div class="col-md-4">
-                    @if(contact.getCommunication != null) {
-                        <span class="text-muted">Электронная почта</span><br>
-                        <p><abbr title="Электронная почта"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></abbr>
-                            @contact.getCommunication.getEmail</p>
-                        <span class="text-muted">Skype</span><br>
-                        <p><abbr title="Скайп"><span class="fa fa-skype fa-lg"></span></abbr>
-                            @contact.getCommunication.getSkype</p>
-                        <span class="text-muted">Другой вид связи</span><br>
-                        <p><abbr title="Другой вид связи"><i class="fa fa-bullhorn fa-lg"></i></abbr>
-                            @contact.getCommunication.getOther</p>
-                    }
-                    </div>
-                    <div class="col-md-4">
-                        @if(contact.getCommunication != null) {
-                            <span class="text-muted">Сайт</span><br>
-                            <p><abbr title="Сайт"><i class="fa fa-globe fa-lg"></i></abbr>
-                                @contact.getCommunication.getWww</p>
-                            <span class="text-muted">Профиль в соцсетях</span><br>
-                            <p><abbr title="Соцсети"><i class="fa fa-vk fa-lg"></i></abbr>
-                                @contact.getCommunication.getSocialAccount</p>
-
-                        }
-                    </div>
+            <h4>Средства связи</h4>
+            <div class="row">
+                <div class="col-md-4">
+                @if(communication != null) {
+                    @iconField(communication.getWorkPhone, "Рабочий телефон", "fa-phone")
+                    @iconField(communication.getMobilePhone, "Мобильный телефон", "fa-mobile")
+                    @iconField(communication.getHomePhone, "Домашний телефон", "fa-phone-square")
+                }
                 </div>
-                <hr>
-                <h4>Адрес</h4>
-                <p><abbr title="Адрес"><i class="fa fa-map-marker fa-lg"></i></abbr>
-                    @contact.getAdress</p>
-
+                <div class="col-md-4">
+                @if(communication != null) {
+                    @iconField(communication.getEmail, "Электронная почта", "fa-envelope-o")
+                    @iconField(communication.getSkype, "Skype", "fa-skype")
+                    @iconField(communication.getOther, "Другой вид связи", "fa-bullhorn")
+                }
+                </div>
+                <div class="col-md-4">
+                @if(communication != null) {
+                    @iconField(communication.getWww, "Сайт", "fa-globe")
+                    @iconField(communication.getSocialAccount, "Профиль в соцсетях", "fa-vk")
+                }
+                </div>
             </div>
+            <hr>
+            <h4>Адрес</h4>
+            <p><abbr title="Адрес"><i class="fa fa-map-marker fa-lg"></i></abbr>
+                @contact.getAdress</p>
+
         </div>
+    </div>
 
 
 

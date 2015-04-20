@@ -1,0 +1,10 @@
+@(caption: String, title: String, icon: String)
+
+@import org.apache.commons.lang3.StringUtils
+
+@if(StringUtils.isNotEmpty(caption)) {
+  <span class="text-muted">@title</span>
+  <p>
+    <i class="fa @icon fa-lg"></i>
+    @caption</p>
+}
