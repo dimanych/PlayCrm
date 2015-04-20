@@ -2,6 +2,7 @@
 
 @import helper._
 @import views.html.components._
+@import components.fields.iconField
 
 @main("Контакты"){
 
@@ -21,31 +22,13 @@
           }
         </div>
         <div class="col-md-3">
-        @if(contact.getCommunication != null) {
-          @if(contact.getCommunication.getWorkPhone != "") {
-            <span class="text-muted">Рабочий телефон</span>
-            <p><abbr title="Рабочий телефон"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></abbr>
-            @contact.getCommunication.getWorkPhone</p>
-          }
-          @if(contact.getCommunication.getMobilePhone != "") {
-            <span class="text-muted">Мобильный телефон</span><br>
-            <p><abbr title="Мобильный телефон"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></abbr>
-            @contact.getCommunication.getMobilePhone<p>
-          }
-
-        }
+          @iconField(contact.getCommunication.getWorkPhone, "Рабочий телефон", "fa-phone")
+          @iconField(contact.getCommunication.getMobilePhone, "Мобильный телефон", "fa-mobile")
         </div>
         <div class="col-md-3">
           <address>
-            <span class="text-muted">Адрес</span><br>
-            <p><abbr title="Адрес"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></abbr>
-            @contact.getAdress</p>
-
-            @if(contact.getCommunication != null) {
-              <span class="text-muted">Электронная почта</span><br>
-              <p><abbr title="Электронная почта"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></abbr>
-              @contact.getCommunication.getEmail</p>
-            }
+            @iconField(contact.getAdress, "Адрес", "fa-map-marker")
+            @iconField(contact.getCommunication.getEmail, "Электронная почта", "fa-envelope-o")
           </address>
 
         </div>

@@ -39,25 +39,20 @@
             <h4>Средства связи</h4>
             <div class="row">
                 <div class="col-md-4">
-                @if(communication != null) {
                     @iconField(communication.getWorkPhone, "Рабочий телефон", "fa-phone")
                     @iconField(communication.getMobilePhone, "Мобильный телефон", "fa-mobile")
                     @iconField(communication.getHomePhone, "Домашний телефон", "fa-phone-square")
-                }
                 </div>
                 <div class="col-md-4">
-                @if(communication != null) {
                     @iconField(communication.getEmail, "Электронная почта", "fa-envelope-o")
                     @iconField(communication.getSkype, "Skype", "fa-skype")
                     @iconField(communication.getOther, "Другой вид связи", "fa-bullhorn")
-                }
                 </div>
                 <div class="col-md-4">
-                @if(communication != null) {
                     @iconField(communication.getWww, "Сайт", "fa-globe")
                     @iconField(communication.getSocialAccount, "Профиль в соцсетях", "fa-vk")
-                }
                 </div>
+
             </div>
             <hr>
             <h4>Адрес</h4>
