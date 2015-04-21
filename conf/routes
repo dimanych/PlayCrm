@@ -5,6 +5,9 @@
 # Home page
 GET         /                               controllers.Application.index()
 
+# Graphics
+GET         /graphs                         controllers.Graphs.graph()
+
 # Contacts
 GET         /contacts                       controllers.Contacts.contacts()
 GET         /contacts/$id<[0-9]+>           controllers.Contacts.contact(id:Long)
