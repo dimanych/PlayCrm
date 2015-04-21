@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p></p>
@@ -34,6 +36,18 @@ public class Deal extends BaseModel {
 
   public static List<Deal> findByContractor(Contractor contractor) {
     return find.where().eq("contractor", contractor).findList();
+  }
+
+  public static Integer countDealsByPhase(Long phaseId) {
+    return find.where().eq("deal_phase_id", phaseId).findList().size();
+  }
+
+  public static Map<String, Integer> getStatistic() {
+    Map<String, Integer> statistic = new HashMap<>();
+    for (DealPhase dealPhase : DealPhase.findAll()) {
+      statistic.put(dealPhase.getName(), countDealsByPhase(dealPhase.getId()));
+    }
+    return statistic;
   }
 
   @OneToOne

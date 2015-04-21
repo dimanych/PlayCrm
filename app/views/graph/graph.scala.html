@@ -1,5 +1,7 @@
-@(test: String)
+@(map: Map[String, Integer])
 
 @main(""){
-
+  @for((name, count) <- map) {
+    <p>@name:@count</p>
+  }
 }

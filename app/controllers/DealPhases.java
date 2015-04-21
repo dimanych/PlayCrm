@@ -12,6 +12,7 @@ import java.util.Map;
  * @author Dmitriy Grigoriev
  */
 public class DealPhases extends Controller {
+
   public static Map<String,String> options() {
     LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
     for(DealPhase contractorType: DealPhase.find.orderBy("name").findList()) {
@@ -19,4 +20,5 @@ public class DealPhases extends Controller {
     }
     return options;
   }
+
 }
