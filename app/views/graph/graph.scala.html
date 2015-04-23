@@ -1,34 +1,28 @@
-@(map: Map[String, Integer])
+@(chart: List[ChartData])
 
 @main(""){
-  @for((name, count) <- map) {
-    <p>@name:@count</p>
-  }
-  <canvas id="chart" class="col-md-6"></canvas>
+
+  <canvas id="chart"></canvas>
+  <div class="clearfix"></div>
+
   <script>
-  var data = [
-  {
-  value: 300,
-  color:"#5cb85c",
-  highlight: "#5FC35F",
-  label: "Red"
-  },
-  {
-  value: 550,
-  color: "#337AB7",
-  highlight: "#3886CA",
-  label: "Green"
-  },
-  {
-  value: 100,
-  color: "#F0AD4E",
-  highlight: "#F7C57D",
-  label: "Yellow"
+  var tt = [;
+  @for(item <- chart){
+    {
+    value: @item.getValue,
+    "@item.getColor()",;
+    "@item.getHighlight",;
+    "@item.getLabel"
+    },
+
   }
-  ] ;
+  ]
+
+
+
   window.onload = function(){
-  var ctx = document.getElementById("chart").getContext("2d");
-  window.myPie = new Chart(ctx).Doughnut(data);
-  };
+    var ctx = document.getElementById("chart").getContext("2d");
+    window.myPie = new Chart(ctx).Doughnut(tt);
+    };
   </script>
 }

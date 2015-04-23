@@ -1,19 +1,14 @@
 package controllers;
 
-import analytics.ChartData;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Contractor;
 import models.Deal;
-import models.DealPhase;
 import play.data.Form;
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.model.deal.createDeal;
 import views.html.model.deal.deal;
 import views.html.model.deal.deals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static play.data.Form.form;
