@@ -1,7 +1,5 @@
 package analytics;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,7 +9,6 @@ import java.util.Map;
  */
 public class DealGraph {
   public static Map<Long, String> getDealInfo() {
-    List<ChartData> chart = new ArrayList<>();
 
     return null;
   }
