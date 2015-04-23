@@ -1,6 +1,7 @@
 package analytics;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,10 +10,8 @@ import java.util.Map;
  * @author Dmitriy Grigoriev
  */
 public class DealGraph {
-  public static Map<Long, String> getGeneralInfo() {
-    Map<Long, String> statistic = new HashMap<>();
-
-
+  public static Map<Long, String> getDealInfo() {
+    List<ChartData> chart = new ArrayList<>();
 
     return null;
   }

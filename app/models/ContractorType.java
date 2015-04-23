@@ -9,5 +9,5 @@ import javax.persistence.Entity;
  */
 @Entity
 public class ContractorType extends BaseModel {
-  public static Model.Finder<Long, ContractorType> find = new Model.Finder<Long, ContractorType>(Long.class, ContractorType.class);
+  public static final Model.Finder<Long, ContractorType> find = new Model.Finder<Long, ContractorType>(Long.class, ContractorType.class);
 }

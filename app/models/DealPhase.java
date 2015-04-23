@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Entity
 public class DealPhase extends BaseModel {
-  public static Model.Finder<Long, DealPhase> find = new Model.Finder<Long, DealPhase>(Long.class, DealPhase.class);
+  public static final Model.Finder<Long, DealPhase> find = new Model.Finder<Long, DealPhase>(Long.class, DealPhase.class);
 
   public static List<DealPhase> findAll() {
     return find.all();

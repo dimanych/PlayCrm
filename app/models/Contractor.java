@@ -16,7 +16,7 @@ public class Contractor extends BaseModel {
   private ContractorType contractorType;
   private String adress;
 
-  public static Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);
+  public static final Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);
 
   public static List<Contractor> findAll() {
     return find.all();

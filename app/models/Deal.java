@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p></p>
@@ -24,7 +22,7 @@ public class Deal extends BaseModel {
   private Date endDate;
   private BigDecimal budget;
 
-  public static Model.Finder<Long, Deal> find = new Model.Finder<Long, Deal>(Long.class, Deal.class);
+  public static final Model.Finder<Long, Deal> find = new Model.Finder<Long, Deal>(Long.class, Deal.class);
 
   public static List<Deal> findAll() {
     return find.all();
@@ -40,14 +38,6 @@ public class Deal extends BaseModel {
 
   public static Integer countDealsByPhase(Long phaseId) {
     return find.where().eq("deal_phase_id", phaseId).findList().size();
-  }
-
-  public static Map<String, Integer> getStatistic() {
-    Map<String, Integer> statistic = new HashMap<>();
-    for (DealPhase dealPhase : DealPhase.findAll()) {
-      statistic.put(dealPhase.getName(), countDealsByPhase(dealPhase.getId()));
-    }
-    return statistic;
   }
 
   @OneToOne

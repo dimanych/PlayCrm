@@ -19,7 +19,7 @@ public class Contact extends BaseModel {
   private Communication communication;
   private String adress;
 
-  public static Model.Finder<Long, Contact> find = new Model.Finder<Long, Contact>(Long.class, Contact.class);
+  public static final Model.Finder<Long, Contact> find = new Model.Finder<Long, Contact>(Long.class, Contact.class);
 
   public static List<Contact> findAll() {
     return find.all();

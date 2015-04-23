@@ -19,7 +19,7 @@ import static play.data.Form.form;
  */
 public class Contractors extends Controller {
 
-public static Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.contractors());
+  public static final Result GO_CONTRACTORS = redirect(controllers.routes.Contractors.contractors());
 
   public static Result add() {
     Form<Contractor> contractorForm = form(Contractor.class);

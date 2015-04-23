@@ -21,7 +21,7 @@ import static play.data.Form.form;
  */
 public class Contacts extends Controller {
 
-  public static Result GO_CONTACTS = redirect(controllers.routes.Contacts.contacts());
+  public static final Result GO_CONTACTS = redirect(controllers.routes.Contacts.contacts());
 
   public static Result add() {
     Form<Contact> contactForm = form(Contact.class);
