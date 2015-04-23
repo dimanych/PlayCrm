@@ -6,23 +6,20 @@
   <div class="clearfix"></div>
 
   <script>
-  var tt = [;
+  var data = [;
   @for(item <- chart){
     {
     value: @item.getValue,
-    "@item.getColor()",;
+    "@item.getColor",;
     "@item.getHighlight",;
     "@item.getLabel"
     },
-
   }
-  ]
-
-
+  ];
 
   window.onload = function(){
     var ctx = document.getElementById("chart").getContext("2d");
-    window.myPie = new Chart(ctx).Doughnut(tt);
+    window.myPie = new Chart(ctx).Doughnut(data);
     };
   </script>
 }

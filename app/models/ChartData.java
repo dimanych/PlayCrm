@@ -1,7 +1,7 @@
 package models;
 
 /**
- * <p></p>
+ * <p>Класс данных для построения графиков</p>
  *
  * @author Dmitriy Grigoriev
  */
