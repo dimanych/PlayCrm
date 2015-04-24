@@ -9,10 +9,10 @@
   var data = [;
   @for(item <- chart){
     {
-    value: @item.getValue,
-    "@item.getColor",;
-    "@item.getHighlight",;
-    "@item.getLabel"
+    "value":; @item.getValue,
+    "color":"@item.getColor",;
+    "highlight":"@item.getHighlight",;
+    "label":"@item.getLabel"
     },
   }
   ];
