@@ -5,7 +5,7 @@ import models.Deal;
 import models.DealPhase;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.graph.graph;
+import views.html.graphic.graph;
 
 import java.util.ArrayList;
 import java.util.List;

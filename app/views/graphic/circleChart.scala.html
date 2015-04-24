@@ -1,0 +1,22 @@
+@(chart: List[ChartData])
+
+@import components.container
+
+@container{
+  var data = [
+  @for(item <- chart){
+    {
+    value:@item.getValue,
+    color:"@item.getColor",
+    highlight:"@item.getHighlight",
+    label:"@item.getLabel"
+    },
+  }
+  ]
+
+  window.onload = function(){
+  var ctx = document.getElementById("chart").getContext("2d");
+  window.myPie = new Chart(ctx).PolarArea(data);
+  };
+}
+

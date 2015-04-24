@@ -1,0 +1,14 @@
+@(chart: List[ChartData])
+
+@import graphic.circleChart
+
+@main(""){
+
+  <canvas id="chart"></canvas>
+  <div class="clearfix"></div>
+
+  <script>
+    @circleChart(chart)
+  </script>
+
+}
