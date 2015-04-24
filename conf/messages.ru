@@ -4,6 +4,7 @@ menu.contractors=Контрагенты
 menu.deals=Сделки
 
 actions.addContact=Добавить контакт
+actions.deleteContact=Удалить контакт
 actions.addContractor=Добавить контрагента
 actions.deleteContractor=Удалить контрагента?
 actions.addDeal=Добавить сделку
