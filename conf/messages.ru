@@ -19,8 +19,8 @@ info.null=Не указано
 info.deals.default=Сделок пока нет
 
 contact.name=ФИО
-contractor=
-communications=
-address=
-workphone=
+contractor=Контагент
+communication=Средства связи
+address=Адрес
+workphone=Рабочий телефон
 mobilephone=
