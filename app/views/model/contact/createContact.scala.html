@@ -23,7 +23,14 @@
       'style -> "display: none")
     @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
     @inputText(contactForm("adress"), '_label -> "Адрес", 'class -> "form-control")
-    @inputText(contactForm("communication.workPhone"), '_label -> "work phome", 'class -> "form-control")
+    @inputText(contactForm("communication.workPhone"), '_label -> "Рабочий телефон", 'class -> "form-control")
+    @inputText(contactForm("communication.homePhone"), '_label -> "Домашний телефон", 'class -> "form-control")
+    @inputText(contactForm("communication.mobilePhone"), '_label -> "Мобильный телефон", 'class -> "form-control")
+    @inputText(contactForm("communication.skype"), '_label -> "Скайп", 'class -> "form-control")
+    @inputText(contactForm("communication.email"), '_label -> "Электронная почта", 'class -> "form-control")
+    @inputText(contactForm("communication.www"), '_label -> "Сайт", 'class -> "form-control")
+    @inputText(contactForm("communication.socialAccount"), '_label -> "Профиль в соц.сетях", 'class -> "form-control")
+    @inputText(contactForm("communication.other"), '_label -> "Другой способ связи", 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" class="btn primary">
   }
