@@ -8,31 +8,40 @@
 
   @form(action = routes.Contacts.save(), 'id -> "formModal") {
     <fieldset>
+    <div class="col-md-6">
+      @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
 
-    @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
-    <label for="contractorName">Контрагент</label>
-    <a href="#" data-toggle="modal" data-target="#selectContractor">
-      <div class="input-group">
-      <input type="text" class="form-control" id="caption" aria-label="Контрагент">
-      <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+      <dl id="post_field">
+        <dt><label for="caption">Контрагент</label></dt>
+        <dd>
+          <a href="#" data-toggle="modal" data-target="#selectContractor">
+            <div class="input-group">
+              <input type="text" class="form-control" id="caption" aria-label="Контрагент">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+          </a>
+        </dd>
+      </dl>
+
+      <div class="hidden">
+      @inputText(contactForm("contractor.id"))
       </div>
-    </a>
-    @inputText(
-      contactForm("contractor.id"),
-      '_label -> null,
-      'style -> "display: none")
-    @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
-    @inputText(contactForm("adress"), '_label -> "Адрес", 'class -> "form-control")
-    @inputText(contactForm("communication.workPhone"), '_label -> "Рабочий телефон", 'class -> "form-control")
-    @inputText(contactForm("communication.homePhone"), '_label -> "Домашний телефон", 'class -> "form-control")
-    @inputText(contactForm("communication.mobilePhone"), '_label -> "Мобильный телефон", 'class -> "form-control")
-    @inputText(contactForm("communication.skype"), '_label -> "Скайп", 'class -> "form-control")
-    @inputText(contactForm("communication.email"), '_label -> "Электронная почта", 'class -> "form-control")
-    @inputText(contactForm("communication.www"), '_label -> "Сайт", 'class -> "form-control")
-    @inputText(contactForm("communication.socialAccount"), '_label -> "Профиль в соц.сетях", 'class -> "form-control")
-    @inputText(contactForm("communication.other"), '_label -> "Другой способ связи", 'class -> "form-control")
+
+      @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
+      @inputText(contactForm("adress"), '_label -> "Адрес", 'class -> "form-control")
+      @inputText(contactForm("communication.www"), '_label -> "Сайт", 'class -> "form-control")
+      @inputText(contactForm("communication.workPhone"), '_label -> "Рабочий телефон", 'class -> "form-control")
+    </div>
+    <div class="col-md-6">
+      @inputText(contactForm("communication.homePhone"), '_label -> "Домашний телефон", 'class -> "form-control")
+      @inputText(contactForm("communication.mobilePhone"), '_label -> "Мобильный телефон", 'class -> "form-control")
+      @inputText(contactForm("communication.skype"), '_label -> "Скайп", 'class -> "form-control")
+      @inputText(contactForm("communication.email"), '_label -> "Электронная почта", 'class -> "form-control")
+      @inputText(contactForm("communication.socialAccount"), '_label -> "Профиль в соц.сетях", 'class -> "form-control")
+      @inputText(contactForm("communication.other"), '_label -> "Другой способ связи", 'class -> "form-control")
+    </div>
     </fieldset>
-    <input type="submit" value="@Messages("actions.create")" class="btn primary">
+    <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }
 
   @listModal(Contractor.findAll(), "selectContractor")
