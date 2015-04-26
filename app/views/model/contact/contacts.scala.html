@@ -1,52 +1,14 @@
 @(contacts: List[Contact])
 
-@import helper._
-@import views.html.components._
-@import components.fields.iconField
+@import components._
+@import model.contact.contactField
 
 @main("Контакты"){
 
   <a href="@routes.Contacts.add()" class="btn btn-primary"><i class="fa fa-plus"></i> Добавить контакт</a>
 
   @for(contact<-contacts){
-    <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-5">
-          <a href="@routes.Contacts.contact(contact.getId)"><h4>@contact.getName</h4></a>
-          @if(contact.getContractor()!=null) {
-            <span class="text-muted">Контрагент</span><br>
-            <a href="@routes.Contractors.contractor(contact.getContractor.getId)">
-              @contact.getContractor().getName()
-            </a>
-          }
-        </div>
-        <div class="col-md-3">
-          @iconField(contact.getCommunication.getWorkPhone, "Рабочий телефон", "fa-phone")
-          @iconField(contact.getCommunication.getMobilePhone, "Мобильный телефон", "fa-mobile")
-        </div>
-        <div class="col-md-3">
-          <address>
-            @iconField(contact.getAdress, "Адрес", "fa-map-marker")
-            @iconField(contact.getCommunication.getEmail, "Электронная почта", "fa-envelope-o")
-          </address>
-
-        </div>
-        <div class="col-md-1">
-          <p>
-          <a href="@routes.Contacts.contact(contact.getId)" class="btn btn-primary btn-sm">
-            <i class="fa fa-eye"></i>
-          </a></p>
-          @form(routes.Contacts.delete(contact.getId)) {
-            <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
-              <i class="fa fa-trash-o fa-lg"></i>
-            </button>
-          }
-        </div>
-      </div>
-    </div>
-    </div>
-
+    @contactField(contact)
   }
   @confirm("Удалить контакт?",
     "Подтвертите, если хотите удалить контакт. Удаленные данные будет невозможно восстановить",
