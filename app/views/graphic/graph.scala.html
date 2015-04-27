@@ -1,14 +1,26 @@
 @(chart: List[ChartData])
 
-@import graphic.circleChart
+@import graphic._
 
 @main(""){
 
-  <canvas id="chart"></canvas>
+  <div class="col-md-5">
+    <canvas id="chartDeals"></canvas>
+  </div>
+  <div class="col-md-5">
+    <canvas id="chartLine"></canvas>
+  </div>
+  <div class="col-md-5">
+    <canvas id="chartLine1"></canvas>
+  </div>
+
+
   <div class="clearfix"></div>
 
-  <script>
-    @circleChart(chart)
-  </script>
 
+  <script>
+    @circleChart("chartDeals", chart)
+    @lineChart("chartLine")
+    @lineChart("chartLine1")
+  </script>
 }
