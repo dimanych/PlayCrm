@@ -5,6 +5,7 @@ import models.Deal;
 import models.DealPhase;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.Color;
 import views.html.graphic.graph;
 
 import java.util.ArrayList;
@@ -19,10 +20,10 @@ public class Graphs extends Controller {
 
   public static Result graph() {
     List<CircleChartData> chart = new ArrayList<>();
-    int i = 1;
+    int i = 0;
     for (DealPhase dealPhase : DealPhase.findAll()) {
-      String color = "#" + i + "cb85c";
-      String highlight = "#" + i + "0b85c";
+      String color = Color.Light.values()[i].hex();
+      String highlight = Color.Normal.values()[i].hex();
       chart.add(new CircleChartData(Deal.countDealsByPhase(dealPhase.getId()), color, highlight, dealPhase.getName()));
       i++;
     }
