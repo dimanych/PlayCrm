@@ -1,17 +1,17 @@
-package models;
+package models.chart;
 
 /**
  * <p>Класс данных для построения графиков</p>
  *
  * @author Dmitriy Grigoriev
  */
-public class ChartData extends AbstractModel {
+public class CircleChartData {
   private Integer value;
   private String color;
   private String highlight;
   private String label;
 
-  public ChartData(Integer value, String color, String highlight, String label) {
+  public CircleChartData(Integer value, String color, String highlight, String label) {
     this.value = value;
     this.color = color;
     this.highlight = highlight;
