@@ -13,7 +13,12 @@
         options(ContractorTypes.options),
         '_label -> "Тип", '_default -> "-- Выбрать --",
         '_showConstraints -> false, 'class -> "form-control")
+      @inputText(contractorForm("adress"), '_label -> "Адрес", 'class -> "form-control")
+      @inputText(contractorForm("www"), '_label -> "Сайт", 'class -> "form-control")
+      @inputText(contractorForm("fax"), '_label -> "Факс", 'class -> "form-control")
+      @inputText(contractorForm("mail"), '_label -> "Электронная почта", 'class -> "form-control")
+      @inputText(contractorForm("extensionPhone"), '_label -> "Дополнительный телефон", 'class -> "form-control")
     </fieldset>
-    <input type="submit" value="@Messages("actions.create")" class="btn primary">
+    <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }
 }

@@ -31,6 +31,10 @@ create table contractor (
   name                      varchar(255),
   contractor_type_id        bigint,
   adress                    varchar(255),
+  www                       varchar(255),
+  fax                       varchar(255),
+  mail                      varchar(255),
+  extension_phone           varchar(255),
   constraint pk_contractor primary key (id))
 ;
 

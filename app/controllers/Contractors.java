@@ -40,7 +40,7 @@ public class Contractors extends Controller {
     try{
       contractor.delete();
     } catch (PersistenceException ex) {
-      throw new RuntimeException("Невозможно удалить", ex);
+      throw new RuntimeException("Невозможно удалить. Есть связанные записи", ex);
     }
 
     return GO_CONTRACTORS;

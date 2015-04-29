@@ -15,6 +15,10 @@ import java.util.Map;
 public class Contractor extends BaseModel {
   private ContractorType contractorType;
   private String adress;
+  private String www;
+  private String fax;
+  private String mail;
+  private String extensionPhone;
 
   public static final Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);
 
@@ -53,5 +57,37 @@ public class Contractor extends BaseModel {
 
   public void setAdress(String adress) {
     this.adress = adress;
+  }
+
+  public String getWww() {
+    return www;
+  }
+
+  public void setWww(String www) {
+    this.www = www;
+  }
+
+  public String getFax() {
+    return fax;
+  }
+
+  public void setFax(String fax) {
+    this.fax = fax;
+  }
+
+  public String getMail() {
+    return mail;
+  }
+
+  public void setMail(String mail) {
+    this.mail = mail;
+  }
+
+  public String getExtensionPhone() {
+    return extensionPhone;
+  }
+
+  public void setExtensionPhone(String extensionPhone) {
+    this.extensionPhone = extensionPhone;
   }
 }
