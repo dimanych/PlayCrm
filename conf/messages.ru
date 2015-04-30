@@ -2,6 +2,7 @@ menu.graphics=Графики
 menu.contacts=Контакты
 menu.contractors=Контрагенты
 menu.deals=Сделки
+menu.products=Продукты
 
 actions.addContact=Добавить контакт
 actions.deleteContact=Удалить контакт

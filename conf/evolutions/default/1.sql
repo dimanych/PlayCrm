@@ -61,6 +61,15 @@ create table deal_phase (
   constraint pk_deal_phase primary key (id))
 ;
 
+create table product (
+  id                        bigint not null,
+  name                      varchar(255),
+  code                      integer,
+  price                     bigint,
+  characteristic            varchar(255),
+  constraint pk_product primary key (id))
+;
+
 create sequence communication_seq;
 
 create sequence contact_seq;
@@ -72,6 +81,8 @@ create sequence contractor_type_seq;
 create sequence deal_seq;
 
 create sequence deal_phase_seq;
+
+create sequence product_seq;
 
 alter table contact add constraint fk_contact_contractor_1 foreign key (contractor_id) references contractor (id);
 create index ix_contact_contractor_1 on contact (contractor_id);
@@ -100,6 +111,8 @@ drop table if exists deal cascade;
 
 drop table if exists deal_phase cascade;
 
+drop table if exists product cascade;
+
 drop sequence if exists communication_seq;
 
 drop sequence if exists contact_seq;
@@ -111,4 +124,6 @@ drop sequence if exists contractor_type_seq;
 drop sequence if exists deal_seq;
 
 drop sequence if exists deal_phase_seq;
+
+drop sequence if exists product_seq;
 
