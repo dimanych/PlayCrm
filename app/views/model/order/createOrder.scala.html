@@ -1,0 +1,15 @@
+@(orderForm: Form[Order])
+
+@import helper._
+
+@main("Создать заказ"){
+  <h2>@Messages("actions.addOrder")</h2>
+
+  @form(routes.Orders.save(), 'id -> "formSender") {
+    <fieldset>
+      @inputText(orderForm("name"), '_label -> "Наименование", 'class -> "form-control")
+      @inputText(orderForm("number"), '_label -> "number", 'class -> "form-control")
+    </fieldset>
+    <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
+  }
+}

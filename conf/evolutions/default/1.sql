@@ -61,6 +61,29 @@ create table deal_phase (
   constraint pk_deal_phase primary key (id))
 ;
 
+create table order (
+  id                        bigint not null,
+  name                      varchar(255),
+  number                    integer,
+  date                      timestamp,
+  contractor_id             bigint,
+  contact_id                bigint,
+  plan_execution_date       timestamp,
+  execution_date            timestamp,
+  amount                    bigint,
+  payment                   bigint,
+  order_state               integer,
+  payment_state             integer,
+  supply_state              integer,
+  deal_id                   bigint,
+  product_id                bigint,
+  supply_payment            varchar(255),
+  constraint ck_order_order_state check (order_state in (0,1,2,3,4)),
+  constraint ck_order_payment_state check (payment_state in (0,1,2,3,4)),
+  constraint ck_order_supply_state check (supply_state in (0,1,2,3,4)),
+  constraint pk_order primary key (id))
+;
+
 create table product (
   id                        bigint not null,
   name                      varchar(255),
@@ -68,6 +91,20 @@ create table product (
   price                     bigint,
   characteristic            varchar(255),
   constraint pk_product primary key (id))
+;
+
+create table supply_payment (
+  id                        bigint not null,
+  name                      varchar(255),
+  supply_payment_type       varchar(255),
+  plan_date                 timestamp,
+  percentage                integer,
+  sum_plan                  bigint,
+  delay                     integer,
+  fact_date                 timestamp,
+  state                     varchar(255),
+  sum_fact                  bigint,
+  constraint pk_supply_payment primary key (id))
 ;
 
 create sequence communication_seq;
@@ -82,7 +119,11 @@ create sequence deal_seq;
 
 create sequence deal_phase_seq;
 
+create sequence order_seq;
+
 create sequence product_seq;
+
+create sequence supply_payment_seq;
 
 alter table contact add constraint fk_contact_contractor_1 foreign key (contractor_id) references contractor (id);
 create index ix_contact_contractor_1 on contact (contractor_id);
@@ -94,6 +135,14 @@ alter table deal add constraint fk_deal_contractor_4 foreign key (contractor_id)
 create index ix_deal_contractor_4 on deal (contractor_id);
 alter table deal add constraint fk_deal_dealPhase_5 foreign key (deal_phase_id) references deal_phase (id);
 create index ix_deal_dealPhase_5 on deal (deal_phase_id);
+alter table order add constraint fk_order_contractor_6 foreign key (contractor_id) references contractor (id);
+create index ix_order_contractor_6 on order (contractor_id);
+alter table order add constraint fk_order_contact_7 foreign key (contact_id) references contact (id);
+create index ix_order_contact_7 on order (contact_id);
+alter table order add constraint fk_order_deal_8 foreign key (deal_id) references deal (id);
+create index ix_order_deal_8 on order (deal_id);
+alter table order add constraint fk_order_product_9 foreign key (product_id) references product (id);
+create index ix_order_product_9 on order (product_id);
 
 
 
@@ -111,7 +160,11 @@ drop table if exists deal cascade;
 
 drop table if exists deal_phase cascade;
 
+drop table if exists order cascade;
+
 drop table if exists product cascade;
+
+drop table if exists supply_payment cascade;
 
 drop sequence if exists communication_seq;
 
@@ -125,5 +178,9 @@ drop sequence if exists deal_seq;
 
 drop sequence if exists deal_phase_seq;
 
+drop sequence if exists order_seq;
+
 drop sequence if exists product_seq;
+
+drop sequence if exists supply_payment_seq;
 

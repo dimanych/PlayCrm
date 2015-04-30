@@ -16,7 +16,7 @@ public class SupplyPayment extends BaseModel {
   /**
    * Тип(оплата или поставка)
    */
-  private SupplyPaymentType supplyPaymentType;
+  private String supplyPaymentType;
   /**
     * Дата, план
     */
@@ -40,7 +40,7 @@ public class SupplyPayment extends BaseModel {
   /**
    * Состояние(выполнен или не выполнен)
    */
-  private State state;
+  private String state;
   /**
    * Сумма, факт
    */
@@ -63,12 +63,11 @@ public class SupplyPayment extends BaseModel {
     }
   }
 
-
-  public SupplyPaymentType getSupplyPaymentType() {
+  public String getSupplyPaymentType() {
     return supplyPaymentType;
   }
 
-  public void setSupplyPaymentType(SupplyPaymentType supplyPaymentType) {
+  public void setSupplyPaymentType(String supplyPaymentType) {
     this.supplyPaymentType = supplyPaymentType;
   }
 
@@ -112,11 +111,11 @@ public class SupplyPayment extends BaseModel {
     this.factDate = factDate;
   }
 
-  public State getState() {
+  public String getState() {
     return state;
   }
 
-  public void setState(State state) {
+  public void setState(String state) {
     this.state = state;
   }
 

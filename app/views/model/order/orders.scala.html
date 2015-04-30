@@ -1,0 +1,9 @@
+@(orders: List[Order])
+
+@main("Продукты") {
+  <a href="@routes.Orders.add()" class="btn btn-primary"><i class="fa fa-plus"></i> @Messages("actions.addOrder")</a>
+  <p>&nbsp;</p>
+  @for(order <- orders) {
+    <p><a href="@routes.Orders.order(order.getId)">@order.getName</a></p>
+  }
+}

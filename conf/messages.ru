@@ -3,6 +3,7 @@ menu.contacts=Контакты
 menu.contractors=Контрагенты
 menu.deals=Сделки
 menu.products=Продукты
+menu.orders=Заказы
 
 actions.addContact=Добавить контакт
 actions.deleteContact=Удалить контакт
@@ -10,6 +11,7 @@ actions.addContractor=Добавить контрагента
 actions.deleteContractor=Удалить контрагента?
 actions.addDeal=Добавить сделку
 actions.addProduct=Добавить продукт
+actions.addOrder=Добавить заказ
 actions.ok=Ок
 actions.create=Создать
 actions.cancel=Отмена
