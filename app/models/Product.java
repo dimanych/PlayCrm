@@ -21,6 +21,10 @@ public class Product extends BaseModel {
   public static List<Product> findAll() {
     return find.all();
   }
+
+  public static Product findById(Long id) {
+    return find.byId(id);
+  }
   
   public Integer getCode() {
     return code;

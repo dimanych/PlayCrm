@@ -1,0 +1,17 @@
+@(productForm: Form[Product])
+
+@import helper._
+
+@main("Создать продукт"){
+  <h2>@Messages("actions.addProduct")</h2>
+
+  @form(routes.Products.save(), 'id -> "formSender") {
+    <fieldset>
+      @inputText(productForm("name"), '_label -> "Наименование", 'class -> "form-control")
+      @inputText(productForm("code"), '_label -> "code", 'class -> "form-control")
+      @inputText(productForm("price"), '_label -> "price", 'class -> "form-control")
+      @inputText(productForm("characteristic"), '_label -> "characteristic", 'class -> "form-control")
+    </fieldset>
+    <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
+  }
+}
