@@ -16,7 +16,7 @@ import java.util.List;
  * @author Dmitriy Grigoriev
  */
 @Entity
-public class Order extends BaseModel {
+public class Booking extends BaseModel {
   /**
    * Номер
    */
@@ -74,13 +74,13 @@ public class Order extends BaseModel {
    */
   private String supplyPayment;
 
-  public static final Model.Finder<Long, Order> find = new Model.Finder<Long, Order>(Long.class, Order.class);
+  public static final Model.Finder<Long, Booking> find = new Model.Finder<Long, Booking>(Long.class, Booking.class);
 
-  public static List<Order> findAll() {
+  public static List<Booking> findAll() {
     return find.all();
   }
 
-  public static Order findById(Long id) {
+  public static Booking findById(Long id) {
     return find.byId(id);
   }
 
