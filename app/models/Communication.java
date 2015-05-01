@@ -3,19 +3,43 @@ package models;
 import javax.persistence.Entity;
 
 /**
- * <p></p>
+ * <p>Средства связи</p>
  *
  * @author Dmitriy Grigoriev
  */
 @Entity
 public class Communication extends AbstractModel {
+  /**
+   * Домашний телефон
+   */
   private String homePhone;
+  /**
+   * Мобильный телефон
+   */
   private String mobilePhone;
+  /**
+   * Рабочий телефон
+   */
   private String workPhone;
+  /**
+   * Скайп
+   */
   private String skype;
+  /**
+   * Электронная почта
+   */
   private String email;
+  /**
+   * Сайт
+   */
   private String www;
+  /**
+   * Аккаунт в социальной сети
+   */
   private String socialAccount;
+  /**
+   * Другие способы связи
+   */
   private String other;
 
   public String getHomePhone() {

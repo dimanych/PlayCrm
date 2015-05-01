@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import java.util.List;
 
 /**
- * <p></p>
+ * <p>Фазы сделки</p>
  *
  * @author Dmitriy Grigoriev
  */

@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * <p>График поставок и оплат</p>
+ * <p>Графики поставок и оплат</p>
  *
  * @author Dmitriy Grigoriev
  */

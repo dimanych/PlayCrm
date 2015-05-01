@@ -3,13 +3,15 @@ package models;
 import javax.persistence.MappedSuperclass;
 
 /**
- * <p>Base model</p>
+ * <p>Базовая сущность</p>
  *
  * @author Dmitriy Grigoriev
  */
 @MappedSuperclass
 public class BaseModel extends AbstractModel {
-
+  /**
+   * Имя или наименование сущности
+   */
   private String name;
 
   public String getName() {

@@ -3,29 +3,6 @@
 
 # --- !Ups
 
-create table booking (
-  id                        bigint not null,
-  name                      varchar(255),
-  number                    integer,
-  date                      timestamp,
-  contractor_id             bigint,
-  contact_id                bigint,
-  plan_execution_date       timestamp,
-  execution_date            timestamp,
-  amount                    bigint,
-  payment                   bigint,
-  order_state               integer,
-  payment_state             integer,
-  supply_state              integer,
-  deal_id                   bigint,
-  product_id                bigint,
-  supply_payment            varchar(255),
-  constraint ck_booking_order_state check (order_state in (0,1,2,3,4)),
-  constraint ck_booking_payment_state check (payment_state in (0,1,2,3,4)),
-  constraint ck_booking_supply_state check (supply_state in (0,1,2,3,4)),
-  constraint pk_booking primary key (id))
-;
-
 create table communication (
   id                        bigint not null,
   home_phone                varchar(255),
@@ -130,8 +107,6 @@ create table supply_payment (
   constraint pk_supply_payment primary key (id))
 ;
 
-create sequence booking_seq;
-
 create sequence communication_seq;
 
 create sequence contact_seq;
@@ -150,38 +125,28 @@ create sequence product_seq;
 
 create sequence supply_payment_seq;
 
-alter table booking add constraint fk_booking_contractor_1 foreign key (contractor_id) references contractor (id);
-create index ix_booking_contractor_1 on booking (contractor_id);
-alter table booking add constraint fk_booking_contact_2 foreign key (contact_id) references contact (id);
-create index ix_booking_contact_2 on booking (contact_id);
-alter table booking add constraint fk_booking_deal_3 foreign key (deal_id) references deal (id);
-create index ix_booking_deal_3 on booking (deal_id);
-alter table booking add constraint fk_booking_product_4 foreign key (product_id) references product (id);
-create index ix_booking_product_4 on booking (product_id);
-alter table contact add constraint fk_contact_contractor_5 foreign key (contractor_id) references contractor (id);
-create index ix_contact_contractor_5 on contact (contractor_id);
-alter table contact add constraint fk_contact_communication_6 foreign key (communication_id) references communication (id);
-create index ix_contact_communication_6 on contact (communication_id);
-alter table contractor add constraint fk_contractor_contractorType_7 foreign key (contractor_type_id) references contractor_type (id);
-create index ix_contractor_contractorType_7 on contractor (contractor_type_id);
-alter table deal add constraint fk_deal_contractor_8 foreign key (contractor_id) references contractor (id);
-create index ix_deal_contractor_8 on deal (contractor_id);
-alter table deal add constraint fk_deal_dealPhase_9 foreign key (deal_phase_id) references deal_phase (id);
-create index ix_deal_dealPhase_9 on deal (deal_phase_id);
-alter table order_entity add constraint fk_order_entity_contractor_10 foreign key (contractor_id) references contractor (id);
-create index ix_order_entity_contractor_10 on order_entity (contractor_id);
-alter table order_entity add constraint fk_order_entity_contact_11 foreign key (contact_id) references contact (id);
-create index ix_order_entity_contact_11 on order_entity (contact_id);
-alter table order_entity add constraint fk_order_entity_deal_12 foreign key (deal_id) references deal (id);
-create index ix_order_entity_deal_12 on order_entity (deal_id);
-alter table order_entity add constraint fk_order_entity_product_13 foreign key (product_id) references product (id);
-create index ix_order_entity_product_13 on order_entity (product_id);
+alter table contact add constraint fk_contact_contractor_1 foreign key (contractor_id) references contractor (id);
+create index ix_contact_contractor_1 on contact (contractor_id);
+alter table contact add constraint fk_contact_communication_2 foreign key (communication_id) references communication (id);
+create index ix_contact_communication_2 on contact (communication_id);
+alter table contractor add constraint fk_contractor_contractorType_3 foreign key (contractor_type_id) references contractor_type (id);
+create index ix_contractor_contractorType_3 on contractor (contractor_type_id);
+alter table deal add constraint fk_deal_contractor_4 foreign key (contractor_id) references contractor (id);
+create index ix_deal_contractor_4 on deal (contractor_id);
+alter table deal add constraint fk_deal_dealPhase_5 foreign key (deal_phase_id) references deal_phase (id);
+create index ix_deal_dealPhase_5 on deal (deal_phase_id);
+alter table order_entity add constraint fk_order_entity_contractor_6 foreign key (contractor_id) references contractor (id);
+create index ix_order_entity_contractor_6 on order_entity (contractor_id);
+alter table order_entity add constraint fk_order_entity_contact_7 foreign key (contact_id) references contact (id);
+create index ix_order_entity_contact_7 on order_entity (contact_id);
+alter table order_entity add constraint fk_order_entity_deal_8 foreign key (deal_id) references deal (id);
+create index ix_order_entity_deal_8 on order_entity (deal_id);
+alter table order_entity add constraint fk_order_entity_product_9 foreign key (product_id) references product (id);
+create index ix_order_entity_product_9 on order_entity (product_id);
 
 
 
 # --- !Downs
-
-drop table if exists booking cascade;
 
 drop table if exists communication cascade;
 
@@ -200,8 +165,6 @@ drop table if exists order_entity cascade;
 drop table if exists product cascade;
 
 drop table if exists supply_payment cascade;
-
-drop sequence if exists booking_seq;
 
 drop sequence if exists communication_seq;
 

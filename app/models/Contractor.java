@@ -9,15 +9,35 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * <p>Контрагенты</p>
+ *
  * @author Dmitriy Grigoriev
  */
 @Entity
 public class Contractor extends BaseModel {
+  /**
+   * Тип контрагента
+   */
   private ContractorType contractorType;
+  /**
+   * Адрес
+   */
   private String adress;
+  /**
+   * Сайт
+   */
   private String www;
+  /**
+   * Факс
+   */
   private String fax;
+  /**
+   * Электронаая почта
+   */
   private String mail;
+  /**
+   * Дополнительный телефон
+   */
   private String extensionPhone;
 
   public static final Model.Finder<Long, Contractor> find = new Model.Finder<Long, Contractor>(Long.class, Contractor.class);

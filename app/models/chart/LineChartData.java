@@ -3,7 +3,7 @@ package models.chart;
 import java.util.List;
 
 /**
- * <p></p>
+ * <p>Класс данных для построения графиков</p>
  *
  * @author Dmitriy Grigoriev
  */

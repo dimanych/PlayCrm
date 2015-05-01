@@ -10,16 +10,31 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * <p></p>
+ * <p>Сделки</p>
  *
  * @author Dmitriy Grigoriev
  */
 @Entity
 public class Deal extends BaseModel {
+  /**
+   * Контрагент
+   */
   private Contractor contractor;
+  /**
+   * Фаза сделки
+   */
   private DealPhase dealPhase;
+  /**
+   * Дата начала сделки
+   */
   private Date startDate;
+  /**
+   * Дата завершения сделки
+   */
   private Date endDate;
+  /**
+   * Бюджет сделки
+   */
   private BigDecimal budget;
 
   public static final Model.Finder<Long, Deal> find = new Model.Finder<Long, Deal>(Long.class, Deal.class);

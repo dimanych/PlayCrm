@@ -13,6 +13,9 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class AbstractModel extends Model {
 
+  /**
+   * Идентификационный номер сущности
+   */
   @Id
   private Long id;
 

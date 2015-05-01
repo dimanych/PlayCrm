@@ -3,7 +3,7 @@ package models.submodels;
 import play.i18n.Messages;
 
 /**
- * <p></p>
+ * <p>Перечисление состояний заказа</p>
  *
  * @author Dmitriy Grigoriev
  */

@@ -8,15 +8,27 @@ import javax.persistence.OneToOne;
 import java.util.List;
 
 /**
- * <p>Entity contacts</p>
+ * <p>Контакты</p>
  *
  * @author Dmitriy Grigoriev
  */
 @Entity
 public class Contact extends BaseModel {
+  /**
+   * Контрагент
+   */
   private Contractor contractor;
+  /**
+   * Должность
+   */
   private String post;
+  /**
+   * Средства связи
+   */
   private Communication communication;
+  /**
+   * Адрес
+   */
   private String adress;
 
   public static final Model.Finder<Long, Contact> find = new Model.Finder<Long, Contact>(Long.class, Contact.class);

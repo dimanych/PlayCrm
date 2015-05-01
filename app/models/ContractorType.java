@@ -5,6 +5,8 @@ import play.db.ebean.Model;
 import javax.persistence.Entity;
 
 /**
+ * <p>Типы контрагентов</p>
+ *
  * @author Dmitriy Grigoriev
  */
 @Entity

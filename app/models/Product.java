@@ -6,14 +6,23 @@ import javax.persistence.Entity;
 import java.util.List;
 
 /**
- * <p></p>
+ * <p>Продукты</p>
  *
  * @author Dmitriy Grigoriev
  */
 @Entity
 public class Product extends BaseModel {
+  /**
+   * Код продукта
+   */
   private Integer code;
+  /**
+   * Цена
+   */
   private Long price;
+  /**
+   * Характеристики
+   */
   private String characteristic;
 
   public static final Model.Finder<Long, Product> find = new Model.Finder<Long, Product>(Long.class, Product.class);
