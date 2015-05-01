@@ -1,10 +1,12 @@
 package models.submodels;
 
 import models.BaseModel;
+import play.db.ebean.Model;
 import play.i18n.Messages;
 
 import javax.persistence.Entity;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>График поставок и оплат</p>
@@ -45,6 +47,17 @@ public class SupplyPayment extends BaseModel {
    * Сумма, факт
    */
   private Long sumFact;
+
+  public static final Model.Finder<Long, SupplyPayment> find = new Model.Finder<Long, SupplyPayment>(Long.class, SupplyPayment.class);
+
+  public static List<SupplyPayment> findAll() {
+    return find.all();
+  }
+
+  public static SupplyPayment findById(Long id) {
+    return find.byId(id);
+  }
+
 
   private enum State {
     // Выполнен
