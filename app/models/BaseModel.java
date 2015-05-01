@@ -18,6 +18,10 @@ public class BaseModel extends AbstractModel {
     return name;
   }
 
+  public String name() {
+    return String.valueOf(name);
+  }
+
   public void setName(String name) {
     this.name = name;
   }

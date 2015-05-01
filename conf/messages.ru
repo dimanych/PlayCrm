@@ -6,7 +6,7 @@ menu.products=Продукты
 menu.orders=Заказы
 
 actions.addContact=Добавить контакт
-actions.deleteContact=Удалить контакт
+actions.deleteContact=Удалить контакт?
 actions.addContractor=Добавить контрагента
 actions.deleteContractor=Удалить контрагента?
 actions.addDeal=Добавить сделку
@@ -14,7 +14,9 @@ actions.addProduct=Добавить продукт
 actions.addOrder=Добавить заказ
 actions.ok=Ок
 actions.create=Создать
+actions.save=Сохранить
 actions.cancel=Отмена
+actions.delete=Удалить
 actions.close=Закрыть
 
 titles.error=Ошибка

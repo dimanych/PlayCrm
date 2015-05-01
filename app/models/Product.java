@@ -1,5 +1,6 @@
 package models;
 
+import org.apache.commons.codec.binary.StringUtils;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
@@ -33,6 +34,19 @@ public class Product extends BaseModel {
 
   public static Product findById(Long id) {
     return find.byId(id);
+  }
+
+  public String code() {
+    return String.valueOf(code);
+  }
+
+
+  public String price() {
+    return String.valueOf(price);
+  }
+
+  public String characteristic() {
+    return String.valueOf(characteristic);
   }
   
   public Integer getCode() {

@@ -1,0 +1,20 @@
+@(product: Product, productForm: Form[Product])
+
+@import helper._
+
+@main(""){
+
+  @form(routes.Products.update(product.getId), 'id -> "formSender") {
+    <fieldset>
+      @inputText(productForm("name").copy(value=Some(product.name)),
+        '_label -> "Наименование", 'class -> "form-control")
+      @inputText(productForm("code").copy(value=Some(product.code)),
+        '_label -> "Код", 'class -> "form-control")
+      @inputText(productForm("price").copy(value = Some(product.price)),
+        '_label -> "Цена", 'class -> "form-control")
+      @inputText(productForm("characteristic").copy(value = Some(product.characteristic)),
+        '_label -> "characteristic", 'class -> "form-control")
+    </fieldset>
+    <input type="submit" value="@Messages("actions.save")" class="btn btn-primary">
+  }
+}

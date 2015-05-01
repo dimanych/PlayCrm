@@ -5,7 +5,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.model.product.createProduct;
-import views.html.model.product.product;
+import views.html.model.product.editProduct;
 import views.html.model.product.products;
 
 import static play.data.Form.form;
@@ -22,7 +22,8 @@ public class Products extends Controller {
   }
 
   public static Result product(Long id) {
-    return ok(product.render(Product.findById(id)));
+    Form<Product> productForm = form(Product.class);
+    return ok(editProduct.render(Product.findById(id), productForm));
   }
 
   public static Result add() {
@@ -36,6 +37,15 @@ public class Products extends Controller {
       return badRequest(products.render(Product.findAll()));
     }
     productForm.get().save();
+    return GO_PRODUCTS;
+  }
+
+  public static Result update(Long id) {
+    Form<Product> productForm = form(Product.class).bindFromRequest();
+    if (productForm.hasErrors()) {
+      return badRequest(products.render(Product.findAll()));
+    }
+    productForm.get().update(id);
     return GO_PRODUCTS;
   }
 
