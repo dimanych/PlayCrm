@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Booking;
+import models.OrderEntity;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -21,22 +21,22 @@ public class Orders extends Controller {
   public static final Result GO_ORDERS = redirect(controllers.routes.Orders.orders());
 
   public static Result orders() {
-    return ok(orders.render(Booking.findAll()));
+    return ok(orders.render(OrderEntity.findAll()));
   }
 
   public static Result order(Long id) {
-    return ok(order.render(Booking.findById(id)));
+    return ok(order.render(OrderEntity.findById(id)));
   }
 
   public static Result add() {
-    Form<Booking> orderForm = form(Booking.class);
+    Form<OrderEntity> orderForm = form(OrderEntity.class);
     return ok(createOrder.render(orderForm));
   }
 
   public static Result save() {
-    Form<Booking> orderForm = form(Booking.class).bindFromRequest();
+    Form<OrderEntity> orderForm = form(OrderEntity.class).bindFromRequest();
     if (orderForm.hasErrors()) {
-      return badRequest(orders.render(Booking.findAll()));
+      return badRequest(orders.render(OrderEntity.findAll()));
     }
     orderForm.get().save();
     return GO_ORDERS;
