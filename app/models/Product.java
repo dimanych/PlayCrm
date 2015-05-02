@@ -1,9 +1,10 @@
 package models;
 
-import org.apache.commons.codec.binary.StringUtils;
 import play.db.ebean.Model;
+import utils.Util;
 
 import javax.persistence.Entity;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class Product extends BaseModel {
   /**
    * Цена
    */
-  private Long price;
+  private BigDecimal price;
   /**
    * Характеристики
    */
@@ -42,7 +43,7 @@ public class Product extends BaseModel {
 
 
   public String price() {
-    return String.valueOf(price);
+    return Util.getNumberFormatted(price);
   }
 
   public String characteristic() {
@@ -57,11 +58,11 @@ public class Product extends BaseModel {
     this.code = code;
   }
 
-  public Long getPrice() {
+  public BigDecimal getPrice() {
     return price;
   }
 
-  public void setPrice(Long price) {
+  public void setPrice(BigDecimal price) {
     this.price = price;
   }
 

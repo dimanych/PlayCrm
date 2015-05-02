@@ -49,4 +49,10 @@ public class Products extends Controller {
     return GO_PRODUCTS;
   }
 
+
+  public static Result delete(Long id) {
+    Product.findById(id).delete();
+    return GO_PRODUCTS;
+  }
+
 }

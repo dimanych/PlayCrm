@@ -10,7 +10,9 @@ actions.deleteContact=Удалить контакт?
 actions.addContractor=Добавить контрагента
 actions.deleteContractor=Удалить контрагента?
 actions.addDeal=Добавить сделку
+actions.deleteDeal=Удалить сделку?
 actions.addProduct=Добавить продукт
+actions.deleteProduct=Удалить продукт?
 actions.addOrder=Добавить заказ
 actions.ok=Ок
 actions.create=Создать
@@ -36,7 +38,7 @@ info.supply.completed=Поставлен полностью
 info.payment.waiting=Ожидание оплаты
 info.payment.partially=Частично оплачено
 info.payment.completed=Поставлен полностью
-
+info.unrestore=Удаленные данные будет невозможно восстановить
 
 contact.name=ФИО
 contractor=Контагент

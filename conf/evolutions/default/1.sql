@@ -88,7 +88,7 @@ create table product (
   id                        bigint not null,
   name                      varchar(255),
   code                      integer,
-  price                     bigint,
+  price                     decimal(38),
   characteristic            varchar(255),
   constraint pk_product primary key (id))
 ;

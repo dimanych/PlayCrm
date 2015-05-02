@@ -1,9 +1,46 @@
 @(products: List[Product])
 
+@import helper._
+@import components._
+
 @main("Продукты") {
   <a href="@routes.Products.add()" class="btn btn-primary"><i class="fa fa-plus"></i> @Messages("actions.addProduct")</a>
   <p>&nbsp;</p>
-  @for(product <- products) {
-    <p><a href="@routes.Products.product(product.getId)">@product.getName</a></p>
+  @if(products.size > 0) {
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Наименование продукта</th>
+          <th>Цена</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    @for(product <- products) {
+     <tr>
+      <td>
+        <a href="@routes.Products.product(product.getId)">
+          @product.name
+        </a>
+      </td>
+      <td>
+        @product.price
+      </td>
+       <td> <a href="@routes.Products.product(product.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+         @form(routes.Products.delete(product.getId), 'style ->"display:inline") {
+           <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
+             <i class="fa fa-trash-o fa-lg"></i>
+           </button>
+         }</td>
+     </tr>
+    }
+
+      </tbody>
+    </table>
   }
+
+  @confirm(Messages("actions.deleteProduct"),
+    Messages("info.unrestore"),
+    "danger",
+    Messages("actions.delete"))
 }
