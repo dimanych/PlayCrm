@@ -41,8 +41,11 @@ public class Product extends BaseModel {
     return String.valueOf(code);
   }
 
-
   public String price() {
+    return String.valueOf(price);
+  }
+
+  public String pricef() {
     return Util.getNumberFormatted(price);
   }
 

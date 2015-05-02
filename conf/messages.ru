@@ -25,6 +25,7 @@ titles.error=Ошибка
 
 info.null=Не указано
 info.deals.default=Сделок пока нет
+info.products.default=Продукты не добавлены
 info.perform=Выполнен
 info.unperformed=Не выполнен
 info.planned=Планируется

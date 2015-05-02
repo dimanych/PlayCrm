@@ -43,7 +43,7 @@ public class Products extends Controller {
   public static Result update(Long id) {
     Form<Product> productForm = form(Product.class).bindFromRequest();
     if (productForm.hasErrors()) {
-      return badRequest(products.render(Product.findAll()));
+      throw new RuntimeException(productForm.toString());
     }
     productForm.get().update(id);
     return GO_PRODUCTS;
