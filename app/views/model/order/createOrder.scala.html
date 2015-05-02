@@ -1,6 +1,8 @@
 @(orderForm: Form[OrderEntity])
 
+@import controllers.Application.getCurrentDate
 @import helper._
+@import components._
 
 @main("Создать заказ"){
   <h2>@Messages("actions.addOrder")</h2>
@@ -9,7 +11,24 @@
     <fieldset>
       @inputText(orderForm("name"), '_label -> "Наименование", 'class -> "form-control")
       @inputText(orderForm("number"), '_label -> "Номер", 'class -> "form-control")
+      <div class="input-group">
+      @inputText(orderForm("date").copy(value=Some(getCurrentDate)),
+        '_label -> "Дата",
+        'class -> "form-control date-picker")
+      </div>
+      <a href="#" data-toggle="modal" data-target="#selectContractor">
+        <div class="input-group">
+          <input type="text" class="form-control" id="caption" aria-label="Контрагент" placeholder="Контрагент">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        </div>
+      </a>
+      <div class="hidden">
+      @inputText(orderForm("contractor.id"))
+      </div>
+      @inputText(orderForm("amount"), '_label -> "Итого", 'class -> "form-control")
     </fieldset>
-    <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
+    <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }
+
+  @listModal(Contractor.findAll(), "selectContractor")
 }

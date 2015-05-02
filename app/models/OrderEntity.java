@@ -4,6 +4,7 @@ import models.submodels.OrderState;
 import models.submodels.PaymentState;
 import models.submodels.SupplyState;
 import play.db.ebean.Model;
+import utils.Util;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -86,7 +87,19 @@ public class OrderEntity extends BaseModel {
   }
 
   public String number() {
-    return String.valueOf(number);
+    return str(number);
+  }
+
+  public String jsDate() {
+    return Util.jsDate(date);
+  }
+
+  public String amount() {
+    return str(amount);
+  }
+
+  private String str(Object val) {
+    return String.valueOf(val);
   }
 
   public Integer getNumber() {

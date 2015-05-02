@@ -14,6 +14,11 @@ public class Application extends Controller {
     return ok(index.render("Hi"));
   }
 
+  /**
+   * Возвращает текущую дату
+   *
+   * @return дата вида дд.мм.гггг
+   */
   public static String getCurrentDate() {
     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     Date date = new Date();

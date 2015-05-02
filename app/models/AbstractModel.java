@@ -19,6 +19,10 @@ public class AbstractModel extends Model {
   @Id
   private Long id;
 
+  public String id() {
+    return String.valueOf(id);
+  }
+
   public Long getId() {
     return id;
   }
