@@ -6,7 +6,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import views.html.model.order.createOrder;
-import views.html.model.order.order;
+import views.html.model.order.editOrder;
 import views.html.model.order.orders;
 
 
@@ -24,9 +24,9 @@ public class Orders extends Controller {
     return ok(orders.render(OrderEntity.findAll()));
   }
 
-  public static Result order(Long id) {
+  public static Result editOrder(Long id) {
     Form<OrderEntity> orderForm = form(OrderEntity.class);
-    return ok(order.render(OrderEntity.findById(id), orderForm));
+    return ok(editOrder.render(OrderEntity.findById(id), orderForm));
   }
 
   public static Result add() {

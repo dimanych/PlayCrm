@@ -48,7 +48,7 @@ POST        /products/:id/delete            controllers.Products.delete(id:Long)
 
 # Заказы
 GET         /orders                         controllers.Orders.orders()
-GET         /orders/$id<[0-9]+>             controllers.Orders.order(id:Long)
+GET         /orders/$id<[0-9]+>             controllers.Orders.editOrder(id:Long)
 
 GET         /orders/add                     controllers.Orders.add()
 POST        /orders/$id<[0-9]+>             controllers.Orders.update(id:Long)
