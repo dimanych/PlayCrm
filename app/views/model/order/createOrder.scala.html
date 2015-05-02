@@ -8,7 +8,7 @@
   @form(routes.Orders.save(), 'id -> "formSender") {
     <fieldset>
       @inputText(orderForm("name"), '_label -> "Наименование", 'class -> "form-control")
-      @inputText(orderForm("number"), '_label -> "number", 'class -> "form-control")
+      @inputText(orderForm("number"), '_label -> "Номер", 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }

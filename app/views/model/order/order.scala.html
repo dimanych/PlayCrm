@@ -1,5 +1,15 @@
-@(order: OrderEntity)
+@(order: OrderEntity, orderForm: Form[OrderEntity])
+
+@import helper._
 
 @main(""){
-  <p>Наименование: @order.getName</p>
+  @form(routes.Orders.update(order.getId), 'id -> "formSender") {
+    <fieldset>
+      @inputText(orderForm("name").copy(value=Some(order.name)),
+        '_label -> "Наименование", 'class -> "form-control")
+      @inputText(orderForm("number").copy(value=Some(order.number)),
+        '_label -> "Номер", 'class -> "form-control")
+    </fieldset>
+    <input type="submit" value="@Messages("actions.save")" class="btn btn-primary">
+  }
 }

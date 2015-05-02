@@ -51,7 +51,9 @@ GET         /orders                         controllers.Orders.orders()
 GET         /orders/$id<[0-9]+>             controllers.Orders.order(id:Long)
 
 GET         /orders/add                     controllers.Orders.add()
+POST        /orders/$id<[0-9]+>             controllers.Orders.update(id:Long)
 POST        /orders                         controllers.Orders.save()
+POST        /orders/:id/delete              controllers.Orders.delete(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                   controllers.Assets.at(path="/public", file)

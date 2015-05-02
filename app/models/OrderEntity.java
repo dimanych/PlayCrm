@@ -7,6 +7,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -44,11 +45,11 @@ public class OrderEntity extends BaseModel {
   /**
    * Итого
    */
-  private Long amount;
+  private BigDecimal amount;
   /**
    * Сумма оплаты
    */
-  private Long payment;
+  private BigDecimal payment;
   /**
    * Состояние заказа
    */
@@ -82,6 +83,10 @@ public class OrderEntity extends BaseModel {
 
   public static OrderEntity findById(Long id) {
     return find.byId(id);
+  }
+
+  public String number() {
+    return String.valueOf(number);
   }
 
   public Integer getNumber() {
@@ -134,19 +139,19 @@ public class OrderEntity extends BaseModel {
     this.executionDate = executionDate;
   }
 
-  public Long getAmount() {
+  public BigDecimal getAmount() {
     return amount;
   }
 
-  public void setAmount(Long amount) {
+  public void setAmount(BigDecimal amount) {
     this.amount = amount;
   }
 
-  public Long getPayment() {
+  public BigDecimal getPayment() {
     return payment;
   }
 
-  public void setPayment(Long payment) {
+  public void setPayment(BigDecimal payment) {
     this.payment = payment;
   }
 

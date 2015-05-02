@@ -25,7 +25,8 @@ public class Orders extends Controller {
   }
 
   public static Result order(Long id) {
-    return ok(order.render(OrderEntity.findById(id)));
+    Form<OrderEntity> orderForm = form(OrderEntity.class);
+    return ok(order.render(OrderEntity.findById(id), orderForm));
   }
 
   public static Result add() {
@@ -39,6 +40,20 @@ public class Orders extends Controller {
       return badRequest(orders.render(OrderEntity.findAll()));
     }
     orderForm.get().save();
+    return GO_ORDERS;
+  }
+
+  public static Result update(Long id) {
+    Form<OrderEntity> orderForm = form(OrderEntity.class).bindFromRequest();
+    if (orderForm.hasErrors()) {
+      throw new RuntimeException(orderForm.toString());
+    }
+    orderForm.get().update(id);
+    return GO_ORDERS;
+  }
+
+  public static Result delete(Long id) {
+    OrderEntity.findById(id).delete();
     return GO_ORDERS;
   }
 }
