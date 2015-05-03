@@ -94,6 +94,14 @@ public class OrderEntity extends BaseModel {
     return Util.jsDate(date);
   }
 
+  public String jsExecutionDate() {
+    return Util.jsDate(executionDate);
+  }
+
+  public String jsPlanExecutionDate() {
+    return Util.jsDate(planExecutionDate);
+  }
+
   public String amount() {
     return str(amount);
   }

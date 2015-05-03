@@ -35,6 +35,16 @@
       <div class="hidden">
       @inputText(orderForm("contractor.id").copy(value = Some(contractorId)))
       </div>
+      <div class="input-group">
+      @inputText(orderForm("planExecutionDate").copy(value=Some(order.jsPlanExecutionDate())),
+        '_label -> "Плановая дата выполнения",
+        'class -> "form-control date-picker")
+      </div>
+      <div class="input-group">
+      @inputText(orderForm("executionDate").copy(value=Some(order.jsExecutionDate())),
+        '_label -> "Дата выполнения",
+        'class -> "form-control date-picker")
+      </div>
       @inputText(orderForm("amount").copy(value = Some(order.amount)), '_label -> "Итого", 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
