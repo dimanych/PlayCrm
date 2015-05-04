@@ -1,20 +1,19 @@
 // Выбор из списка-листа
-function selectItem(obj) {
+function selectItem(obj, modalId, caption, id) {
   if($(obj).hasClass("active")) {
-    $("#selectContractor").modal("hide");
-    $('#caption').val($(obj).text());
-    $('#contractor_id').val($(obj).attr("id"));
+    $(window[modalId]).modal("hide");
+    $(window[caption]).val($(obj).text());
+    $(window[id]).val($(obj).attr("id"));
   } else {
     $("#modal-list>a.active").removeClass("active");
     $(obj).addClass("active");
-
   }
 }
 
-function setItem() {
+function setItem(modalId, caption, id) {
 var f1 = document.getElementById('modal-list').getElementsByClassName('active');
 for (var i=0; i<f1.length; i++)
-selectItem(f1[i]);
+selectItem(f1[i], modalId, caption, id);
 }
 
 $(function () {

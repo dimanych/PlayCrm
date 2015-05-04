@@ -1,4 +1,4 @@
-@(models: List[_ <: BaseModel], modalId: String)
+@(models: List[_ <: BaseModel], modalId: String, caption: String, id: String)
 
 @import components.selected
 
@@ -15,10 +15,10 @@
         </h4>
       </div>
       <div class="modal-body">
-      @selected(models)
+      @selected(models, modalId, caption, id)
       </div>
       <div class="modal-footer">
-        <button type="button" onclick="setItem()" class="btn btn-primary">Выбрать</button>
+        <button type="button" onclick="setItem('@modalId', '@caption', '@id')" class="btn btn-primary">Выбрать</button>
       </div>
 
     </div>

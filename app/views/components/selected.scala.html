@@ -1,7 +1,7 @@
-@(models: List[_ <: BaseModel])
+@(models: List[_ <: BaseModel], modalId: String, caption: String, id: String)
 
 <div id="modal-list" class="list-group">
   @for(model<-models){
-    <a href="#" onclick="selectItem(this)" id="@model.getId" class="list-group-item">@model.getName</a>
+    <a href="#" onclick="selectItem(this, '@modalId', '@caption', '@id')" id="@model.getId" class="list-group-item">@model.getName</a>
   }
 </div>

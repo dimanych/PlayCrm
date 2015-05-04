@@ -16,7 +16,7 @@
         <dd>
           <a href="#" data-toggle="modal" data-target="#selectContractor">
             <div class="input-group">
-              <input type="text" class="form-control" id="caption" aria-label="Контрагент">
+              <input type="text" class="form-control" id="contractorCaption" aria-label="Контрагент">
               <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
             </div>
           </a>
@@ -44,6 +44,6 @@
     <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }
 
-  @listModal(Contractor.findAll(), "selectContractor")
+  @listModal(Contractor.findAll(), "selectContractor", "contractorCaption", "contractor_id")
 
 }
