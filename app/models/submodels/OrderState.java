@@ -2,6 +2,9 @@ package models.submodels;
 
 import play.i18n.Messages;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * <p>Перечисление состояний заказа</p>
  *
@@ -37,5 +40,13 @@ public enum OrderState {
 
   public String caption() {
     return caption;
+  }
+
+  public static Map<String, String> options() {
+    LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+    for (OrderState orderState : values()) {
+      options.put(orderState.name(), orderState.caption());
+    }
+    return options;
   }
 }

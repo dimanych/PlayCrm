@@ -106,6 +106,10 @@ public class OrderEntity extends BaseModel {
     return str(amount);
   }
 
+  public String payment() {
+    return str(payment);
+  }
+
   private String str(Object val) {
     return String.valueOf(val);
   }

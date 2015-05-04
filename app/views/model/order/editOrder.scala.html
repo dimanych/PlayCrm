@@ -1,5 +1,6 @@
 @(order: OrderEntity, orderForm: Form[OrderEntity])
 
+@import models.submodels.OrderState
 @import helper._
 @import components._
 
@@ -10,7 +11,19 @@
 }
 @contractorId = @{
   if(order.getContractor != null) {
-    order.getContractor.getId.toString
+    order.getContractor.id
+  } else ""
+}
+
+@contactName = @{
+  if(order.getContact != null) {
+    order.getContact.name
+  } else ""
+}
+
+@contactId = @{
+  if(order.getContact != null) {
+    order.getContact.id
   } else ""
 }
 
@@ -46,13 +59,13 @@
         <dd>
           <a href="#" data-toggle="modal" data-target="#selectContact">
             <div class="input-group">
-              <input type="text" class="form-control" id="contactCaption" aria-label="Контакт" value="@contractorName">
+              <input type="text" class="form-control" id="contactCaption" aria-label="Контакт" value="@contactName">
               <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
             </div>
           </a>
         </dd>
         <div class="hidden">
-        @inputText(orderForm("contact.id"))
+        @inputText(orderForm("contact.id").copy(value = Some(contactId)))
         </div>
       </dl>
 
@@ -67,9 +80,14 @@
         'class -> "form-control date-picker")
       </div>
       @inputText(orderForm("amount").copy(value = Some(order.amount)), '_label -> "Итого", 'class -> "form-control")
+      @inputText(orderForm("payment").copy(value = Some(order.payment)), '_label -> "Сумма оплаты", 'class -> "form-control")
+      @select(
+        orderForm("orderState"), options(OrderState.options),
+        '_label -> "Состояние заказа", '_showConstraints -> false, 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
   }
 
   @listModal(Contractor.findAll(), "selectContractor", "contractorCaption", "contractor_id")
+  @listModal(Contact.findAll(), "selectContact", "contactCaption", "contact_id")
 }

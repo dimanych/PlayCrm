@@ -1,6 +1,7 @@
 @(orderForm: Form[OrderEntity])
 
 @import controllers.Application.getCurrentDate
+@import models.submodels.OrderState
 @import helper._
 @import components._
 
@@ -57,6 +58,12 @@
       </div>
 
       @inputText(orderForm("amount"), '_label -> "Итого", 'class -> "form-control")
+      @inputText(orderForm("payment"), '_label -> "Сумма оплаты", 'class -> "form-control")
+      @select(
+        orderForm("orderState"),
+        options(OrderState.options),
+        '_label -> "Состояние заказа", '_default -> "-- Выбрать --",
+        '_showConstraints -> false, 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }
