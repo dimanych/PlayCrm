@@ -26,15 +26,36 @@
         '_label -> "Дата",
         'class -> "form-control date-picker")
       </div>
-      <a href="#" data-toggle="modal" data-target="#selectContractor">
-        <div class="input-group">
-          <input type="text" class="form-control" id="contractorCaption" aria-label="Контрагент" value="@contractorName">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+
+      <dl id="contractor_field">
+        <dt><label for="caption">Контрагент</label></dt>
+        <dd>
+          <a href="#" data-toggle="modal" data-target="#selectContractor">
+            <div class="input-group">
+              <input type="text" class="form-control" id="contractorCaption" aria-label="Контрагент" value="@contractorName">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+          </a>
+        </dd>
+        <div class="hidden">
+        @inputText(orderForm("contractor.id").copy(value = Some(contractorId)))
         </div>
-      </a>
-      <div class="hidden">
-      @inputText(orderForm("contractor.id").copy(value = Some(contractorId)))
-      </div>
+      </dl>
+      <dl id="contact_field">
+        <dt><label for="caption">Контакт</label></dt>
+        <dd>
+          <a href="#" data-toggle="modal" data-target="#selectContact">
+            <div class="input-group">
+              <input type="text" class="form-control" id="contactCaption" aria-label="Контакт" value="@contractorName">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+          </a>
+        </dd>
+        <div class="hidden">
+        @inputText(orderForm("contact.id"))
+        </div>
+      </dl>
+
       <div class="input-group">
       @inputText(orderForm("planExecutionDate").copy(value=Some(order.jsPlanExecutionDate())),
         '_label -> "Плановая дата выполнения",
