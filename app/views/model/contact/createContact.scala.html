@@ -11,21 +11,8 @@
     <div class="col-md-6">
       @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
 
-      <dl id="post_field">
-        <dt><label for="caption">Контрагент</label></dt>
-        <dd>
-          <a href="#" data-toggle="modal" data-target="#selectContractor">
-            <div class="input-group">
-              <input type="text" class="form-control" id="contractorCaption" aria-label="Контрагент">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-            </div>
-          </a>
-        </dd>
-      </dl>
-
-      <div class="hidden">
-      @inputText(contactForm("contractor.id"))
-      </div>
+      @selectList(contactForm("contractor.id"), "", "",
+        '_label -> "Контрагент", 'class -> "form-control")
 
       @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
       @inputText(contactForm("adress"), '_label -> "Адрес", 'class -> "form-control")
@@ -44,6 +31,6 @@
     <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }
 
-  @listModal(Contractor.findAll(), "selectContractor", "contractorCaption", "contractor_id")
+  @listModal(Contractor.findAll(), "select_contractor_id", "caption_contractor_id", "contractor_id")
 
 }

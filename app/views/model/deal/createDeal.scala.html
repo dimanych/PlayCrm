@@ -15,16 +15,9 @@
         options(DealPhases.options),
         '_label -> "Стадия", '_default -> "-- Выбрать --",
         '_showConstraints -> false, 'class -> "form-control")
-      <a href="#" data-toggle="modal" data-target="#selectContractor">
-        <div class="input-group">
-          <input type="text" class="form-control" id="contractorCaption" aria-label="Контрагент" placeholder="Контрагент">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-        </div>
-      </a>
-      @inputText(
-        dealForm("contractor.id"),
-        '_label -> null,
-        'class -> "hide")
+
+      @selectList(dealForm("contractor.id"), "", "",
+        '_label -> "Контрагент", 'class -> "form-control")
 
       @inputText(dealForm("budget"),'_label -> "Бюджет", 'class -> "form-control")
 
@@ -38,5 +31,5 @@
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }
 
-  @listModal(Contractor.findAll(), "selectContractor", "contractorCaption", "contractor_id")
+  @listModal(Contractor.findAll(), "select_contractor_id", "caption_contractor_id", "contractor_id")
 }
