@@ -81,9 +81,9 @@
       </div>
       @inputText(orderForm("amount").copy(value = Some(order.amount)), '_label -> "Итого", 'class -> "form-control")
       @inputText(orderForm("payment").copy(value = Some(order.payment)), '_label -> "Сумма оплаты", 'class -> "form-control")
-      @select(
-        orderForm("orderState"), options(OrderState.options),
-        '_label -> "Состояние заказа", '_showConstraints -> false, 'class -> "form-control")
+
+      @selectEx(orderForm("orderState"), options(OrderState.options), order.getOrderState.name(),
+        'class -> "form-control", '_label -> "Состояние заказа")
     </fieldset>
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
   }
