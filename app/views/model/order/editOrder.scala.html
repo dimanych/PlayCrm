@@ -1,31 +1,16 @@
 @(order: OrderEntity, orderForm: Form[OrderEntity])
 
+@import utils.Util._
 @import models.submodels.OrderState
 @import helper._
 @import components._
 
-@contractorName = @{
-  if(order.getContractor != null) {
-    order.getContractor.name
-  } else ""
-}
-@contractorId = @{
-  if(order.getContractor != null) {
-    order.getContractor.id
-  } else ""
-}
+@contractorName = @{ name(order.getContractor) }
+@contractorId = @{ id(order.getContractor) }
 
-@contactName = @{
-  if(order.getContact != null) {
-    order.getContact.name
-  } else ""
-}
+@contactName = @{ name(order.getContact) }
+@contactId = @{ id(order.getContact) }
 
-@contactId = @{
-  if(order.getContact != null) {
-    order.getContact.id
-  } else ""
-}
 
 @main(""){
   @form(routes.Orders.update(order.getId), 'id -> "formSender") {
@@ -34,11 +19,9 @@
         '_label -> "Наименование", 'class -> "form-control")
       @inputText(orderForm("number").copy(value=Some(order.number)),
         '_label -> "Номер", 'class -> "form-control")
-      <div class="input-group">
-      @inputText(orderForm("date").copy(value=Some(order.jsDate)),
-        '_label -> "Дата",
+
+      @date(orderForm("date"), order.jsDate, '_label -> "Дата",
         'class -> "form-control date-picker")
-      </div>
 
       <dl id="contractor_field">
         <dt><label for="caption">Контрагент</label></dt>
@@ -69,16 +52,11 @@
         </div>
       </dl>
 
-      <div class="input-group">
-      @inputText(orderForm("planExecutionDate").copy(value=Some(order.jsPlanExecutionDate())),
-        '_label -> "Плановая дата выполнения",
+      @date(orderForm("planExecutionDate"), order.jsPlanExecutionDate(), '_label -> "Плановая дата выполнения",
         'class -> "form-control date-picker")
-      </div>
-      <div class="input-group">
-      @inputText(orderForm("executionDate").copy(value=Some(order.jsExecutionDate())),
-        '_label -> "Дата выполнения",
+      @date(orderForm("executionDate"), order.jsExecutionDate, '_label -> "Дата выполнения",
         'class -> "form-control date-picker")
-      </div>
+
       @inputText(orderForm("amount").copy(value = Some(order.amount)), '_label -> "Итого", 'class -> "form-control")
       @inputText(orderForm("payment").copy(value = Some(order.payment)), '_label -> "Сумма оплаты", 'class -> "form-control")
 

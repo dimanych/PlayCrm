@@ -27,18 +27,12 @@
         'class -> "hide")
 
       @inputText(dealForm("budget"),'_label -> "Бюджет", 'class -> "form-control")
-      <div class="input-group">
-      @inputText(dealForm("startDate").copy(value=Some(getCurrentDate)),
-        '_label -> "Дата регистрации сделки",
-        'class -> "form-control date-picker")
-      </div>
 
-      <div class="input-group">
-      @inputText(dealForm("endDate").copy(value=Some(getCurrentDate)),
-        '_label -> "Дата завершения сделки",
+      @date(dealForm("startDate"), getCurrentDate, '_label -> "Дата регистрации сделки",
         'class -> "form-control date-picker")
-      </div>
 
+      @date(dealForm("endDate"), getCurrentDate, '_label -> "Дата завершения сделки",
+        'class -> "form-control date-picker")
 
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">

@@ -12,11 +12,9 @@
     <fieldset>
       @inputText(orderForm("name"), '_label -> "Наименование", 'class -> "form-control")
       @inputText(orderForm("number"), '_label -> "Номер", 'class -> "form-control")
-      <div class="input-group">
-      @inputText(orderForm("date").copy(value=Some(getCurrentDate)),
-        '_label -> "Дата",
+
+      @date(orderForm("date"), getCurrentDate, '_label -> "Дата",
         'class -> "form-control date-picker")
-      </div>
       <dl id="contractor_field">
         <dt><label for="caption">Контрагент</label></dt>
         <dd>
@@ -46,16 +44,10 @@
         </div>
       </dl>
 
-      <div class="input-group">
-      @inputText(orderForm("planExecutionDate").copy(value=Some(getCurrentDate)),
-        '_label -> "Плановая дата выполнения",
+      @date(orderForm("planExecutionDate"), getCurrentDate, '_label -> "Плановая дата выполнения",
         'class -> "form-control date-picker")
-      </div>
-      <div class="input-group">
-      @inputText(orderForm("executionDate").copy(value=Some(getCurrentDate)),
-        '_label -> "Дата выполнения",
+      @date(orderForm("executionDate"), getCurrentDate, '_label -> "Дата выполнения",
         'class -> "form-control date-picker")
-      </div>
 
       @inputText(orderForm("amount"), '_label -> "Итого", 'class -> "form-control")
       @inputText(orderForm("payment"), '_label -> "Сумма оплаты", 'class -> "form-control")
