@@ -2,6 +2,9 @@
 
 @import controllers.Application.getCurrentDate
 @import models.submodels.OrderState
+@import models.submodels.PaymentState
+@import models.submodels.SupplyState
+
 @import helper._
 @import components._
 
@@ -34,10 +37,27 @@
         options(OrderState.options),
         '_label -> "Состояние заказа", '_default -> "-- Выбрать --",
         '_showConstraints -> false, 'class -> "form-control")
+      @select(
+        orderForm("paymentState"),
+        options(PaymentState.options),
+        '_label -> "Состояние оплаты", '_default -> "-- Выбрать --",
+        '_showConstraints -> false, 'class -> "form-control")
+      @select(
+        orderForm("supplyState"),
+        options(SupplyState.options),
+        '_label -> "Состояние поставки", '_default -> "-- Выбрать --",
+        '_showConstraints -> false, 'class -> "form-control")
+
+      @selectList(orderForm("deal.id"), "", "",
+        '_label -> "Сделка", 'class -> "form-control")
+      @selectList(orderForm("product.id"), "", "",
+        '_label -> "Продукт", 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }
 
   @listModal(Contractor.findAll(), "select_contractor_id", "caption_contractor_id", "contractor_id")
   @listModal(Contact.findAll(), "select_contact_id", "caption_contact_id", "contact_id")
+  @listModal(Deal.findAll(), "select_deal_id", "caption_deal_id", "deal_id")
+  @listModal(Product.findAll(), "select_product_id", "caption_product_id", "product_id")
 }

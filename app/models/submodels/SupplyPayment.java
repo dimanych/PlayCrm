@@ -18,7 +18,7 @@ public class SupplyPayment extends BaseModel {
   /**
    * Тип(оплата или поставка)
    */
-  private String supplyPaymentType;
+  private SupplyPaymentType supplyPaymentType;
   /**
     * Дата, план
     */
@@ -76,11 +76,11 @@ public class SupplyPayment extends BaseModel {
     }
   }
 
-  public String getSupplyPaymentType() {
+  public SupplyPaymentType getSupplyPaymentType() {
     return supplyPaymentType;
   }
 
-  public void setSupplyPaymentType(String supplyPaymentType) {
+  public void setSupplyPaymentType(SupplyPaymentType supplyPaymentType) {
     this.supplyPaymentType = supplyPaymentType;
   }
 

@@ -77,7 +77,7 @@ create table order_entity (
   supply_state              integer,
   deal_id                   bigint,
   product_id                bigint,
-  supply_payment            varchar(255),
+  supply_payment_id         bigint,
   constraint ck_order_entity_order_state check (order_state in (0,1,2,3,4)),
   constraint ck_order_entity_payment_state check (payment_state in (0,1,2,3,4)),
   constraint ck_order_entity_supply_state check (supply_state in (0,1,2,3,4)),
@@ -96,7 +96,7 @@ create table product (
 create table supply_payment (
   id                        bigint not null,
   name                      varchar(255),
-  supply_payment_type       varchar(255),
+  supply_payment_type       integer,
   plan_date                 timestamp,
   percentage                integer,
   sum_plan                  bigint,
@@ -104,6 +104,7 @@ create table supply_payment (
   fact_date                 timestamp,
   state                     varchar(255),
   sum_fact                  bigint,
+  constraint ck_supply_payment_supply_payment_type check (supply_payment_type in (0,1)),
   constraint pk_supply_payment primary key (id))
 ;
 
@@ -143,6 +144,8 @@ alter table order_entity add constraint fk_order_entity_deal_8 foreign key (deal
 create index ix_order_entity_deal_8 on order_entity (deal_id);
 alter table order_entity add constraint fk_order_entity_product_9 foreign key (product_id) references product (id);
 create index ix_order_entity_product_9 on order_entity (product_id);
+alter table order_entity add constraint fk_order_entity_supplyPayment_10 foreign key (supply_payment_id) references supply_payment (id);
+create index ix_order_entity_supplyPayment_10 on order_entity (supply_payment_id);
 
 
 
