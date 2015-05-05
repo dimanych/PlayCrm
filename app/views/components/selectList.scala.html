@@ -1,0 +1,15 @@
+@(field: play.api.data.Field, inputValue: String, caption: String, args: (Symbol,Any)*)
+
+@import helper.input
+
+@input(field, args:_*) { (id, name, value, htmlArgs) =>
+  <a href="#" data-toggle="modal" data-target="#select_@id">
+    <div class="input-group">
+      <input id="caption_@id" @toHtmlArgs(htmlArgs) value="@caption">
+      <span class="input-group-addon"><i class="fa fa-search"></i></span>
+    </div>
+  </a>
+  <div class="hidden">
+    <input id="@id" name="@name" value="@inputValue">
+  </div>
+}

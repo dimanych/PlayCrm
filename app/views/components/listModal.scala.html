@@ -1,7 +1,5 @@
 @(models: List[_ <: BaseModel], modalId: String, caption: String, id: String)
 
-@import components.selected
-
 <div id="@modalId" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="selectModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -15,7 +13,11 @@
         </h4>
       </div>
       <div class="modal-body">
-      @selected(models, modalId, caption, id)
+        <div id="modal-list" class="list-group">
+        @for(model<-models){
+          <a href="#" onclick="selectItem(this, '@modalId', '@caption', '@id')" id="@model.getId" class="list-group-item">@model.getName</a>
+        }
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" onclick="setItem('@modalId', '@caption', '@id')" class="btn btn-primary">Выбрать</button>
