@@ -2,11 +2,13 @@ package models;
 
 import models.submodels.OrderState;
 import models.submodels.PaymentState;
+import models.submodels.SupplyPayment;
 import models.submodels.SupplyState;
 import play.db.ebean.Model;
 import utils.Util;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -74,7 +76,7 @@ public class OrderEntity extends BaseModel {
   /**
    * График поставок и оплат
    */
-  private String supplyPayment;
+  private List<SupplyPayment> supplyPayments;
 
   public static final Model.Finder<Long, OrderEntity> find = new Model.Finder<Long, OrderEntity>(Long.class, OrderEntity.class);
 
@@ -222,11 +224,12 @@ public class OrderEntity extends BaseModel {
     this.product = product;
   }
 
-  public String getSupplyPayment() {
-    return supplyPayment;
+  @OneToMany(mappedBy = "order")
+  public List<SupplyPayment> getSupplyPayments() {
+    return supplyPayments;
   }
 
-  public void setSupplyPayment(String supplyPayment) {
-    this.supplyPayment = supplyPayment;
+  public void setSupplyPayments(List<SupplyPayment> supplyPayments) {
+    this.supplyPayments = supplyPayments;
   }
 }

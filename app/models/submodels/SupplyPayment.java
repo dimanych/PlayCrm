@@ -1,10 +1,12 @@
 package models.submodels;
 
 import models.BaseModel;
+import models.OrderEntity;
 import play.db.ebean.Model;
 import play.i18n.Messages;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.List;
 
@@ -47,6 +49,10 @@ public class SupplyPayment extends BaseModel {
    * Сумма, факт
    */
   private Long sumFact;
+  /**
+   * Заказ
+   */
+  private OrderEntity order;
 
   public static final Model.Finder<Long, SupplyPayment> find = new Model.Finder<Long, SupplyPayment>(Long.class, SupplyPayment.class);
 
@@ -138,5 +144,14 @@ public class SupplyPayment extends BaseModel {
 
   public void setSumFact(Long sumFact) {
     this.sumFact = sumFact;
+  }
+
+  @ManyToOne
+  public OrderEntity getOrder() {
+    return order;
+  }
+
+  public void setOrder(OrderEntity order) {
+    this.order = order;
   }
 }
