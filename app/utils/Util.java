@@ -31,7 +31,7 @@ public class Util {
   public static String jsDate(Date date) {
     DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     if (date == null) {
-      date = new Date();
+      return StringUtils.EMPTY;
     }
     return dateFormat.format(date);
   }

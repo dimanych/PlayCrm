@@ -7,6 +7,7 @@ import play.i18n.Messages;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -58,6 +59,17 @@ public class SupplyPayment extends BaseModel {
 
   public static List<SupplyPayment> findAll() {
     return find.all();
+  }
+
+  public static List<SupplyPayment> findList(Long orderId) {
+    List<SupplyPayment> list = new ArrayList<>();
+    for (SupplyPayment item : find.all()) {
+      if (item.order.getId().equals(orderId)) {
+        list.add(item);
+      }
+    }
+
+    return list;
   }
 
   public static SupplyPayment findById(Long id) {

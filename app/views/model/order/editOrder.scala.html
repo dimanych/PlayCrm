@@ -4,6 +4,7 @@
 @import models.submodels.OrderState
 @import models.submodels.PaymentState
 @import models.submodels.SupplyState
+@import models.submodels.SupplyPayment
 @import helper._
 @import components._
 
@@ -55,7 +56,38 @@
       @selectList(orderForm("product.id"), Product.findAll(), name(order.getProduct), id(order.getProduct),
         '_label -> "Продукт", 'class -> "form-control")
 
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Тип</th>
+            <th>Отсрочка, дней</th>
+            <th>Дата, план</th>
+            <th>Дата, факт</th>
+            <th>Доля (%)</th>
+            <th>Сумма, план</th>
+            <th>Сумма, факт</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        @for(supplyPayment <- SupplyPayment.findList(order.getId)) {
+          <tr>
+            <td>@supplyPayment.getSupplyPaymentType.caption()</td>
+            <td>@supplyPayment.getDelay</td>
+            <td>@jsDate(supplyPayment.getPlanDate)</td>
+            <td>@jsDate(supplyPayment.getFactDate)</td>
+            <td>@supplyPayment.getPercentage</td>
+            <td>@supplyPayment.getSumPlan</td>
+            <td>@supplyPayment.getSumFact</td>
+            <td></td>
+          </tr>
+          }
+        </tbody>
+      </table>
+
     </fieldset>
+
+
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
   }
 
