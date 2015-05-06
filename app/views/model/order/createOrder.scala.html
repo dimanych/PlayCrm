@@ -19,10 +19,10 @@
       @date(orderForm("date"), getCurrentDate, '_label -> "Дата",
         'class -> "form-control date-picker")
 
-      @selectList(orderForm("contractor.id"), "", "",
+      @selectList(orderForm("contractor.id"), Contractor.findAll(), "", "",
         '_label -> "Контрагент", 'class -> "form-control")
 
-      @selectList(orderForm("contact.id"), "", "",
+      @selectList(orderForm("contact.id"), Contact.findAll(), "", "",
         '_label -> "Контакт", 'class -> "form-control")
 
       @date(orderForm("planExecutionDate"), getCurrentDate, '_label -> "Плановая дата выполнения",
@@ -48,16 +48,11 @@
         '_label -> "Состояние поставки", '_default -> "-- Выбрать --",
         '_showConstraints -> false, 'class -> "form-control")
 
-      @selectList(orderForm("deal.id"), "", "",
+      @selectList(orderForm("deal.id"), Deal.findAll(), "", "",
         '_label -> "Сделка", 'class -> "form-control")
-      @selectList(orderForm("product.id"), "", "",
+      @selectList(orderForm("product.id"), Product.findAll(), "", "",
         '_label -> "Продукт", 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }
-
-  @listModal(Contractor.findAll(), "select_contractor_id", "caption_contractor_id", "contractor_id")
-  @listModal(Contact.findAll(), "select_contact_id", "caption_contact_id", "contact_id")
-  @listModal(Deal.findAll(), "select_deal_id", "caption_deal_id", "deal_id")
-  @listModal(Product.findAll(), "select_product_id", "caption_product_id", "product_id")
 }

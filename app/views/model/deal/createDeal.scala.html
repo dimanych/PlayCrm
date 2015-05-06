@@ -16,7 +16,7 @@
         '_label -> "Стадия", '_default -> "-- Выбрать --",
         '_showConstraints -> false, 'class -> "form-control")
 
-      @selectList(dealForm("contractor.id"), "", "",
+      @selectList(dealForm("contractor.id"), Contractor.findAll(), "", "",
         '_label -> "Контрагент", 'class -> "form-control")
 
       @inputText(dealForm("budget"),'_label -> "Бюджет", 'class -> "form-control")
@@ -30,6 +30,4 @@
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }
-
-  @listModal(Contractor.findAll(), "select_contractor_id", "caption_contractor_id", "contractor_id")
 }

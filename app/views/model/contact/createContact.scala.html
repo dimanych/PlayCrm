@@ -11,7 +11,7 @@
     <div class="col-md-6">
       @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")
 
-      @selectList(contactForm("contractor.id"), "", "",
+      @selectList(contactForm("contractor.id"), Contractor.findAll(), "", "",
         '_label -> "Контрагент", 'class -> "form-control")
 
       @inputText(contactForm("post"), '_label -> "Должность", 'class -> "form-control")
@@ -30,7 +30,5 @@
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }
-
-  @listModal(Contractor.findAll(), "select_contractor_id", "caption_contractor_id", "contractor_id")
 
 }

@@ -1,8 +1,14 @@
-@(field: play.api.data.Field, inputValue: String, caption: String, args: (Symbol,Any)*)
+@(field: play.api.data.Field, models: List[_ <: BaseModel], inputValue: String, caption: String, args: (Symbol,Any)*)
 
 @import helper.input
+@import components._
+
+
+
 
 @input(field, args:_*) { (id, name, value, htmlArgs) =>
+
+
   <a href="#" data-toggle="modal" data-target="#select_@id">
     <div class="input-group">
       <input id="caption_@id" @toHtmlArgs(htmlArgs) value="@caption">
@@ -12,4 +18,6 @@
   <div class="hidden">
     <input id="@id" name="@name" value="@inputValue">
   </div>
+
+  @listModal(models, {"select_"+id}, {"caption_"+id}, id)
 }
