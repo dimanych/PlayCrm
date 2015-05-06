@@ -2,6 +2,8 @@
 
 @import utils.Util._
 @import models.submodels.OrderState
+@import models.submodels.PaymentState
+@import models.submodels.SupplyState
 @import helper._
 @import components._
 
@@ -43,10 +45,22 @@
 
       @selectEx(orderForm("orderState"), options(OrderState.options), order.getOrderState.name(),
         'class -> "form-control", '_label -> "Состояние заказа")
+      @selectEx(orderForm("paymentState"), options(PaymentState.options), order.getPaymentState.name(),
+        'class -> "form-control", '_label -> "Состояние оплаты")
+      @selectEx(orderForm("supplyState"), options(SupplyState.options), order.getSupplyState.name(),
+        '_label -> "Состояние поставки", 'class -> "form-control")
+
+      @selectList(orderForm("deal.id"), name(order.getDeal), id(order.getDeal),
+        '_label -> "Сделка", 'class -> "form-control")
+      @selectList(orderForm("product.id"), name(order.getProduct), id(order.getProduct),
+        '_label -> "Продукт", 'class -> "form-control")
+
     </fieldset>
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
   }
 
   @listModal(Contractor.findAll(), "select_contractor_id", "caption_contractor_id", "contractor_id")
   @listModal(Contact.findAll(), "select_contact_id", "caption_contact_id", "contact_id")
+  @listModal(Deal.findAll(), "select_deal_id", "caption_deal_id", "deal_id")
+  @listModal(Product.findAll(), "select_product_id", "caption_product_id", "product_id")
 }
