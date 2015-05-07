@@ -68,7 +68,6 @@ public class SupplyPayment extends BaseModel {
         list.add(item);
       }
     }
-
     return list;
   }
 

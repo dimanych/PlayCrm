@@ -1,0 +1,8 @@
+@(supplyPayment: models.submodels.SupplyPayment, supplyPaymentForm: Form[models.submodels.SupplyPayment], orderId: Long)
+
+@main(""){
+  <p>@supplyPayment.getName</p>
+  <p>@supplyPayment.getSupplyPaymentType.caption()</p>
+  <p>@supplyPayment.getPercentage</p>
+
+}

@@ -14,6 +14,7 @@ actions.deleteDeal=Удалить сделку?
 actions.addProduct=Добавить продукт
 actions.deleteProduct=Удалить продукт?
 actions.addOrder=Добавить заказ
+actions.delete.confirm=Удалить выбранный элемент?
 actions.ok=Ок
 actions.create=Создать
 actions.save=Сохранить

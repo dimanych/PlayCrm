@@ -3,60 +3,61 @@
 # ~~~~
 
 # Home page
-GET         /                               controllers.Application.index()
+GET         /                                   controllers.Application.index()
 
 # Graphics
-GET         /graphs                         controllers.Graphs.graph()
+GET         /graphs                             controllers.Graphs.graph()
 
 # Contacts
-GET         /contacts                       controllers.Contacts.contacts()
-GET         /contacts/$id<[0-9]+>           controllers.Contacts.contact(id:Long)
+GET         /contacts                           controllers.Contacts.contacts()
+GET         /contacts/$id<[0-9]+>               controllers.Contacts.contact(id:Long)
 
 # Contacts add
-GET         /contacts/add                   controllers.Contacts.add()
-POST        /contacts                       controllers.Contacts.save()
+GET         /contacts/add                       controllers.Contacts.add()
+POST        /contacts                           controllers.Contacts.save()
 # Contacts delete
-POST        /contacts/:id/delete            controllers.Contacts.delete(id:Long)
+POST        /contacts/:id/delete                controllers.Contacts.delete(id:Long)
 
 # Contractors - organization or individual for contracts
 
-GET         /contractors                    controllers.Contractors.contractors()
-GET         /contractors/$id<[0-9]+>        controllers.Contractors.contractor(id:Long)
+GET         /contractors                        controllers.Contractors.contractors()
+GET         /contractors/$id<[0-9]+>            controllers.Contractors.contractor(id:Long)
 
 # add Contractor
-GET         /contractors/add                controllers.Contractors.add()
-POST        /contractors                    controllers.Contractors.save()
+GET         /contractors/add                    controllers.Contractors.add()
+POST        /contractors                        controllers.Contractors.save()
 # delete Contractor
-POST        /contractors/:id/delete         controllers.Contractors.delete(id:Long)
+POST        /contractors/:id/delete             controllers.Contractors.delete(id:Long)
 
 # Deals
-GET         /deals                          controllers.Deals.deals()
-GET         /deals/$id<[0-9]+>              controllers.Deals.deal(id:Long)
+GET         /deals                              controllers.Deals.deals()
+GET         /deals/$id<[0-9]+>                  controllers.Deals.deal(id:Long)
 
-GET         /deals/add                      controllers.Deals.add()
-POST        /deals                          controllers.Deals.save()
-POST        /deals/:id/delete               controllers.Deals.delete(id:Long)
+GET         /deals/add                          controllers.Deals.add()
+POST        /deals                              controllers.Deals.save()
+POST        /deals/:id/delete                   controllers.Deals.delete(id:Long)
 
 # Продукты
-GET         /products                       controllers.Products.products()
-GET         /products/$id<[0-9]+>           controllers.Products.product(id:Long)
+GET         /products                           controllers.Products.products()
+GET         /products/$id<[0-9]+>               controllers.Products.product(id:Long)
 
-GET         /products/add                   controllers.Products.add()
-POST        /products/$id<[0-9]+>           controllers.Products.update(id:Long)
-POST        /products                       controllers.Products.save()
-POST        /products/:id/delete            controllers.Products.delete(id:Long)
+GET         /products/add                       controllers.Products.add()
+POST        /products/$id<[0-9]+>               controllers.Products.update(id:Long)
+POST        /products                           controllers.Products.save()
+POST        /products/:id/delete                controllers.Products.delete(id:Long)
 
 # Заказы
-GET         /orders                         controllers.Orders.orders()
-GET         /orders/$id<[0-9]+>             controllers.Orders.editOrder(id:Long)
+GET         /orders                             controllers.Orders.orders()
+GET         /orders/$id<[0-9]+>                 controllers.Orders.editOrder(id:Long)
 
-GET         /orders/add                     controllers.Orders.add()
-POST        /orders/$id<[0-9]+>             controllers.Orders.update(id:Long)
-POST        /orders                         controllers.Orders.save()
-POST        /orders/:id/delete              controllers.Orders.delete(id:Long)
+GET         /orders/add                         controllers.Orders.add()
+POST        /orders/$id<[0-9]+>                 controllers.Orders.update(id:Long)
+POST        /orders                             controllers.Orders.save()
+POST        /orders/:id/delete                  controllers.Orders.delete(id:Long)
 
 # Графики поставок и оплат
-
+GET /orders/:orderId/supply-payments/$id<[0-9]+> controllers.SupplyPayments.sp(id:Long,orderId:Long)
+POST /orders/:orderId/supply-payment/:id/delete controllers.SupplyPayments.delete(id:Long,orderId:Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                   controllers.Assets.at(path="/public", file)
+GET         /assets/*file                       controllers.Assets.at(path="/public", file)
