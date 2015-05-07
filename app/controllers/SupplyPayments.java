@@ -26,4 +26,13 @@ public class SupplyPayments extends Controller {
     SupplyPayment.findById(id).delete();
     return redirect(controllers.routes.Orders.editOrder(orderId));
   }
+
+  public static Result update(Long id, Long orderId) {
+    Form<SupplyPayment> supplyPaymentForm = form(SupplyPayment.class);
+    if (supplyPaymentForm.hasErrors()) {
+      throw new RuntimeException(supplyPaymentForm.toString());
+    }
+    supplyPaymentForm.get().update(id);
+    return ok(sp.render(SupplyPayment.findById(id), supplyPaymentForm, orderId));
+  }
 }
