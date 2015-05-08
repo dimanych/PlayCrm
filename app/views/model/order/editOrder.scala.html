@@ -25,36 +25,40 @@
       @inputText(orderForm("number").copy(value=Some(order.number)),
         '_label -> "Номер", 'class -> "form-control")
 
-      @date(orderForm("date"), order.jsDate, '_label -> "Дата",
-        'class -> "form-control date-picker")
+      <div class="col-md-6">
+        @date(orderForm("date"), order.jsDate, '_label -> "Дата",
+          'class -> "form-control date-picker")
 
-      @selectList(orderForm("contractor.id"), Contractor.findAll(), contractorId, contractorName,
-        '_label -> "Контрагент", 'class -> "form-control")
+        @selectList(orderForm("contractor.id"), Contractor.findAll(), contractorId, contractorName,
+          '_label -> "Контрагент", 'class -> "form-control")
 
-      @selectList(orderForm("contact.id"), Contact.findAll(), contactId, contactName,
-        '_label -> "Контакт", 'class -> "form-control")
+        @selectList(orderForm("contact.id"), Contact.findAll(), contactId, contactName,
+          '_label -> "Контакт", 'class -> "form-control")
 
-      @date(orderForm("planExecutionDate"), order.jsPlanExecutionDate(), '_label -> "Плановая дата выполнения",
-        'class -> "form-control date-picker")
+        @date(orderForm("planExecutionDate"), order.jsPlanExecutionDate(), '_label -> "Плановая дата выполнения",
+          'class -> "form-control date-picker")
 
-      @date(orderForm("executionDate"), order.jsExecutionDate, '_label -> "Дата выполнения",
-        'class -> "form-control date-picker")
+        @date(orderForm("executionDate"), order.jsExecutionDate, '_label -> "Дата выполнения",
+          'class -> "form-control date-picker")
+      </div>
 
-      @inputText(orderForm("amount").copy(value = Some(order.amount)), '_label -> "Итого", 'class -> "form-control")
+      <div class="col-md-6">
+        @inputText(orderForm("amount").copy(value = Some(order.amount)), '_label -> "Итого", 'class -> "form-control")
 
-      @inputText(orderForm("payment").copy(value = Some(order.payment)), '_label -> "Сумма оплаты", 'class -> "form-control")
+        @inputText(orderForm("payment").copy(value = Some(order.payment)), '_label -> "Сумма оплаты", 'class -> "form-control")
 
-      @selectEx(orderForm("orderState"), options(OrderState.options), order.getOrderState.name(),
-        'class -> "form-control", '_label -> "Состояние заказа")
-      @selectEx(orderForm("paymentState"), options(PaymentState.options), order.getPaymentState.name(),
-        'class -> "form-control", '_label -> "Состояние оплаты")
-      @selectEx(orderForm("supplyState"), options(SupplyState.options), order.getSupplyState.name(),
-        '_label -> "Состояние поставки", 'class -> "form-control")
+        @selectEx(orderForm("orderState"), options(OrderState.options), order.getOrderState.name(),
+          'class -> "form-control", '_label -> "Состояние заказа")
+        @selectEx(orderForm("paymentState"), options(PaymentState.options), order.getPaymentState.name(),
+          'class -> "form-control", '_label -> "Состояние оплаты")
+        @selectEx(orderForm("supplyState"), options(SupplyState.options), order.getSupplyState.name(),
+          '_label -> "Состояние поставки", 'class -> "form-control")
+        @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
+          '_label -> "Сделка", 'class -> "form-control")
+        @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
+          '_label -> "Продукт", 'class -> "form-control")
+      </div>
 
-      @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
-        '_label -> "Сделка", 'class -> "form-control")
-      @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
-        '_label -> "Продукт", 'class -> "form-control")
 
     </fieldset>
 
