@@ -1,11 +1,10 @@
 package controllers;
 
-import models.OrderEntity;
 import models.submodels.SupplyPayment;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.model.order.editOrder;
+import views.html.model.supply_payment.addSp;
 import views.html.model.supply_payment.sp;
 
 import static play.data.Form.form;
@@ -20,6 +19,22 @@ public class SupplyPayments extends Controller {
   public static Result sp(Long id, Long orderId) {
     Form<SupplyPayment> supplyPaymentForm = form(SupplyPayment.class);
     return ok(sp.render(SupplyPayment.findById(id), supplyPaymentForm, orderId));
+  }
+
+
+  public static Result add(Long orderId) {
+    Form<SupplyPayment> supplyPaymentForm = form(SupplyPayment.class);
+    return ok(addSp.render(supplyPaymentForm, orderId));
+  }
+
+
+  public static Result save(Long orderId) {
+    Form<SupplyPayment> supplyPaymentForm = form(SupplyPayment.class).bindFromRequest();
+    if (supplyPaymentForm.hasErrors()) {
+      throw new RuntimeException(supplyPaymentForm.toString());
+    }
+    supplyPaymentForm.get().save();
+    return redirect(controllers.routes.Orders.editOrder(orderId));
   }
 
   public static Result delete(Long id, Long orderId) {

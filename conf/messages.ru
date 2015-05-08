@@ -16,6 +16,7 @@ actions.deleteProduct=Удалить продукт?
 actions.addOrder=Добавить заказ
 actions.delete.confirm=Удалить выбранный элемент?
 actions.ok=Ок
+actions.add=Добавить
 actions.create=Создать
 actions.save=Сохранить
 actions.cancel=Отмена
@@ -39,7 +40,7 @@ info.supply.partially=Частично поставлен
 info.supply.completed=Поставлен полностью
 info.payment.waiting=Ожидание оплаты
 info.payment.partially=Частично оплачено
-info.payment.completed=Поставлен полностью
+info.payment.completed=Оплачен полностью
 info.unrestore=Удаленные данные будет невозможно восстановить
 
 contact.name=ФИО

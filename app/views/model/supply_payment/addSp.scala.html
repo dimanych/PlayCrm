@@ -1,0 +1,34 @@
+@(supplyPaymentForm: Form[models.submodels.SupplyPayment], orderId: Long)
+
+@import helper._
+@import components._
+@import models.submodels.SupplyPaymentType
+@import models.submodels.State
+
+@main(""){
+
+  @form(routes.SupplyPayments.save(orderId), 'class -> "dl-horizontal", 'id -> "supplyPayment_add") {
+    <fieldset>
+      <div class="col-md-6">
+        @selectEx(supplyPaymentForm("supplyPaymentType"), options(SupplyPaymentType.options()),
+          "", 'class -> "form-control", '_label -> "Тип")
+        @date(supplyPaymentForm("planDate"), "", '_label -> "Дата, план",
+          'class -> "form-control date-picker")
+        @inputText(supplyPaymentForm("percentage"), '_label -> "Доля, %", 'class -> "form-control")
+        @inputText(supplyPaymentForm("sumPlan"), '_label -> "Сумма, план", 'class -> "form-control")
+      </div>
+      <div class="col-md-6">
+        @inputText(supplyPaymentForm("delay"), '_label -> "Отсрочка, дней", 'class -> "form-control")
+        @date(supplyPaymentForm("factDate"), "", '_label -> "Дата, факт",
+          'class -> "form-control date-picker")
+        @selectEx(supplyPaymentForm("state"), options(State.options()), "", 'class -> "form-control", '_label -> "Тип")
+        @inputText(supplyPaymentForm("sumFact"), '_label -> "Сумма, факт", 'class -> "form-control")
+        <div class="hide">
+          @inputText(supplyPaymentForm("order.id").copy(value = Some(orderId.toString)))
+        </div>
+      </div>
+    </fieldset>
+
+    <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
+  }
+}

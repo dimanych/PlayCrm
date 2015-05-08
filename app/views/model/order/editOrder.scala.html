@@ -61,6 +61,8 @@
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
   }
 
+  <hr/>
+
   <label for="supplyPayments">График поставок и оплат</label>
 
   <table id="supplyPayments" class="table table-bordered">
@@ -96,6 +98,8 @@
     }
     </tbody>
   </table>
+
+  <a href="@routes.SupplyPayments.add(order.getId())" class="btn btn-primary"><i class="fa fa-plus"></i> @Messages("actions.add")</a>
 
   @confirm(Messages("actions.delete.confirm"),
     Messages("info.unrestore"),
