@@ -28,7 +28,7 @@ public class SupplyPayments extends Controller {
   }
 
   public static Result update(Long id, Long orderId) {
-    Form<SupplyPayment> supplyPaymentForm = form(SupplyPayment.class);
+    Form<SupplyPayment> supplyPaymentForm = form(SupplyPayment.class).bindFromRequest();
     if (supplyPaymentForm.hasErrors()) {
       throw new RuntimeException(supplyPaymentForm.toString());
     }

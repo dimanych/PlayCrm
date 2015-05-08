@@ -7,6 +7,7 @@ import utils.Util;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,7 @@ public class SupplyPayment extends BaseModel {
   /**
    * Сумма, план
    */
-  private Long sumPlan;
+  private BigDecimal sumPlan;
   /**
    * Отсрочка, дней
    */
@@ -49,7 +50,7 @@ public class SupplyPayment extends BaseModel {
   /**
    * Сумма, факт
    */
-  private Long sumFact;
+  private BigDecimal sumFact;
   /**
    * Заказ
    */
@@ -87,6 +88,10 @@ public class SupplyPayment extends BaseModel {
     return String.valueOf(sumPlan);
   }
 
+  public String sumPlanf() {
+    return Util.getNumberFormatted(sumPlan);
+  }
+
   public String delay() {
     return String.valueOf(delay);
   }
@@ -97,6 +102,10 @@ public class SupplyPayment extends BaseModel {
 
   public String sumFact() {
     return String.valueOf(sumFact);
+  }
+
+  public String sumFactf() {
+    return Util.getNumberFormatted(sumFact);
   }
 
   public SupplyPaymentType getSupplyPaymentType() {
@@ -123,11 +132,11 @@ public class SupplyPayment extends BaseModel {
     this.percentage = percentage;
   }
 
-  public Long getSumPlan() {
+  public BigDecimal getSumPlan() {
     return sumPlan;
   }
 
-  public void setSumPlan(Long sumPlan) {
+  public void setSumPlan(BigDecimal sumPlan) {
     this.sumPlan = sumPlan;
   }
 
@@ -155,11 +164,11 @@ public class SupplyPayment extends BaseModel {
     this.state = state;
   }
 
-  public Long getSumFact() {
+  public BigDecimal getSumFact() {
     return sumFact;
   }
 
-  public void setSumFact(Long sumFact) {
+  public void setSumFact(BigDecimal sumFact) {
     this.sumFact = sumFact;
   }
 
