@@ -5,7 +5,7 @@
 @main("Создать продукт"){
   <h2>@Messages("actions.addProduct")</h2>
 
-  @form(routes.Products.save(), 'id -> "formSender") {
+  @form(routes.Products.save(), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
       @inputText(productForm("name"), '_label -> "Наименование", 'class -> "form-control")
       @inputText(productForm("code"), '_label -> "code", 'class -> "form-control")

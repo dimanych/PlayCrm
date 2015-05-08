@@ -3,12 +3,8 @@
 @import helper.input
 
 @input(field, args:_*) { (id, name, value, htmlArgs) =>
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="input-group">
-        <input id="@id" name="@name" @toHtmlArgs(htmlArgs) value="@caption">
-        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-      </div>
-    </div>
+  <div class="input-group">
+    <input id="@id" name="@name" @toHtmlArgs(htmlArgs) value="@caption">
+    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
   </div>
 }

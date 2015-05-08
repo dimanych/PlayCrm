@@ -7,26 +7,30 @@
 
 @main(""){
 
-  @form(routes.SupplyPayments.update(supplyPayment.getId, orderId), 'id -> "supplyPayment_updater") {
-    @selectEx(supplyPaymentForm("supplyPaymentType"), options(SupplyPaymentType.options()),
-      supplyPayment.getSupplyPaymentType.name(), 'class -> "form-control", '_label -> "Тип")
-    @date(supplyPaymentForm("planDate"), supplyPayment.planDate, '_label -> "Дата, план",
-      'class -> "form-control date-picker")
-    @inputText(supplyPaymentForm("percentage").copy(value = Some(supplyPayment.percentage)),
-      '_label -> "Доля, %", 'class -> "form-control")
-    @inputText(supplyPaymentForm("sumPlan").copy(value = Some(supplyPayment.sumPlan)),
-      '_label -> "Сумма, план", 'class -> "form-control")
-    @inputText(supplyPaymentForm("delay").copy(value = Some(supplyPayment.delay)),
-      '_label -> "Отсрочка, дней", 'class -> "form-control")
-    @date(supplyPaymentForm("factDate"), supplyPayment.factDate, '_label -> "Дата, факт",
-      'class -> "form-control date-picker")
-    @selectEx(supplyPaymentForm("state"), options(State.options()),
-      supplyPayment.getState.name(), 'class -> "form-control", '_label -> "Тип")
+  @form(routes.SupplyPayments.update(supplyPayment.getId, orderId), 'class -> "dl-horizontal", 'id -> "supplyPayment_updater") {
+    <fieldset>
+      <div class="col-md-6">
+        @selectEx(supplyPaymentForm("supplyPaymentType"), options(SupplyPaymentType.options()),
+          supplyPayment.getSupplyPaymentType.name(), 'class -> "form-control", '_label -> "Тип")
+        @date(supplyPaymentForm("planDate"), supplyPayment.planDate, '_label -> "Дата, план",
+          'class -> "form-control date-picker")
+        @inputText(supplyPaymentForm("percentage").copy(value = Some(supplyPayment.percentage)),
+          '_label -> "Доля, %", 'class -> "form-control")
+        @inputText(supplyPaymentForm("sumPlan").copy(value = Some(supplyPayment.sumPlan)),
+          '_label -> "Сумма, план", 'class -> "form-control")
+      </div>
+      <div class="col-md-6">
+        @inputText(supplyPaymentForm("delay").copy(value = Some(supplyPayment.delay)),
+          '_label -> "Отсрочка, дней", 'class -> "form-control")
+        @date(supplyPaymentForm("factDate"), supplyPayment.factDate, '_label -> "Дата, факт",
+          'class -> "form-control date-picker")
+        @selectEx(supplyPaymentForm("state"), options(State.options()),
+          supplyPayment.getState.name(), 'class -> "form-control", '_label -> "Тип")
+        @inputText(supplyPaymentForm("sumFact").copy(value = Some(supplyPayment.sumFact)),
+          '_label -> "Сумма, факт", 'class -> "form-control")
+      </div>
+    </fieldset>
 
+    <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
   }
-
-  <p>@supplyPayment.getName</p>
-  <p>@supplyPayment.getSupplyPaymentType.caption()</p>
-  <p>@supplyPayment.getPercentage</p>
-
 }

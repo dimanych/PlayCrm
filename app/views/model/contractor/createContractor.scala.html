@@ -5,7 +5,7 @@
 @main("Contractor"){
   <h2>Добавить контрагента</h2>
 
-  @form(routes.Contractors.save()) {
+  @form(routes.Contractors.save(), 'class -> "dl-horizontal") {
     <fieldset>
       @inputText(contractorForm("name"), '_label -> "Имя", 'class -> "form-control")
       @select(

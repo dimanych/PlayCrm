@@ -16,7 +16,7 @@
 
 
 @main(""){
-  @form(routes.Orders.update(order.getId), 'id -> "formSender") {
+  @form(routes.Orders.update(order.getId), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
 
       @inputText(orderForm("name").copy(value=Some(order.name)),
@@ -51,9 +51,9 @@
       @selectEx(orderForm("supplyState"), options(SupplyState.options), order.getSupplyState.name(),
         '_label -> "Состояние поставки", 'class -> "form-control")
 
-      @selectList(orderForm("deal.id"), Deal.findAll(), name(order.getDeal), id(order.getDeal),
+      @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
         '_label -> "Сделка", 'class -> "form-control")
-      @selectList(orderForm("product.id"), Product.findAll(), name(order.getProduct), id(order.getProduct),
+      @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
         '_label -> "Продукт", 'class -> "form-control")
 
     </fieldset>

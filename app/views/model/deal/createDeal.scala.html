@@ -7,7 +7,7 @@
 @main(""){
   <h2>@Messages("actions.addDeal")</h2>
 
-  @form(routes.Deals.save(), 'id -> "formSender") {
+  @form(routes.Deals.save(), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
       @inputText(dealForm("name"), '_label -> null, 'class -> "form-control", 'placeholder -> "Наименование")
       @select(

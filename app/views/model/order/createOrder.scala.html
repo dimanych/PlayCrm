@@ -11,7 +11,7 @@
 @main("Создать заказ"){
   <h2>@Messages("actions.addOrder")</h2>
 
-  @form(routes.Orders.save(), 'id -> "formSender") {
+  @form(routes.Orders.save(), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
       @inputText(orderForm("name"), '_label -> "Наименование", 'class -> "form-control")
       @inputText(orderForm("number"), '_label -> "Номер", 'class -> "form-control")

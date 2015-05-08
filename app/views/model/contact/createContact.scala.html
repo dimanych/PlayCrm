@@ -6,7 +6,7 @@
 @main("Добавить Контакт"){
   <h2>Добавить контакт</h2>
 
-  @form(action = routes.Contacts.save(), 'id -> "formModal") {
+  @form(action = routes.Contacts.save(), 'class -> "dl-horizontal", 'id -> "formModal") {
     <fieldset>
     <div class="col-md-6">
       @inputText(contactForm("name"), '_label -> "Имя", 'class -> "form-control")

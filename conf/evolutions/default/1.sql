@@ -101,10 +101,11 @@ create table supply_payment (
   sum_plan                  bigint,
   delay                     integer,
   fact_date                 timestamp,
-  state                     varchar(255),
+  state                     integer,
   sum_fact                  bigint,
   order_id                  bigint,
   constraint ck_supply_payment_supply_payment_type check (supply_payment_type in (0,1)),
+  constraint ck_supply_payment_state check (state in (0,1)),
   constraint pk_supply_payment primary key (id))
 ;
 
