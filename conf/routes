@@ -58,7 +58,7 @@ POST        /orders/:id/delete                                  controllers.Orde
 # Графики поставок и оплат
 GET         /orders/:orderId/supply-payments/$id<[0-9]+>        controllers.SupplyPayments.sp(id:Long,orderId:Long)
 POST        /orders/:orderId/supply-payment/:id/delete          controllers.SupplyPayments.delete(id:Long,orderId:Long)
-POST        /orders/:orderId/supply-payment/:id                  controllers.SupplyPayments.update(id:Long,orderId:Long)
+POST        /orders/:orderId/supply-payment/:id                 controllers.SupplyPayments.update(id:Long,orderId:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                       controllers.Assets.at(path="/public", file)

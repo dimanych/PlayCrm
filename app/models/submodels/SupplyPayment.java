@@ -3,7 +3,7 @@ package models.submodels;
 import models.BaseModel;
 import models.OrderEntity;
 import play.db.ebean.Model;
-import play.i18n.Messages;
+import utils.Util;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -45,7 +45,7 @@ public class SupplyPayment extends BaseModel {
   /**
    * Состояние(выполнен или не выполнен)
    */
-  private String state;
+  private State state;
   /**
    * Сумма, факт
    */
@@ -75,22 +75,28 @@ public class SupplyPayment extends BaseModel {
     return find.byId(id);
   }
 
+  public String planDate() {
+    return Util.jsDate(planDate);
+  }
 
-  private enum State {
-    // Выполнен
-    PERFORM(Messages.get("info.perform")),
-    // Не выполнен
-    UNPERFORMED(Messages.get("info.unperformed"));
+  public String percentage() {
+    return String.valueOf(percentage);
+  }
 
-    private String caption;
+  public String sumPlan() {
+    return String.valueOf(sumPlan);
+  }
 
-    State(String caption) {
-      this.caption = caption;
-    }
+  public String delay() {
+    return String.valueOf(delay);
+  }
 
-    public String caption() {
-      return caption;
-    }
+  public String factDate() {
+    return Util.jsDate(factDate);
+  }
+
+  public String sumFact() {
+    return String.valueOf(sumFact);
   }
 
   public SupplyPaymentType getSupplyPaymentType() {
@@ -141,11 +147,11 @@ public class SupplyPayment extends BaseModel {
     this.factDate = factDate;
   }
 
-  public String getState() {
+  public State getState() {
     return state;
   }
 
-  public void setState(String state) {
+  public void setState(State state) {
     this.state = state;
   }
 

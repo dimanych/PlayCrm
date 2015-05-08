@@ -1,6 +1,30 @@
 @(supplyPayment: models.submodels.SupplyPayment, supplyPaymentForm: Form[models.submodels.SupplyPayment], orderId: Long)
 
+@import helper._
+@import components._
+@import models.submodels.SupplyPaymentType
+@import models.submodels.State
+
 @main(""){
+
+  @form(routes.SupplyPayments.update(supplyPayment.getId, orderId), 'id -> "supplyPayment_updater") {
+    @selectEx(supplyPaymentForm("supplyPaymentType"), options(SupplyPaymentType.options()),
+      supplyPayment.getSupplyPaymentType.name(), 'class -> "form-control", '_label -> "Тип")
+    @date(supplyPaymentForm("planDate"), supplyPayment.planDate, '_label -> "Дата, план",
+      'class -> "form-control date-picker")
+    @inputText(supplyPaymentForm("percentage").copy(value = Some(supplyPayment.percentage)),
+      '_label -> "Доля, %", 'class -> "form-control")
+    @inputText(supplyPaymentForm("sumPlan").copy(value = Some(supplyPayment.sumPlan)),
+      '_label -> "Сумма, план", 'class -> "form-control")
+    @inputText(supplyPaymentForm("delay").copy(value = Some(supplyPayment.delay)),
+      '_label -> "Отсрочка, дней", 'class -> "form-control")
+    @date(supplyPaymentForm("factDate"), supplyPayment.factDate, '_label -> "Дата, факт",
+      'class -> "form-control date-picker")
+    @selectEx(supplyPaymentForm("state"), options(State.options()),
+      supplyPayment.getState.name(), 'class -> "form-control", '_label -> "Тип")
+
+  }
+
   <p>@supplyPayment.getName</p>
   <p>@supplyPayment.getSupplyPaymentType.caption()</p>
   <p>@supplyPayment.getPercentage</p>

@@ -6,23 +6,19 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * <p>Перечисление типов Оплат и Поставок</p>
+ * <p></p>
  *
  * @author Dmitriy Grigoriev
  */
-public enum SupplyPaymentType {
-  /**
-   * Поставка
-   */
-  SUPPLY(Messages.get("supply")),
-  /**
-   * Оплата
-   */
-  PAYMENT(Messages.get("payment"));
+public enum State {
+  // Выполнен
+  PERFORM(Messages.get("info.perform")),
+  // Не выполнен
+  UNPERFORMED(Messages.get("info.unperformed"));
 
   private String caption;
 
-  SupplyPaymentType(String caption) {
+  State(String caption) {
     this.caption = caption;
   }
 
@@ -32,9 +28,10 @@ public enum SupplyPaymentType {
 
   public static Map<String, String> options() {
     LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
-    for (SupplyPaymentType type : values()) {
-      options.put(type.name(), type.caption());
+    for (State state : values()) {
+      options.put(state.name(), state.caption());
     }
     return options;
   }
+
 }
