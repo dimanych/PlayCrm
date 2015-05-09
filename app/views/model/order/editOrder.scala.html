@@ -59,9 +59,10 @@
       @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
         '_label -> "Сделка", 'class -> "form-control")
       <hr/>
+     @*
       @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
         '_label -> "Продукт", 'class -> "form-control")
-
+     *@
     </fieldset>
 
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
@@ -78,7 +79,7 @@
         <th>Отсрочка, дней</th>
         <th>Дата, план</th>
         <th>Дата, факт</th>
-        <th>Доля (%)</th>
+        <th>Доля</th>
         <th>Сумма, план</th>
         <th>Сумма, факт</th>
         <th></th>
@@ -91,7 +92,15 @@
         <td>@supplyPayment.getDelay</td>
         <td>@jsDate(supplyPayment.getPlanDate)</td>
         <td>@jsDate(supplyPayment.getFactDate)</td>
-        <td>@supplyPayment.getPercentage</td>
+        <td>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+            aria-valuenow="@supplyPayment.getPercentage"
+            aria-valuemin="0" aria-valuemax="100" style="width: @supplyPayment.getPercentage%;">
+            @supplyPayment.getPercentage%
+      </div>
+          </div>
+        </td>
         <td>@supplyPayment.sumPlanf</td>
         <td>@supplyPayment.sumFactf</td>
         <td> <a href="@routes.SupplyPayments.sp(supplyPayment.getId, order.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>

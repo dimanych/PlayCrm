@@ -1,5 +1,3 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
 
 # --- !Ups
 
@@ -76,7 +74,6 @@ create table order_entity (
   payment_state             integer,
   supply_state              integer,
   deal_id                   bigint,
-  product_id                bigint,
   constraint ck_order_entity_order_state check (order_state in (0,1,2,3,4)),
   constraint ck_order_entity_payment_state check (payment_state in (0,1,2,3,4)),
   constraint ck_order_entity_supply_state check (supply_state in (0,1,2,3,4)),
@@ -89,7 +86,7 @@ create table product (
   code                      integer,
   price                     decimal(38),
   characteristic            varchar(255),
-  evo                       varchar(255),
+  order_id                  bigint,
   constraint pk_product primary key (id))
 ;
 
@@ -144,8 +141,8 @@ alter table order_entity add constraint fk_order_entity_contact_7 foreign key (c
 create index ix_order_entity_contact_7 on order_entity (contact_id);
 alter table order_entity add constraint fk_order_entity_deal_8 foreign key (deal_id) references deal (id);
 create index ix_order_entity_deal_8 on order_entity (deal_id);
-alter table order_entity add constraint fk_order_entity_product_9 foreign key (product_id) references product (id);
-create index ix_order_entity_product_9 on order_entity (product_id);
+alter table product add constraint fk_product_order_9 foreign key (order_id) references order_entity (id);
+create index ix_product_order_9 on product (order_id);
 alter table supply_payment add constraint fk_supply_payment_order_10 foreign key (order_id) references order_entity (id);
 create index ix_supply_payment_order_10 on supply_payment (order_id);
 
