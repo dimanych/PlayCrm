@@ -72,7 +72,7 @@ public class OrderEntity extends BaseModel {
   /**
    * Продукты
    */
-  private Product product;
+  private List<Product> products;
   /**
    * График поставок и оплат
    */
@@ -215,13 +215,13 @@ public class OrderEntity extends BaseModel {
     this.deal = deal;
   }
 
-  @OneToOne
-  public Product getProduct() {
-    return product;
+  @OneToMany(mappedBy = "order")
+  public List<Product> getProducts() {
+    return products;
   }
 
-  public void setProduct(Product product) {
-    this.product = product;
+  public void setProducts(List<Product> products) {
+    this.products = products;
   }
 
   @OneToMany(mappedBy = "order")

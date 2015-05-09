@@ -15,43 +15,63 @@
     <fieldset>
       @inputText(orderForm("name"), '_label -> "Наименование", 'class -> "form-control")
       @inputText(orderForm("number"), '_label -> "Номер", 'class -> "form-control")
+      <div class="col-md-6">
+        @date(orderForm("date"), getCurrentDate, '_label -> "Дата",
+          'class -> "form-control date-picker")
 
-      @date(orderForm("date"), getCurrentDate, '_label -> "Дата",
-        'class -> "form-control date-picker")
+        @selectList(orderForm("contractor.id"), Contractor.findAll(), "", "",
+          '_label -> "Контрагент", 'class -> "form-control")
 
-      @selectList(orderForm("contractor.id"), Contractor.findAll(), "", "",
-        '_label -> "Контрагент", 'class -> "form-control")
+        @selectList(orderForm("contact.id"), Contact.findAll(), "", "",
+          '_label -> "Контакт", 'class -> "form-control")
 
-      @selectList(orderForm("contact.id"), Contact.findAll(), "", "",
-        '_label -> "Контакт", 'class -> "form-control")
+        @date(orderForm("planExecutionDate"), getCurrentDate, '_label -> "Плановая дата выполнения",
+          'class -> "form-control date-picker")
+        @date(orderForm("executionDate"), getCurrentDate, '_label -> "Дата выполнения",
+          'class -> "form-control date-picker")
+        @selectList(orderForm("deal.id"), Deal.findAll(), "", "",
+          '_label -> "Сделка", 'class -> "form-control")
+      </div>
 
-      @date(orderForm("planExecutionDate"), getCurrentDate, '_label -> "Плановая дата выполнения",
-        'class -> "form-control date-picker")
-      @date(orderForm("executionDate"), getCurrentDate, '_label -> "Дата выполнения",
-        'class -> "form-control date-picker")
+      <div class="col-md-6">
+        @inputText(orderForm("amount"), '_label -> "Итого", 'class -> "form-control")
+        @inputText(orderForm("payment"), '_label -> "Сумма оплаты", 'class -> "form-control")
+        @select(
+          orderForm("orderState"),
+          options(OrderState.options),
+          '_label -> "Состояние заказа", '_default -> "-- Выбрать --",
+          '_showConstraints -> false, 'class -> "form-control")
+        @select(
+          orderForm("paymentState"),
+          options(PaymentState.options),
+          '_label -> "Состояние оплаты", '_default -> "-- Выбрать --",
+          '_showConstraints -> false, 'class -> "form-control")
+        @select(
+          orderForm("supplyState"),
+          options(SupplyState.options),
+          '_label -> "Состояние поставки", '_default -> "-- Выбрать --",
+          '_showConstraints -> false, 'class -> "form-control")
+        @inputText(orderForm("amount"), '_label -> "Итого", 'class -> "form-control")
+        @inputText(orderForm("payment"), '_label -> "Сумма оплаты", 'class -> "form-control")
+        @select(
+          orderForm("orderState"),
+          options(OrderState.options),
+          '_label -> "Состояние заказа", '_default -> "-- Выбрать --",
+          '_showConstraints -> false, 'class -> "form-control")
+        @select(
+          orderForm("paymentState"),
+          options(PaymentState.options),
+          '_label -> "Состояние оплаты", '_default -> "-- Выбрать --",
+          '_showConstraints -> false, 'class -> "form-control")
+        @select(
+          orderForm("supplyState"),
+          options(SupplyState.options),
+          '_label -> "Состояние поставки", '_default -> "-- Выбрать --",
+          '_showConstraints -> false, 'class -> "form-control")
 
-      @inputText(orderForm("amount"), '_label -> "Итого", 'class -> "form-control")
-      @inputText(orderForm("payment"), '_label -> "Сумма оплаты", 'class -> "form-control")
-      @select(
-        orderForm("orderState"),
-        options(OrderState.options),
-        '_label -> "Состояние заказа", '_default -> "-- Выбрать --",
-        '_showConstraints -> false, 'class -> "form-control")
-      @select(
-        orderForm("paymentState"),
-        options(PaymentState.options),
-        '_label -> "Состояние оплаты", '_default -> "-- Выбрать --",
-        '_showConstraints -> false, 'class -> "form-control")
-      @select(
-        orderForm("supplyState"),
-        options(SupplyState.options),
-        '_label -> "Состояние поставки", '_default -> "-- Выбрать --",
-        '_showConstraints -> false, 'class -> "form-control")
-
-      @selectList(orderForm("deal.id"), Deal.findAll(), "", "",
-        '_label -> "Сделка", 'class -> "form-control")
-      @selectList(orderForm("product.id"), Product.findAll(), "", "",
-        '_label -> "Продукт", 'class -> "form-control")
+        @selectList(orderForm("product.id"), Product.findAll(), "", "",
+          '_label -> "Продукт", 'class -> "form-control")
+      </div>
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }

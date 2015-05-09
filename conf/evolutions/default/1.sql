@@ -89,6 +89,7 @@ create table product (
   code                      integer,
   price                     decimal(38),
   characteristic            varchar(255),
+  evo                       varchar(255),
   constraint pk_product primary key (id))
 ;
 

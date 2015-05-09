@@ -24,7 +24,7 @@
 
       @inputText(orderForm("number").copy(value=Some(order.number)),
         '_label -> "Номер", 'class -> "form-control")
-
+      <hr/>
       <div class="col-md-6">
         @date(orderForm("date"), order.jsDate, '_label -> "Дата",
           'class -> "form-control date-picker")
@@ -53,12 +53,14 @@
           'class -> "form-control", '_label -> "Состояние оплаты")
         @selectEx(orderForm("supplyState"), options(SupplyState.options), order.getSupplyState.name(),
           '_label -> "Состояние поставки", 'class -> "form-control")
-        @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
-          '_label -> "Сделка", 'class -> "form-control")
-        @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
-          '_label -> "Продукт", 'class -> "form-control")
       </div>
-
+      <div class="clearfix"></div>
+      <hr/>
+      @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
+        '_label -> "Сделка", 'class -> "form-control")
+      <hr/>
+      @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
+        '_label -> "Продукт", 'class -> "form-control")
 
     </fieldset>
 
