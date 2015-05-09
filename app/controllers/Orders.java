@@ -40,7 +40,7 @@ public class Orders extends Controller {
       return badRequest(orders.render(OrderEntity.findAll()));
     }
     orderForm.get().save();
-    return GO_ORDERS;
+    return ok(editOrder.render(OrderEntity.findById(orderForm.get().getId()), orderForm));
   }
 
   public static Result update(Long id) {

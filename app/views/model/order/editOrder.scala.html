@@ -15,7 +15,7 @@
 @contactId = @{ id(order.getContact) }
 
 
-@main(""){
+@main("Заказы"){
   @form(routes.Orders.update(order.getId), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
 
@@ -92,15 +92,7 @@
         <td>@supplyPayment.getDelay</td>
         <td>@jsDate(supplyPayment.getPlanDate)</td>
         <td>@jsDate(supplyPayment.getFactDate)</td>
-        <td>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar"
-            aria-valuenow="@supplyPayment.getPercentage"
-            aria-valuemin="0" aria-valuemax="100" style="width: @supplyPayment.getPercentage%;">
-            @supplyPayment.getPercentage%
-      </div>
-          </div>
-        </td>
+        <td>@progressbar(supplyPayment.getPercentage)</td>
         <td>@supplyPayment.sumPlanf</td>
         <td>@supplyPayment.sumFactf</td>
         <td> <a href="@routes.SupplyPayments.sp(supplyPayment.getId, order.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>

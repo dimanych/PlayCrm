@@ -29,8 +29,6 @@
           'class -> "form-control date-picker")
         @date(orderForm("executionDate"), getCurrentDate, '_label -> "Дата выполнения",
           'class -> "form-control date-picker")
-        @selectList(orderForm("deal.id"), Deal.findAll(), "", "",
-          '_label -> "Сделка", 'class -> "form-control")
       </div>
 
       <div class="col-md-6">
@@ -51,10 +49,13 @@
           options(SupplyState.options),
           '_label -> "Состояние поставки", '_default -> "-- Выбрать --",
           '_showConstraints -> false, 'class -> "form-control")
-
-        @selectList(orderForm("product.id"), Product.findAll(), "", "",
-          '_label -> "Продукт", 'class -> "form-control")
       </div>
+      <div class="clearfix"></div>
+      <hr/>
+      @selectList(orderForm("deal.id"), Deal.findAll(), "", "",
+        '_label -> "Сделка", 'class -> "form-control")
+      @selectList(orderForm("product.id"), Product.findAll(), "", "",
+        '_label -> "Продукт", 'class -> "form-control")
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" onclick="convertDate()" class="btn btn-primary">
   }
