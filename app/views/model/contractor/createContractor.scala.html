@@ -2,8 +2,7 @@
 
 @import helper._
 
-@main("Contractor"){
-  <h2>Добавить контрагента</h2>
+@main(Messages("actions.addContractor")){
 
   @form(routes.Contractors.save(), 'class -> "dl-horizontal") {
     <fieldset>

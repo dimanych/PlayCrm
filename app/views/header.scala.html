@@ -1,4 +1,4 @@
-@(content : Html)
+@(title : String)
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
@@ -12,8 +12,9 @@
 <body>
 <!-- row main -->
 <div class="row">
-  <div class="col-md-2 header">@menu(content)</div>
+  <div class="col-md-2 header">@menu()</div>
   <!-- layout -->
   <div class="col-md-9">
 
-<h1>Head</h1>
+<h2>@title</h2>
+<hr/>

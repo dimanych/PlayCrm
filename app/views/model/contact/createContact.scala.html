@@ -3,8 +3,7 @@
 @import helper._
 @import components._
 
-@main("Добавить Контакт"){
-  <h2>Добавить контакт</h2>
+@main(Messages("actions.addContact")){
 
   @form(action = routes.Contacts.save(), 'class -> "dl-horizontal", 'id -> "formModal") {
     <fieldset>

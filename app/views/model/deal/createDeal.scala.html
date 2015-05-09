@@ -4,8 +4,7 @@
 @import helper._
 @import components._
 
-@main(""){
-  <h2>@Messages("actions.addDeal")</h2>
+@main(Messages("actions.addDeal")){
 
   @form(routes.Deals.save(), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
