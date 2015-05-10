@@ -12,8 +12,8 @@
         '_label -> "Код", 'class -> "form-control")
       @inputText(productForm("price").copy(value = Some(product.price)),
         '_label -> "Цена", 'class -> "form-control")
-      @inputText(productForm("characteristic").copy(value = Some(product.characteristic)),
-        '_label -> "characteristic", 'class -> "form-control")
+      @textarea(productForm("characteristic").copy(value = Some(product.characteristic)),
+      '_label -> "characteristic", 'class -> "form-control", 'rows -> 3)
     </fieldset>
     <input type="submit" value="@Messages("actions.save")" class="btn btn-primary">
   }

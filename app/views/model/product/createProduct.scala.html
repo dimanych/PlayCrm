@@ -10,7 +10,7 @@
       @inputText(productForm("name"), '_label -> "Наименование", 'class -> "form-control")
       @inputText(productForm("code"), '_label -> "code", 'class -> "form-control")
       @inputText(productForm("price"), '_label -> "price", 'class -> "form-control")
-      @inputText(productForm("characteristic"), '_label -> "characteristic", 'class -> "form-control")
+      @textarea(productForm("characteristic"), '_label -> "characteristic", 'class -> "form-control", 'rows -> 3)
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }
