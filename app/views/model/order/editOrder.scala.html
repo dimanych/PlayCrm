@@ -15,7 +15,7 @@
 @contactId = @{ id(order.getContact) }
 
 
-@main("Заказы"){
+@main(Messages("menu.orders")){
   @form(routes.Orders.update(order.getId), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
 

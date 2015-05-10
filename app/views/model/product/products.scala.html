@@ -3,15 +3,16 @@
 @import helper._
 @import components._
 
-@main("Продукты") {
+@main(Messages("menu.products")) {
   <a href="@routes.Products.add()" class="btn btn-primary"><i class="fa fa-plus"></i> @Messages("actions.addProduct")</a>
   <p>&nbsp;</p>
 
   <div class="row">
   @for(product <- products) {
-    <div class="col-sm-4">
+    <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
         <div class="caption">
+          <img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
           <h4><a href="@routes.Products.product(product.getId)">
           @product.name
           </a></h4>

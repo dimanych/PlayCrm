@@ -5,7 +5,7 @@
 @import models.submodels.SupplyPaymentType
 @import models.submodels.State
 
-@main(""){
+@main(Messages("actions.stepgraph")){
 
   @form(routes.SupplyPayments.save(orderId), 'class -> "dl-horizontal", 'id -> "supplyPayment_add") {
     <fieldset>

@@ -2,8 +2,7 @@
 
 @import helper._
 
-@main("Создать продукт"){
-  <h2>@Messages("actions.addProduct")</h2>
+@main(Messages("actions.addProduct")){
 
   @form(routes.Products.save(), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
