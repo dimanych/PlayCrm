@@ -8,6 +8,7 @@ import play.db.ebean.Model;
 import utils.Util;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.math.BigDecimal;
@@ -215,7 +216,7 @@ public class OrderEntity extends BaseModel {
     this.deal = deal;
   }
 
-  @OneToMany(mappedBy = "order")
+  @ManyToMany(mappedBy = "orders")
   public List<Product> getProducts() {
     return products;
   }

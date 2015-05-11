@@ -59,6 +59,26 @@
       @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
         '_label -> "Сделка", 'class -> "form-control")
       <hr/>
+
+      <label for="products">Продукты</label>
+
+      <table id="products" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Наименование</th>
+            <th>Код</th>
+            <th>Цена</th>
+          </tr>
+        </thead>
+      @for(product <- order.getProducts) {
+        <tr>
+          <td>@product.getName</td>
+          <td>@product.getCode</td>
+          <td>@product.getPrice</td>
+        </tr>
+      }
+      </table>
+      <hr/>
      @*
       @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
         '_label -> "Продукт", 'class -> "form-control")

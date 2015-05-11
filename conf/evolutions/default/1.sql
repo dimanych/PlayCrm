@@ -1,3 +1,5 @@
+# --- Created by Ebean DDL
+# To stop Ebean DDL generation, remove this comment and start using Evolutions
 
 # --- !Ups
 
@@ -86,7 +88,6 @@ create table product (
   code                      integer,
   price                     decimal(38),
   characteristic            varchar(255),
-  order_id                  bigint,
   constraint pk_product primary key (id))
 ;
 
@@ -107,6 +108,12 @@ create table supply_payment (
   constraint pk_supply_payment primary key (id))
 ;
 
+
+create table product_order_entity (
+  product_id                     bigint not null,
+  order_entity_id                bigint not null,
+  constraint pk_product_order_entity primary key (product_id, order_entity_id))
+;
 create sequence communication_seq;
 
 create sequence contact_seq;
@@ -141,12 +148,14 @@ alter table order_entity add constraint fk_order_entity_contact_7 foreign key (c
 create index ix_order_entity_contact_7 on order_entity (contact_id);
 alter table order_entity add constraint fk_order_entity_deal_8 foreign key (deal_id) references deal (id);
 create index ix_order_entity_deal_8 on order_entity (deal_id);
-alter table product add constraint fk_product_order_9 foreign key (order_id) references order_entity (id);
-create index ix_product_order_9 on product (order_id);
-alter table supply_payment add constraint fk_supply_payment_order_10 foreign key (order_id) references order_entity (id);
-create index ix_supply_payment_order_10 on supply_payment (order_id);
+alter table supply_payment add constraint fk_supply_payment_order_9 foreign key (order_id) references order_entity (id);
+create index ix_supply_payment_order_9 on supply_payment (order_id);
 
 
+
+alter table product_order_entity add constraint fk_product_order_entity_produ_01 foreign key (product_id) references product (id);
+
+alter table product_order_entity add constraint fk_product_order_entity_order_02 foreign key (order_entity_id) references order_entity (id);
 
 # --- !Downs
 
@@ -163,6 +172,8 @@ drop table if exists deal cascade;
 drop table if exists deal_phase cascade;
 
 drop table if exists order_entity cascade;
+
+drop table if exists product_order_entity cascade;
 
 drop table if exists product cascade;
 
