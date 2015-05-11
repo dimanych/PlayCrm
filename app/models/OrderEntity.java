@@ -1,5 +1,6 @@
 package models;
 
+import models.submodels.OrderProduct;
 import models.submodels.OrderState;
 import models.submodels.PaymentState;
 import models.submodels.SupplyPayment;
@@ -8,7 +9,6 @@ import play.db.ebean.Model;
 import utils.Util;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.math.BigDecimal;
@@ -73,7 +73,7 @@ public class OrderEntity extends BaseModel {
   /**
    * Продукты
    */
-  private List<Product> products;
+  private List<OrderProduct> products;
   /**
    * График поставок и оплат
    */
@@ -216,12 +216,12 @@ public class OrderEntity extends BaseModel {
     this.deal = deal;
   }
 
-  @ManyToMany(mappedBy = "orders")
-  public List<Product> getProducts() {
+  @OneToMany(mappedBy = "order")
+  public List<OrderProduct> getProducts() {
     return products;
   }
 
-  public void setProducts(List<Product> products) {
+  public void setProducts(List<OrderProduct> products) {
     this.products = products;
   }
 

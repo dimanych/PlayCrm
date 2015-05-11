@@ -1,11 +1,11 @@
 package models;
 
+import models.submodels.OrderProduct;
 import play.db.ebean.Model;
 import utils.Util;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class Product extends BaseModel {
   /**
    * Заказ
    */
-  private List<OrderEntity> orders;
+  private List<OrderProduct> orders;
 
   public static final Model.Finder<Long, Product> find = new Model.Finder<Long, Product>(Long.class, Product.class);
 
@@ -83,12 +83,12 @@ public class Product extends BaseModel {
     this.characteristic = characteristic;
   }
 
-  @ManyToMany
-  public List<OrderEntity> getOrders() {
+  @OneToMany(mappedBy = "product")
+  public List<OrderProduct> getOrders() {
     return orders;
   }
 
-  public void setOrders(List<OrderEntity> orders) {
+  public void setOrders(List<OrderProduct> orders) {
     this.orders = orders;
   }
 }

@@ -66,15 +66,11 @@
         <thead>
           <tr>
             <th>Наименование</th>
-            <th>Код</th>
-            <th>Цена</th>
           </tr>
         </thead>
       @for(product <- order.getProducts) {
         <tr>
-          <td>@product.getName</td>
-          <td>@product.getCode</td>
-          <td>@product.getPrice</td>
+          <td>@product.getId()</td>
         </tr>
       }
       </table>
