@@ -21,5 +21,9 @@ insert into contact (id,name,contractor_id,post,communication_id,adress) values 
 -- insert into contact (id,name,contractor_id,post,communication_id,adress) values (4,'Зеленый Гоблин',4,'злодей',1,'хз');
 -- insert into contact (id,name,contractor_id,post,communication_id,adress) values (5,'Профессор Мориарти',5,'математик-злодей',1,'Лондон, Оксфорд');
 
+insert into deal (id,name,contractor_id,deal_phase_id,start_date,end_date,budget) values (1,'Сделка1',1,2,'2014-06-06','2015-10-10',20);
 
+insert into product (id,name,code,price,characteristic) values(1,'Сюрикен Бэтмана',212,15000,'Быстрый, резкий, сделан из кевлара');
+insert into product (id,name,code,price,characteristic) values(2,'Шлем Бэтмана',213,55000,'Имеет 2 ушка, сделан из кевлара');
+insert into product (id,name,code,price,characteristic) values(3,'Плащ темного рыцаря',214,155000,'Легко складывается, в полете выдерживает нагрузку до 300 кг');
 # --- !Downs

@@ -8,3 +8,11 @@ hr.min{  margin-top: 13px; margin-bottom: 13px;}
 form label {
     padding-top: 7px;
 }
+.min-description {
+    height: 3em;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: block;
+}
