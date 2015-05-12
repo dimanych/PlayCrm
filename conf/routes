@@ -62,5 +62,8 @@ POST        /orders/:orderId/supply-pay/                        controllers.Supp
 POST        /orders/:orderId/supply-pay/:id                     controllers.SupplyPayments.update(id:Long,orderId:Long)
 POST        /orders/:orderId/supply-pay/:id/delete              controllers.SupplyPayments.delete(id:Long,orderId:Long)
 
+# Продукты в Заказах
+POST        /orders/product/:id/delete                 controllers.OrdersProducts.delete(id:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                       controllers.Assets.at(path="/public", file)

@@ -3,6 +3,7 @@ package models.submodels;
 import models.AbstractModel;
 import models.OrderEntity;
 import models.Product;
+import play.db.ebean.Model;
 import utils.Util;
 
 import javax.persistence.Entity;
@@ -19,6 +20,12 @@ public class OrderProduct extends AbstractModel {
   private OrderEntity order;
   private Product product;
   private BigDecimal count;
+
+  public static final Model.Finder<Long, OrderProduct> find = new Model.Finder<Long, OrderProduct>(Long.class, OrderProduct.class);
+
+  public static OrderProduct findById(Long id) {
+    return find.byId(id);
+  }
 
   public BigDecimal total() {
     BigDecimal val = BigDecimal.ZERO;

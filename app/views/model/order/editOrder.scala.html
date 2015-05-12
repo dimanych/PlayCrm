@@ -69,6 +69,7 @@
             <th>Цена</th>
             <th>Количество</th>
             <th>Итого</th>
+            <th></th>
           </tr>
         </thead>
       @for(op <- order.getProducts) {
@@ -77,6 +78,11 @@
           <td>@op.getProduct.pricef</td>
           <td>@op.getCount</td>
           <td>@op.totalf</td>
+          <td>@form(routes.OrdersProducts.delete(op.getId), 'style ->"display:inline") {
+              <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
+                <i class="fa fa-trash-o fa-lg"></i>
+              </button>
+            }</td>
         </tr>
       }
       </table>
