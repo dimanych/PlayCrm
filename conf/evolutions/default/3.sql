@@ -26,4 +26,10 @@ insert into deal (id,name,contractor_id,deal_phase_id,start_date,end_date,budget
 insert into product (id,name,code,price,characteristic) values(1,'Сюрикен Бэтмана',212,15000,'Быстрый, резкий, сделан из кевлара');
 insert into product (id,name,code,price,characteristic) values(2,'Шлем Бэтмана',213,55000,'Имеет 2 ушка, сделан из кевлара');
 insert into product (id,name,code,price,characteristic) values(3,'Плащ темного рыцаря',214,155000,'Легко складывается, в полете выдерживает нагрузку до 300 кг');
+
+insert into order_entity (id,name,number,date,contractor_id,contact_id,plan_execution_date,execution_date,amount,payment,order_state,payment_state,supply_state,deal_id) values (1,'Заказ на сюрикены',21,'2012-01-02',1,1,'2012-02-02','2012-03-02',500,600,2,2,2,1);
+
+insert into supply_payment (id, name, supply_payment_type, plan_date, percentage, sum_plan, delay, fact_date, state, sum_fact, order_id) values (1, 'Шаг1', 0, '2015-05-05', 12, 500, 2, '2015-05-15', 0, 600, 1);
+insert into supply_payment (id, name, supply_payment_type, plan_date, percentage, sum_plan, delay, fact_date, state, sum_fact, order_id) values (2, 'Шаг2', 1, '2015-05-06', 20, 120, 1, '2015-05-12', 0, 120, 1);
+
 # --- !Downs
