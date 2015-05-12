@@ -86,8 +86,7 @@ create table order_product (
   id                        bigint not null,
   order_id                  bigint,
   product_id                bigint,
-  count                     integer,
-  total                     decimal(38),
+  count                     decimal(38),
   constraint pk_order_product primary key (id))
 ;
 

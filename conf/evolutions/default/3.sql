@@ -32,4 +32,7 @@ insert into order_entity (id,name,number,date,contractor_id,contact_id,plan_exec
 insert into supply_payment (id, name, supply_payment_type, plan_date, percentage, sum_plan, delay, fact_date, state, sum_fact, order_id) values (1, 'Шаг1', 0, '2015-05-05', 12, 500, 2, '2015-05-15', 0, 600, 1);
 insert into supply_payment (id, name, supply_payment_type, plan_date, percentage, sum_plan, delay, fact_date, state, sum_fact, order_id) values (2, 'Шаг2', 1, '2015-05-06', 20, 120, 1, '2015-05-12', 0, 120, 1);
 
+INSERT INTO order_product (id, order_id, product_id, count) VALUES (1, 1, 1, 2);
+INSERT INTO order_product (id, order_id, product_id, count) VALUES (2, 1, 2, 3);
+
 # --- !Downs

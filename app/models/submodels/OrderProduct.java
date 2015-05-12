@@ -17,8 +17,7 @@ import java.math.BigDecimal;
 public class OrderProduct extends AbstractModel {
   private OrderEntity order;
   private Product product;
-  private Integer count;
-  private BigDecimal total;
+  private BigDecimal count;
 
   @ManyToOne
   public OrderEntity getOrder() {
@@ -38,19 +37,11 @@ public class OrderProduct extends AbstractModel {
     this.product = product;
   }
 
-  public Integer getCount() {
+  public BigDecimal getCount() {
     return count;
   }
 
-  public void setCount(Integer count) {
+  public void setCount(BigDecimal count) {
     this.count = count;
-  }
-
-  public BigDecimal getTotal() {
-    return total;
-  }
-
-  public void setTotal(BigDecimal total) {
-    this.total = total;
   }
 }

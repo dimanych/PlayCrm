@@ -66,19 +66,21 @@
         <thead>
           <tr>
             <th>Наименование</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Итого</th>
           </tr>
         </thead>
-      @for(product <- order.getProducts) {
+      @for(op <- order.getProducts) {
         <tr>
-          <td>@product.getId()</td>
+          <td>@op.getProduct.getName</td>
+          <td>@op.getProduct.getPrice</td>
+          <td>@op.getCount</td>
+          <td>@op.getProduct.getPrice.multiply(op.getCount) </td>
         </tr>
       }
       </table>
       <hr/>
-     @*
-      @selectList(orderForm("product.id"), Product.findAll(), id(order.getProduct), name(order.getProduct),
-        '_label -> "Продукт", 'class -> "form-control")
-     *@
     </fieldset>
 
     <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
