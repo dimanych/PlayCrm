@@ -7,9 +7,9 @@
   @form(routes.Products.save(), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
       @inputText(productForm("name"), '_label -> "Наименование", 'class -> "form-control")
-      @inputText(productForm("code"), '_label -> "code", 'class -> "form-control")
-      @inputText(productForm("price"), '_label -> "price", 'class -> "form-control")
-      @textarea(productForm("characteristic"), '_label -> "characteristic", 'class -> "form-control", 'rows -> 3)
+      @inputText(productForm("code"), '_label -> "Код", 'class -> "form-control")
+      @inputText(productForm("price"), '_label -> "Цена", 'class -> "form-control")
+      @textarea(productForm("characteristic"), '_label -> "Характеристики", 'class -> "form-control", 'rows -> 3)
     </fieldset>
     <input type="submit" value="@Messages("actions.create")" class="btn btn-primary">
   }
