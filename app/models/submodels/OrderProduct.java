@@ -11,14 +11,23 @@ import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 /**
- * <p></p>
+ * <p>Заказы - Продукты. Сущность используется для одноименной связки.</p>
  *
  * @author Dmitriy Grigoriev
  */
 @Entity
 public class OrderProduct extends AbstractModel {
+  /**
+   * Заказ
+   */
   private OrderEntity order;
+  /**
+   * Продукт
+   */
   private Product product;
+  /**
+   * Количество
+   */
   private BigDecimal count;
 
   public static final Model.Finder<Long, OrderProduct> find = new Model.Finder<Long, OrderProduct>(Long.class, OrderProduct.class);

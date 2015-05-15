@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * <p></p>
+ * <p>Состояние</p>
  *
  * @author Dmitriy Grigoriev
  */
