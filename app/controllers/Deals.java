@@ -35,7 +35,16 @@ public class Deals extends Controller {
     dealForm.get().save();
     return GO_DEALS;
   }
-  
+
+  public static Result update(Long id) {
+    Form<Deal> dealForm = form(Deal.class).bindFromRequest();
+    if (dealForm.hasErrors()) {
+      throw new RuntimeException(dealForm.toString());
+    }
+    dealForm.get().update(id);
+    return GO_DEALS;
+  }
+
   public static Result delete(Long id) {
     Deal.findById(id).delete();
     return GO_DEALS;
@@ -46,7 +55,8 @@ public class Deals extends Controller {
   }
 
   public static Result deal(Long id) {
-    return ok(deal.render(Deal.findById(id)));
+    Form<Deal> dealForm = form(Deal.class).bindFromRequest();
+    return ok(deal.render(Deal.findById(id), dealForm));
   }
 
   public static List<Deal> dealsByContractor(Contractor contractor) {

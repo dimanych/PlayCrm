@@ -1,16 +1,29 @@
-@(deal: Deal)
+@(deal: Deal, dealForm: Form[Deal])
+
+@import utils.Util._
+@import helper._
+@import components._
+
+@contractorName = @{ name(deal.getContractor) }
+@contractorId = @{ id(deal.getContractor) }
 
 @main(Messages("menu.deals")){
-  <p>Название: @deal.getName</p>
-  <p>Контрагент: @deal.getContractor.getName</p>
-  <p>Стадия:
-  @if(deal.getDealPhase != null) {
-    @deal.getDealPhase.getName
-  } else {
-    @Messages("info.null")
+
+  @form(routes.Deals.update(deal.getId), 'class -> "dl-horizontal", 'id -> "formSender") {
+    <fieldset>
+      @inputText(dealForm("name").copy(value = Some(deal.name)),
+        '_label -> "Наименование", 'class -> "form-control")
+      @selectList(dealForm("contractor.id"), Contractor.findAll(), contractorId, contractorName,
+        '_label -> "Контрагент", 'class -> "form-control")
+      @selectEx(dealForm("dealPhase.id"), options(DealPhase.options), deal.getDealPhase.id,
+        '_label -> "Стадия", 'class -> "form-control")
+      @date(dealForm("startDate"), deal.jsStartDate, '_label -> "Дата начала",
+        'class -> "form-control date-picker")
+      @date(dealForm("endDate"), deal.jsEndDate, '_label -> "Дата завершения",
+        'class -> "form-control date-picker")
+      @inputText(dealForm("budget").copy(value = Some(deal.getBudget.toString)),
+        '_label -> "Бюджет", 'class -> "form-control")
+    </fieldset>
+    <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
   }
-  </p>
-  <p>Начало: @deal.getStartDate.format("dd.MM.yyyy")</p>
-  <p>Завершение: @deal.getEndDate.format("dd.MM.yyyy")</p>
-  <p>Бюджет: @deal.getBudgetFormatted </p>
 }

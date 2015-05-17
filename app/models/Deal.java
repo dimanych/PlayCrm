@@ -55,6 +55,14 @@ public class Deal extends BaseModel {
     return find.where().eq("deal_phase_id", phaseId).findList().size();
   }
 
+  public String jsStartDate() {
+    return Util.jsDate(startDate);
+  }
+
+  public String jsEndDate() {
+    return Util.jsDate(endDate);
+  }
+
   @OneToOne
   public Contractor getContractor() {
     return contractor;
