@@ -58,6 +58,7 @@ public class Ajax extends Controller {
     response().setContentType("text/javascript");
     return ok(Routes.javascriptRouter(
       "jsRoutes",
+      routes.javascript.OrdersProducts.delete(),
       routes.javascript.Ajax.sayHello(),
       routes.javascript.Ajax.sayHelloToString(),
       routes.javascript.Ajax.sayHelloToJson(),

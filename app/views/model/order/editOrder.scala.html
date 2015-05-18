@@ -73,7 +73,7 @@
           </tr>
         </thead>
       @for(op <- order.getProducts) {
-        <tr>
+        <tr id="@op.id">
           <td>@op.getProduct.name</td>
           <td>@op.getProduct.pricef</td>
           <td>@op.getCount</td>
@@ -86,6 +86,42 @@
         </tr>
       }
       </table>
+      <div class="alert alert-warning alert-dismissible" id="removed" role="alert" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
+        Успешно удалено.
+      </div>
+      <button type="button" class="clickable" id="sayHelloWithJson">Удалить</button>
+      <div id="output"></div>
+
+      <script  type="text/javascript">
+      $(".clickable").click(clicked);
+      var successFn = function(data) {
+        $('tr#4' ).remove();
+        $('#removed').show();
+      };
+      var errorFn = function(err) {
+      console.debug("Error:");
+      console.debug(err);
+      };
+
+      ajax1 = {
+      success: successFn,
+      error: errorFn
+      };
+
+      ajax2 = {
+      success: successFn,
+      error: errorFn,
+      contentType: "application/json",
+      dataType: "json",
+      data: JSON.stringify({"name":"OlooloName"})
+      };
+
+      function clicked(e){
+        jsRoutes.controllers.OrdersProducts.delete("4").ajax(ajax2);
+      }
+
+      </script>
       <hr/>
     </fieldset>
 

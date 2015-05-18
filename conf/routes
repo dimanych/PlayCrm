@@ -57,7 +57,7 @@ POST        /orders                                        controllers.Orders.sa
 POST        /orders/:id/delete                             controllers.Orders.delete(id:Long)
 
 # Заказы и Продукты
-
+POST        /orders/product/:id/delete                    controllers.OrdersProducts.delete(id:Long)
 
 # Графики поставок и оплат
 GET         /orders/:orderId/supply-pay/$id<[0-9]+>        controllers.SupplyPayments.sp(id:Long,orderId:Long)
@@ -65,9 +65,6 @@ GET         /orders/:orderId/supply-pay/add                controllers.SupplyPay
 POST        /orders/:orderId/supply-pay/                   controllers.SupplyPayments.save(orderId:Long)
 POST        /orders/:orderId/supply-pay/:id                controllers.SupplyPayments.update(id:Long,orderId:Long)
 POST        /orders/:orderId/supply-pay/:id/delete         controllers.SupplyPayments.delete(id:Long,orderId:Long)
-
-# Продукты в Заказах
-POST        /orders/product/:id/delete                     controllers.OrdersProducts.delete(id:Long)
 
 #AJAX Methods
 GET     /say1                       controllers.Ajax.sayHello()

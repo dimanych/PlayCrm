@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.submodels.OrderProduct;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -13,6 +14,8 @@ public class OrdersProducts extends Controller {
 
   public static Result delete(Long id) {
     OrderProduct.findById(id).delete();
-    return null;
+    ObjectNode result = play.libs.Json.newObject();
+    result.put("message", "Hello " + id + "!");
+    return ok(result);
   }
 }
