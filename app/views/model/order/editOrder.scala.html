@@ -84,18 +84,29 @@
         </tr>
       }
       </table>
-      <div class="alert alert-warning alert-dismissible" id="removed" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
-        Успешно удалено.
-      </div>
-      <div id="output"></div>
 
       <script  type="text/javascript">
+
       var successFn = function(data) {
         $('tr#'+data.id).remove();
-        $('#removed').alert();
+      $('#products').after(
+        '<div class="alert alert-success alert-dismissable">'+
+        '<button type="button" class="close" ' +
+        'data-dismiss="alert" aria-hidden="true">' +
+        '&times;' +
+        '</button>' +
+        '<strong>Готово!</strong> Успешно удалено.' +
+        '</div>');
       };
       var errorFn = function(err) {
+      $(this).after(
+      '<div class="alert alert-danger alert-dismissable">'+
+      '<button type="button" class="close" ' +
+      'data-dismiss="alert" aria-hidden="true">' +
+      '&times;' +
+      '</button>' +
+      '<strong>Ошибка!</strong> Не удалось удалить =(' +
+      '</div>');
       console.debug("Error:");
       console.debug(err);
       };
