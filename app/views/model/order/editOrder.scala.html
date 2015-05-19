@@ -78,26 +78,22 @@
           <td>@op.getProduct.pricef</td>
           <td>@op.getCount</td>
           <td>@op.totalf</td>
-          <td>@form(routes.OrdersProducts.delete(op.getId), 'style ->"display:inline") {
-              <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
+          <td><button type="button" onclick="cliked(@op.id())" data-toggle="modal" class="btn btn-default btn-sm">
                 <i class="fa fa-trash-o fa-lg"></i>
-              </button>
-            }</td>
+              </button></td>
         </tr>
       }
       </table>
-      <div class="alert alert-warning alert-dismissible" id="removed" role="alert" style="display: none">
+      <div class="alert alert-warning alert-dismissible" id="removed" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button>
         Успешно удалено.
       </div>
-      <button type="button" class="clickable" id="sayHelloWithJson">Удалить</button>
       <div id="output"></div>
 
       <script  type="text/javascript">
-      $(".clickable").click(clicked);
       var successFn = function(data) {
-        $('tr#4' ).remove();
-        $('#removed').show();
+        $('tr#'+data.id).remove();
+        $('#removed').alert();
       };
       var errorFn = function(err) {
       console.debug("Error:");
@@ -117,8 +113,16 @@
       data: JSON.stringify({"name":"OlooloName"})
       };
 
-      function clicked(e){
-        jsRoutes.controllers.OrdersProducts.delete("4").ajax(ajax2);
+      function cliked(e){
+        $('#confirmModal').modal({ backdrop: 'static', keyboard: false })
+        .one('click', '#yesButton', function() {
+          $('#confirmModal').modal('hide');
+          remove(e);
+        });
+      }
+
+      function remove(e){
+        jsRoutes.controllers.OrdersProducts.delete(e).ajax(ajax2);
       }
 
       </script>

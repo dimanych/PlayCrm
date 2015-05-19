@@ -56,5 +56,4 @@ function convertDate() {
   for(i=0; i<list.length;i++) {
     list[i].value = moment(list[i].value, "DD.MM.YYYY").format("YYYY-MM-DD");
   }
-
 }

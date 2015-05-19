@@ -15,7 +15,7 @@ public class OrdersProducts extends Controller {
   public static Result delete(Long id) {
     OrderProduct.findById(id).delete();
     ObjectNode result = play.libs.Json.newObject();
-    result.put("message", "Hello " + id + "!");
+    result.put("id", id);
     return ok(result);
   }
 }
