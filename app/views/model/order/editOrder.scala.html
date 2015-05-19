@@ -73,7 +73,7 @@
           </tr>
         </thead>
       @for(op <- order.getProducts) {
-        <tr id="@op.id">
+        <tr id="product@op.id">
           <td>@op.getProduct.name</td>
           <td>@op.getProduct.pricef</td>
           <td>@op.getCount</td>
@@ -88,14 +88,14 @@
       <script  type="text/javascript">
 
       var successFn = function(data) {
-        $('tr#'+data.id).remove();
+        $('tr#product'+data.id).remove();
       $('#products').after(
         '<div class="alert alert-success alert-dismissable">'+
         '<button type="button" class="close" ' +
         'data-dismiss="alert" aria-hidden="true">' +
         '&times;' +
         '</button>' +
-        '<strong>Готово!</strong> Успешно удалено.' +
+        'Готово! <strong>' + data.name + '</strong> успешно удален из списка.' +
         '</div>');
       };
       var errorFn = function(err) {
@@ -106,6 +106,7 @@
       '&times;' +
       '</button>' +
       '<strong>Ошибка!</strong> Не удалось удалить =(' +
+       err +
       '</div>');
       console.debug("Error:");
       console.debug(err);

@@ -13,9 +13,16 @@ import play.mvc.Result;
 public class OrdersProducts extends Controller {
 
   public static Result delete(Long id) {
-    OrderProduct.findById(id).delete();
-    ObjectNode result = play.libs.Json.newObject();
-    result.put("id", id);
-    return ok(result);
+    try {
+      OrderProduct orderProduct = OrderProduct.findById(id);
+      String name = orderProduct.getProduct().name();
+      orderProduct.delete();
+      ObjectNode result = play.libs.Json.newObject();
+      result.put("id", id);
+      result.put("name", name);
+      return ok(result);
+    } catch (Error er) {
+      return badRequest(er.getMessage());
+    }
   }
 }
