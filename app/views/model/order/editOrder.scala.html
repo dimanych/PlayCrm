@@ -78,7 +78,7 @@
           <td>@op.getProduct.pricef</td>
           <td>@op.getCount</td>
           <td>@op.totalf</td>
-          <td><button type="button" onclick="cliked(@op.id())" data-toggle="modal" class="btn btn-default btn-sm">
+          <td><button type="button" onclick="cliked(@op.id, '@op.getProduct.name')" data-toggle="modal" class="btn btn-default btn-sm">
                 <i class="fa fa-trash-o fa-lg"></i>
               </button></td>
         </tr>
@@ -112,29 +112,23 @@
       console.debug(err);
       };
 
-      ajax1 = {
-      success: successFn,
-      error: errorFn
-      };
-
-      ajax2 = {
-      success: successFn,
-      error: errorFn,
-      contentType: "application/json",
-      dataType: "json",
-      data: JSON.stringify({"name":"OlooloName"})
-      };
-
-      function cliked(e){
+      function cliked(product_id, product_name){
         $('#confirmModal').modal({ backdrop: 'static', keyboard: false })
         .one('click', '#yesButton', function() {
           $('#confirmModal').modal('hide');
-          remove(e);
+          remove(product_id, product_name);
         });
       }
 
-      function remove(e){
-        jsRoutes.controllers.OrdersProducts.delete(e).ajax(ajax2);
+      function remove(product_id, product_name){
+        ajax = {
+          success: successFn,
+          error: errorFn,
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({"id": product_id, "name":product_name})
+        };
+        jsRoutes.controllers.OrdersProducts.delete(product_id).ajax(ajax);
       }
 
       </script>
