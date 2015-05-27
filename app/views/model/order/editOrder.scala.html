@@ -59,8 +59,12 @@
       @selectList(orderForm("deal.id"), Deal.findAll(), id(order.getDeal), name(order.getDeal),
         '_label -> "Сделка", 'class -> "form-control")
       <hr/>
+    </fieldset>
 
-      <label for="products">Продукты</label>
+    <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
+  }
+     <br/>
+      <legend>Продукты</legend>
 
       <table id="products" class="table table-striped">
         <thead>
@@ -84,6 +88,45 @@
         </tr>
       }
       </table>
+      <form method="POST"  id="formx" class="dl-horizontal" action="javascript:void(null);" onsubmit="addOrderProduct()">
+        <label>Добавить Продукт</label>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+          <input id="order.id" name="order.id" value="@order.getId" type="hidden">
+          @selectList(orderForm("product.id"), Product.findAll(),"", "",
+            '_label -> "Продукт", 'class -> "form-control")
+        </div>
+        <div class="col-md-6">
+        @inputText(orderForm("count"), '_label -> "Количество", 'class -> "form-control")
+        </div>
+        <div class="clearfix"></div>
+        <input type="submit" value="@Messages("actions.add")" class="btn btn-primary">
+      </form>
+
+      <script type="text/javascript" language="javascript">
+        function addOrderProduct() {
+          var msg   = $('#formx').serialize();
+            $.ajax({
+              type: 'POST',
+              url: '/orders/product/add',
+              data: msg,
+              success: function(data) {
+                $('#products').after(
+        '<div class="alert alert-success alert-dismissable">'+
+        '<button type="button" class="close" ' +
+        'data-dismiss="alert" aria-hidden="true">' +
+        '&times;' +
+        '</button>' +
+        'Готово! <strong>' + data + '</strong> успешно добавлен.' +
+        '</div>');
+              },
+              error:  function(xhr, str){
+                    alert('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+
+        }
+    </script>
 
       <script  type="text/javascript">
 
@@ -133,10 +176,7 @@
 
       </script>
       <hr/>
-    </fieldset>
 
-    <input type="submit" value="@Messages("actions.save")" onclick="convertDate()" class="btn btn-primary">
-  }
 
   <hr/>
 

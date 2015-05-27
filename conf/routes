@@ -57,6 +57,7 @@ POST        /orders                                        controllers.Orders.sa
 POST        /orders/:id/delete                             controllers.Orders.delete(id:Long)
 
 # Заказы и Продукты
+POST        /orders/product/add                           controllers.OrdersProducts.add()
 POST        /orders/product/:id/delete                    controllers.OrdersProducts.delete(id:Long)
 
 # Графики поставок и оплат
@@ -66,7 +67,7 @@ POST        /orders/:orderId/supply-pay/                   controllers.SupplyPay
 POST        /orders/:orderId/supply-pay/:id                controllers.SupplyPayments.update(id:Long,orderId:Long)
 POST        /orders/:orderId/supply-pay/:id/delete         controllers.SupplyPayments.delete(id:Long,orderId:Long)
 
-#AJAX Methods
+#тестовые AJAX методы
 GET     /say1                       controllers.Ajax.sayHello()
 GET     /say2                       controllers.Ajax.sayHelloToString(name: String)
 POST    /say3                       controllers.Ajax.sayHelloToJson()
