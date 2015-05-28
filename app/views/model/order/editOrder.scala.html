@@ -111,7 +111,9 @@
               url: '/orders/product/add',
               data: msg,
               success: function(data) {
-              var table = data.id+'_'+data.name;
+              var table = '<tr id=product'+data.id+'><td>'+data.name+'</td><td>'+
+              data.price+'</td><td>'+data.count+'</td><td>'+data.total+'</td>'+
+              ''+'</tr>';
                 $('#products > tbody').append(table);
               },
               error:  function(xhr, str){
