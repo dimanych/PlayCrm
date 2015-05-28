@@ -111,14 +111,8 @@
               url: '/orders/product/add',
               data: msg,
               success: function(data) {
-                $('#products').after(
-        '<div class="alert alert-success alert-dismissable">'+
-        '<button type="button" class="close" ' +
-        'data-dismiss="alert" aria-hidden="true">' +
-        '&times;' +
-        '</button>' +
-        'Готово! <strong>' + data + '</strong> успешно добавлен.' +
-        '</div>');
+              var table = data.id+'_'+data.name;
+                $('#products > tbody').append(table);
               },
               error:  function(xhr, str){
                     alert('Возникла ошибка: ' + xhr.responseCode);
