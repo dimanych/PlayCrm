@@ -94,10 +94,10 @@
         <div class="col-md-6">
           <input id="order.id" name="order.id" value="@order.getId" type="hidden">
           @selectList(orderForm("product.id"), Product.findAll(),"", "",
-            '_label -> "Продукт", 'class -> "form-control")
+            '_label -> "Продукт", 'class -> "form-control", 'required -> "")
         </div>
         <div class="col-md-6">
-        @inputText(orderForm("count"), '_label -> "Количество", 'class -> "form-control")
+        @inputText(orderForm("count"), '_label -> "Количество", 'class -> "form-control", 'required -> "")
         </div>
         <div class="clearfix"></div>
         <input type="submit" value="@Messages("actions.add")" class="btn btn-primary">
@@ -108,8 +108,8 @@
           var msg   = $('#formx').serialize();
             $.ajax({
               type: 'POST',
-              url: '/orders/product/add',
-              data: msg,
+              url: '@routes.OrdersProducts.add()',;
+              msg,
               success: function(data) {
               var table = '<tr class="success" id=product'+data.id+'><td>'+data.name+'</td><td>'+
               data.price+'</td><td>'+data.count+'</td><td>'+data.total+'</td>'+
@@ -118,14 +118,28 @@
                 '</button></td>'+
               '</tr>';
                 $('#products > tbody').append(table);
-
+              $('#products').after(
+              '<div class="alert alert-success alert-dismissable">'+
+              '<button type="button" class="close" ' +
+              'data-dismiss="alert" aria-hidden="true">' +
+              '&times;' +
+              '</button>' +
+              'Готово! <strong>' + data.name + '</strong> успешно добавлен.' +
+              '</div>');
               },
               error:  function(xhr, str){
-                    alert('Возникла ошибка: ' + xhr.responseCode);
+              $(this).after(
+              '<div class="alert alert-danger alert-dismissable">'+
+              '<button type="button" class="close" ' +
+              'data-dismiss="alert" aria-hidden="true">' +
+              '&times;' +
+              '</button>' +
+              '<strong>Ошибка!</strong> Не удалось удалить =(' +
+              '</div>');
                 }
-            });
+      } )
 
-        }
+      }
     </script>
 
       <script  type="text/javascript">
@@ -133,7 +147,7 @@
       var successFn = function(data) {
         $('tr#product'+data.id).remove();
       $('#products').after(
-        '<div class="alert alert-success alert-dismissable">'+
+        '<div class="alert alert-warning alert-dismissable">'+
         '<button type="button" class="close" ' +
         'data-dismiss="alert" aria-hidden="true">' +
         '&times;' +
