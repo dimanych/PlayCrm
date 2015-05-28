@@ -1,12 +1,12 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Product;
 import models.submodels.OrderProduct;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.Util;
 
 import static play.data.Form.form;
 
@@ -20,9 +20,8 @@ public class OrdersProducts extends Controller {
   public static Result delete(Long id) {
     try {
       OrderProduct orderProduct = OrderProduct.findById(id);
+      String name = orderProduct.getProduct().name();
       orderProduct.delete();
-      JsonNode json = request().body().asJson();
-      String name = json.findPath("name").textValue();
       ObjectNode result = play.libs.Json.newObject();
       result.put("id", id);
       result.put("name", name);
@@ -46,7 +45,7 @@ public class OrdersProducts extends Controller {
       result.put("name", product.name());
       result.put("price", product.pricef());
       result.put("count", op.getCount());
-      result.put("total", product.getPrice().multiply(op.getCount()));
+      result.put("total", Util.getNumberFormatted(product.getPrice().multiply(op.getCount())));
       return ok(result);
     } catch (Exception ex) {
       return badRequest(ex.getMessage());

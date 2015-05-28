@@ -82,7 +82,7 @@
           <td>@op.getProduct.pricef</td>
           <td>@op.getCount</td>
           <td>@op.totalf</td>
-          <td><button type="button" onclick="cliked(@op.id, '@op.getProduct.name')" data-toggle="modal" class="btn btn-default btn-sm">
+          <td><button type="button" onclick="cliked(@op.id)" data-toggle="modal" class="btn btn-default btn-sm">
                 <i class="fa fa-trash-o fa-lg"></i>
               </button></td>
         </tr>
@@ -111,10 +111,14 @@
               url: '/orders/product/add',
               data: msg,
               success: function(data) {
-              var table = '<tr id=product'+data.id+'><td>'+data.name+'</td><td>'+
+              var table = '<tr class="success" id=product'+data.id+'><td>'+data.name+'</td><td>'+
               data.price+'</td><td>'+data.count+'</td><td>'+data.total+'</td>'+
-              ''+'</tr>';
+              '<td><button type="button" onclick="cliked('+data.id+')" data-toggle="modal" class="btn btn-default btn-sm">'+
+                '<i class="fa fa-trash-o fa-lg"></i>'+
+                '</button></td>'+
+              '</tr>';
                 $('#products > tbody').append(table);
+
               },
               error:  function(xhr, str){
                     alert('Возникла ошибка: ' + xhr.responseCode);
@@ -151,11 +155,11 @@
       console.debug(err);
       };
 
-      function cliked(product_id, product_name){
+      function cliked(product_id){
         $('#confirmModal').modal({ backdrop: 'static', keyboard: false })
         .one('click', '#yesButton', function() {
           $('#confirmModal').modal('hide');
-          remove(product_id, product_name);
+          remove(product_id);
         });
       }
 
@@ -165,7 +169,7 @@
           error: errorFn,
           contentType: "application/json",
           dataType: "json",
-          data: JSON.stringify({"id": product_id, "name":product_name})
+          data: JSON.stringify({"id": product_id})
         };
         jsRoutes.controllers.OrdersProducts.delete(product_id).ajax(ajax);
       }
