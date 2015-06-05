@@ -1,5 +1,8 @@
 @(orderList: List[OrderEntity])
 
+@import helper._
+@import components._
+
 @main(Messages("menu.orders")) {
   <a href="@routes.Orders.add()" class="btn btn-primary"><i class="fa fa-plus"></i> @Messages("actions.addOrder")</a>
   <p>&nbsp;</p>
@@ -21,23 +24,34 @@
     <div class="col-md-2">
     @if(order.getContractor != null) {
       <a href="@routes.Contractors.contractor(order.getContractor.getId)">
-      @order.getContractor.name;
+      @order.getContractor.name
       </a>
     }
     </div>
     <div class="col-md-2">
       @if(order.getContact != null) {
         <a href="@routes.Contacts.contact(order.getContact.getId)">
-          @order.getContact.name;
+          @order.getContact.name
         </a>
       }
     </div>
     <div class="col-md-2">@order.getAmountf</div>
-    <div class="col-md-2"></div>
+    <div class="col-md-2">
+      <a href="@routes.Orders.editOrder(order.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+      @form(routes.Orders.delete(order.getId), 'style ->"display:inline") {
+        <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
+          <i class="fa fa-trash-o fa-lg"></i>
+        </button>
+      }
+    </div>
 
     <hr class="min col-md-11">
   }
   </div>
 
-
+  @confirm(Messages("actions.deleteOrder"),
+    "Подтвертите, если хотите удалить Заказ. Также будут удалены графики поставок и сделок. " +
+      "Удаленные данные будет невозможно восстановить",
+    "danger",
+    Messages("actions.delete"))
 }

@@ -106,7 +106,7 @@ public class Deal extends BaseModel {
   }
 
 
-  public String getBudgetFormatted() {
+  public String budgetf() {
     return Util.getNumberFormatted(getBudget());
   }
 }

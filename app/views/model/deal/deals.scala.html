@@ -35,7 +35,7 @@
           } else {
             @Messages("info.null")
           }</td>
-          <td>@deal.getBudgetFormatted</td>
+          <td>@deal.budgetf</td>
           <td> <a href="@routes.Deals.deal(deal.getId)" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
             @form(routes.Deals.delete(deal.getId), 'style ->"display:inline") {
               <button name="continueBtn"  data-toggle="modal" class="btn btn-default btn-sm">
