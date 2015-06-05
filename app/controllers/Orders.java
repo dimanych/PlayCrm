@@ -53,6 +53,8 @@ public class Orders extends Controller {
   }
 
   public static Result delete(Long id) {
+    SupplyPayments.deleteAll(id);
+    OrdersProducts.deleteAll(id);
     OrderEntity.findById(id).delete();
     return GO_ORDERS;
   }

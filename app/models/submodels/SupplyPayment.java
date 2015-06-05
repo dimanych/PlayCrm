@@ -8,7 +8,6 @@ import utils.Util;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,13 +62,7 @@ public class SupplyPayment extends BaseModel {
   }
 
   public static List<SupplyPayment> findList(Long orderId) {
-    List<SupplyPayment> list = new ArrayList<>();
-    for (SupplyPayment item : find.all()) {
-      if (item.order.getId().equals(orderId)) {
-        list.add(item);
-      }
-    }
-    return list;
+    return find.where().eq("order.id", orderId).findList();
   }
 
   public static SupplyPayment findById(Long id) {

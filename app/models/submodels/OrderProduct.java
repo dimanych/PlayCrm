@@ -9,6 +9,7 @@ import utils.Util;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * <p>Заказы - Продукты. Сущность используется для одноименной связки.</p>
@@ -34,6 +35,10 @@ public class OrderProduct extends AbstractModel {
 
   public static OrderProduct findById(Long id) {
     return find.byId(id);
+  }
+
+  public static List<OrderProduct> findList(Long orderId) {
+    return find.where().eq("order.id", orderId).findList();
   }
 
   public BigDecimal total() {

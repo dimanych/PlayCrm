@@ -31,6 +31,13 @@ public class OrdersProducts extends Controller {
     }
   }
 
+  public static Result deleteAll(Long orderId) {
+    for (OrderProduct op : OrderProduct.findList(orderId)) {
+      OrderProduct.findById(op.getId()).delete();
+    }
+    return ok();
+  }
+
   public static Result add() {
     try {
       ObjectNode result = play.libs.Json.newObject();

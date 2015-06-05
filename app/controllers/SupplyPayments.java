@@ -7,6 +7,8 @@ import play.mvc.Result;
 import views.html.model.supply_payment.addSp;
 import views.html.model.supply_payment.sp;
 
+import java.util.List;
+
 import static play.data.Form.form;
 
 /**
@@ -39,6 +41,13 @@ public class SupplyPayments extends Controller {
 
   public static Result delete(Long id, Long orderId) {
     SupplyPayment.findById(id).delete();
+    return redirect(controllers.routes.Orders.editOrder(orderId));
+  }
+
+  public static Result deleteAll(Long orderId) {
+    for (SupplyPayment sp : SupplyPayment.findList(orderId)){
+      SupplyPayment.findById(sp.getId()).delete();
+    }
     return redirect(controllers.routes.Orders.editOrder(orderId));
   }
 
