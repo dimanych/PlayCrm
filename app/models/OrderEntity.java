@@ -109,6 +109,10 @@ public class OrderEntity extends BaseModel {
     return str(amount);
   }
 
+  public String getAmountf() {
+    return Util.getNumberFormatted(amount);
+  }
+
   public String payment() {
     return str(payment);
   }
