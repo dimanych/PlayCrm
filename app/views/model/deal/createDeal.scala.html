@@ -8,7 +8,7 @@
 
   @form(routes.Deals.save(), 'class -> "dl-horizontal", 'id -> "formSender") {
     <fieldset>
-      @inputText(dealForm("name"), '_label -> null, 'class -> "form-control", 'placeholder -> "Наименование")
+      @inputText(dealForm("name"), '_label -> "Наименование", 'class -> "form-control")
 
       @selectEx(dealForm("dealPhase.id"), options(DealPhase.options), null,
         '_label -> "Стадия", 'class -> "form-control")
