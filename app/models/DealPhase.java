@@ -3,7 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +21,7 @@ public class DealPhase extends BaseModel {
   }
 
   public static Map<String, String> options() {
-    LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+    HashMap<String,String> options = new HashMap<String,String>();
     for (DealPhase dealPhase : findAll()) {
       options.put(dealPhase.id(), dealPhase.name());
     }
