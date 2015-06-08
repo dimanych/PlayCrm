@@ -15,6 +15,15 @@ public class BarChartData {
   private String highlightStroke;
   private List<Integer> data;
 
+  public BarChartData(String label, List<Integer> data) {
+    this.label = label;
+    this.data = data;
+    this.fillColor = "rgba(151,187,205,0.5)";
+    this.strokeColor = "rgba(151,187,205,0.8)";
+    this.highlightFill = "rgba(151,187,205,0.75)";
+    this.highlightStroke = "rgba(151,187,205,1)";
+  }
+
   public BarChartData(String label, String fillColor, String strokeColor, String highlightFill,
                       String highlightStroke, List<Integer> data)
   {
