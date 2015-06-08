@@ -7,6 +7,7 @@ import models.chart.CircleChartData;
 import utils.Color;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,8 +42,12 @@ public class DealGraph {
   public static BarChartData salesFunnel() {
     List<Integer> data = new ArrayList<>();
     List<String> captions = new ArrayList<>();
-    for (DealPhase dealPhase : DealPhase.findAll()) {
-      data.add(Deal.countDealsByPhase(dealPhase.getId()));
+    List<DealPhase> dealPhases = DealPhase.findAll();
+    Collections.reverse(dealPhases);
+    Integer deals = 0;
+    for (DealPhase dealPhase : dealPhases) {
+      deals += Deal.countDealsByPhase(dealPhase.getId());
+      data.add(deals);
       captions.add(dealPhase.getName());
     }
     return new BarChartData(captions, data);
