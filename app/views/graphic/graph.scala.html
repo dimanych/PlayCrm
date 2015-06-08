@@ -1,11 +1,11 @@
-@(chart: List[models.chart.CircleChartData])
+@(chartDeals: List[models.chart.CircleChartData], salesFunnel: List[models.chart.BarChartData])
 
 @import graphic._
 
 @main(Messages("menu.graphics")){
 
   <div class="col-md-5">
-    <canvas id="canvas"></canvas>
+    <canvas id="salesFunnel"></canvas>
     <p class="text-center">Воронка продаж</p>
   </div>
 
@@ -20,8 +20,8 @@
   </div>
 
   <script>
-    @circleChart("chartDeals", chart)
+    @circleChart("chartDeals", chartDeals)
     @lineChart("chartLine")
-    @horizontalBar
+    @horizontalBar("salesFunnel", salesFunnel)
   </script>
 }

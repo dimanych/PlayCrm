@@ -2,13 +2,17 @@ package controllers;
 
 import models.Contractor;
 import models.Deal;
+import models.DealPhase;
+import models.chart.CircleChartData;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.Color;
 import views.html.model.deal.createDeal;
 import views.html.model.deal.deal;
 import views.html.model.deal.deals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static play.data.Form.form;
@@ -62,5 +66,4 @@ public class Deals extends Controller {
   public static List<Deal> dealsByContractor(Contractor contractor) {
     return Deal.findByContractor(contractor);
   }
-
 }
