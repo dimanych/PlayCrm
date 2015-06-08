@@ -24,7 +24,8 @@
 
   add@id = function(){
   var ctx@id = document.getElementById("@id").getContext("2d");
-  window.pie@id = new Chart(ctx@id).HorizontalBar(data@id, { responsive: true, barShowStroke: false });
+  window.pie@id = new Chart(ctx@id).HorizontalBar(data@id, { responsive: true,
+    tooltipEvents: ["mousemove", "touchstart", "touchmove"],barShowStroke : true });
   };
 
   window.addEventListener("load", add@id)

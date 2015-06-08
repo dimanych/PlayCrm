@@ -16,3 +16,8 @@ form label {
     text-overflow: ellipsis;
     display: block;
 }
+
+.chart-middle{
+    display: block;
+    overflow: hidden;
+}
