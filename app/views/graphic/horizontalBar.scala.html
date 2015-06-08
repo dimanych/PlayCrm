@@ -1,21 +1,24 @@
-@(id: String, chart: List[models.chart.BarChartData])
+@(id: String, chart: models.chart.BarChartData)
 
 @import components.container
 
 @container{
 
+
   var data@id = {
-    labels : ["January","March","April","May","June","July"],
-    datasets : [
-    @for(item <- chart) {
-      {
-      fillColor : "@item.getFillColor",
-      strokeColor : "@item.getStrokeColor",
-      highlightFill : "@item.getHighlightFill",
-      highlightStroke : "@item.getHighlightStroke",
-      data : @item.getData
+    labels : [
+      @for(caption <- chart.getLabels) {
+        "@caption",
       }
-    }
+    ],
+    datasets : [
+      {
+      fillColor : "@chart.getFillColor",
+      strokeColor : "@chart.getStrokeColor",
+      highlightFill : "@chart.getHighlightFill",
+      highlightStroke : "@chart.getHighlightStroke",
+      data : @chart.getData
+      }
     ]
   }
 

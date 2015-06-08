@@ -8,7 +8,7 @@ import java.util.List;
  * @author Dmitriy Grigoriev
  */
 public class BarChartData {
-  private String label;
+  private List<String> labels;
   private String fillColor;
   private String strokeColor;
   private String highlightFill;
@@ -19,15 +19,15 @@ public class BarChartData {
     setDefault(data);
   }
 
-  public BarChartData(String label, List<Integer> data) {
-    this.label = label;
+  public BarChartData (List<String> labels, List<Integer> data) {
+    this.labels = labels;
     setDefault(data);
   }
 
-  public BarChartData(String label, String fillColor, String strokeColor, String highlightFill,
+  public BarChartData (List<String> labels, String fillColor, String strokeColor, String highlightFill,
                       String highlightStroke, List<Integer> data)
   {
-    this.label = label;
+    this.labels = labels;
     this.fillColor = fillColor;
     this.strokeColor = strokeColor;
     this.highlightFill = highlightFill;
@@ -43,15 +43,15 @@ public class BarChartData {
     this.highlightStroke = "rgba(151,187,205,1)";
   }
 
-  public String getLabel() {
-    return label;
+  public List<String> getLabels() {
+    return labels;
   }
 
-  public void setLabel(String label) {
-    this.label = label;
+  public void setLabels(List<String> labels) {
+    this.labels = labels;
   }
 
-  public String getFillColor() {
+    public String getFillColor() {
     return fillColor;
   }
 

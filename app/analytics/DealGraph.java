@@ -38,15 +38,14 @@ public class DealGraph {
    *
    * @return список элементов {@link BarChartData}
    */
-  public static List<BarChartData> salesFunnel() {
-    List<BarChartData> chart = new ArrayList<>();
+  public static BarChartData salesFunnel() {
     List<Integer> data = new ArrayList<>();
+    List<String> captions = new ArrayList<>();
     for (DealPhase dealPhase : DealPhase.findAll()) {
       data.add(Deal.countDealsByPhase(dealPhase.getId()));
+      captions.add(dealPhase.getName());
     }
-    chart.add(new BarChartData(data));
-    return chart;
+    return new BarChartData(captions, data);
   }
-
 
 }
