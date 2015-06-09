@@ -1,14 +1,18 @@
 package controllers;
 
 import models.OrderEntity;
+import models.submodels.OrderState;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import utils.Util;
 import views.html.model.order.createOrder;
 import views.html.model.order.editOrder;
 import views.html.model.order.orders;
 
+
+import java.math.BigDecimal;
 
 import static play.data.Form.form;
 
@@ -57,6 +61,25 @@ public class Orders extends Controller {
     OrdersProducts.deleteAll(id);
     OrderEntity.findById(id).delete();
     return GO_ORDERS;
+  }
+
+  /**
+   * <p>Вытягивает сумму всех выставленных счетов из заказов</p>
+   *
+   * @return сумма всех полей с "Итого"
+   */
+  public static BigDecimal totalSum() {
+    BigDecimal total = BigDecimal.ZERO;
+    for (OrderEntity orderEntity : OrderEntity.findAll()) {
+      if (orderEntity.getOrderState() != OrderState.COMPLETED || orderEntity.getOrderState() != OrderState.CANCELED) {
+        total = total.add(orderEntity.getAmount());
+      }
+    }
+    return total;
+  }
+
+  public static String totalSummf() {
+    return Util.getNumberFormatted(totalSum());
   }
 
 }

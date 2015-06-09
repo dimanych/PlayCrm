@@ -18,6 +18,12 @@ public class Util {
   // ID закрытой сделки
   public static final int CLOSED_DEAL_ID = 5;
 
+  /**
+   * Выдает отформатированное в приглядном виде число в рублях
+   *
+   * @param val исходное число
+   * @return отформатированное число в рублях
+   */
   public static String getNumberFormatted(BigDecimal val) {
     NumberFormat formatter = NumberFormat.getCurrencyInstance();
     return val == null ? "" : formatter.format(val);
