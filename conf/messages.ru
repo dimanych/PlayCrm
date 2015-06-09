@@ -50,7 +50,7 @@ contractor=Контагент
 communication=Средства связи
 address=Адрес
 workphone=Рабочий телефон
-mobilephone=
+mobilephone=Мобильный телефон
 
 supply=Поставка
 payment=Оплата
