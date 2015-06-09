@@ -55,6 +55,10 @@ public class Deal extends BaseModel {
     return find.where().eq("deal_phase_id", phaseId).findList().size();
   }
 
+  public static Integer activeDealsCount() {
+    return find.where().ne("deal_phase_id", 5).findList().size();
+  }
+
   public String jsStartDate() {
     return Util.jsDate(startDate);
   }

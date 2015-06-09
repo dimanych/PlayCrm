@@ -52,5 +52,4 @@ public class DealGraph {
     }
     return new BarChartData(captions, data);
   }
-
 }

@@ -9,7 +9,7 @@ public class Color {
   public enum  Light {
     BLUE   ("#428bca"),
     GREEN  ("#5cb85c"),
-    PURPLE ("#624d69"),
+    PURPLE ("#563d7c"),
     RED    ("#d9534f"),
     YELLOW ("#ffd700");
 

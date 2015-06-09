@@ -66,4 +66,13 @@ public class Deals extends Controller {
   public static List<Deal> dealsByContractor(Contractor contractor) {
     return Deal.findByContractor(contractor);
   }
+
+  /**
+   * <p>Возвращает количество активных сделок</p>
+   *
+   * @return количество активных сделок
+   */
+  public static Integer activeDealsCount() {
+    return Deal.activeDealsCount();
+  }
 }
