@@ -75,4 +75,13 @@ public class Deals extends Controller {
   public static Integer activeDealsCount() {
     return Deal.activeDealsCount();
   }
+
+  /**
+   * <p>Возвращает количество завершенных сделок</p>
+   *
+   * @return количество завершенных сделок
+   */
+  public static Integer closedDealsCount() {
+    return Deal.closedDealsCount();
+  }
 }

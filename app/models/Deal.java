@@ -16,6 +16,7 @@ import java.util.List;
  */
 @Entity
 public class Deal extends BaseModel {
+
   /**
    * Контрагент
    */
@@ -56,7 +57,11 @@ public class Deal extends BaseModel {
   }
 
   public static Integer activeDealsCount() {
-    return find.where().ne("deal_phase_id", 5).findList().size();
+    return find.where().ne("deal_phase_id", Util.CLOSED_DEAL_ID).findList().size();
+  }
+
+  public static Integer closedDealsCount() {
+    return find.where().eq("deal_phase_id", Util.CLOSED_DEAL_ID).findList().size();
   }
 
   public String jsStartDate() {

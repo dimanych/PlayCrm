@@ -15,6 +15,8 @@ import java.util.Date;
  * @author Dmitriy Grigoriev
  */
 public class Util {
+  // ID закрытой сделки
+  public static final int CLOSED_DEAL_ID = 5;
 
   public static String getNumberFormatted(BigDecimal val) {
     NumberFormat formatter = NumberFormat.getCurrencyInstance();
