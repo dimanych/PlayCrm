@@ -89,6 +89,10 @@ public class OrderEntity extends BaseModel {
     return find.byId(id);
   }
 
+  public static Integer paymentStateCount(PaymentState paymentState) {
+    return find.where().eq("paymentState", paymentState).findList().size();
+  }
+
   public String number() {
     return str(number);
   }

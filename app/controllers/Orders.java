@@ -1,5 +1,6 @@
 package controllers;
 
+import analytics.OrderGraph;
 import models.OrderEntity;
 import models.chart.CircleChartData;
 import models.submodels.OrderState;
@@ -87,15 +88,7 @@ public class Orders extends Controller {
   }
 
   public static List<CircleChartData> billState() {
-    List<CircleChartData> chart = new ArrayList<>();
-    int i = 0;
-    for (OrderEntity orderEntity : OrderEntity.findAll()) {
-      String color = Color.Light.values()[i].hex();
-      String highlight = Color.Normal.values()[i].hex();
-      chart.add(new CircleChartData(2, color, highlight, orderEntity.getPaymentState().caption()));
-      i++;
-    }
-    return chart;
+    return OrderGraph.billState();
   }
 
 }
