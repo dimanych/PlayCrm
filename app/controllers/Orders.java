@@ -1,11 +1,13 @@
 package controllers;
 
 import models.OrderEntity;
+import models.chart.CircleChartData;
 import models.submodels.OrderState;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import utils.Color;
 import utils.Util;
 import views.html.model.order.createOrder;
 import views.html.model.order.editOrder;
@@ -13,6 +15,8 @@ import views.html.model.order.orders;
 
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import static play.data.Form.form;
 
@@ -80,6 +84,18 @@ public class Orders extends Controller {
 
   public static String totalSummf() {
     return Util.getNumberFormatted(totalSum());
+  }
+
+  public static List<CircleChartData> billState() {
+    List<CircleChartData> chart = new ArrayList<>();
+    int i = 0;
+    for (OrderEntity orderEntity : OrderEntity.findAll()) {
+      String color = Color.Light.values()[i].hex();
+      String highlight = Color.Normal.values()[i].hex();
+      chart.add(new CircleChartData(2, color, highlight, orderEntity.getPaymentState().caption()));
+      i++;
+    }
+    return chart;
   }
 
 }

@@ -1,0 +1,23 @@
+@(id: String, chart: List[models.chart.CircleChartData])
+
+@import components.container
+
+@container{
+  var data@id = [
+  @for(item <- chart){
+    {
+    value:@item.getValue,
+    color:"@item.getColor",
+    highlight:"@item.getHighlight",
+    label:"@item.getLabel"
+    },
+  }
+  ]
+
+  add@id = function(){
+  var ctx@id = document.getElementById("@id").getContext("2d");
+  window.pie@id = new Chart(ctx@id).Pie(data@id, { responsive: true });
+  };
+
+  window.addEventListener("load", add@id)
+}

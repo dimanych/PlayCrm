@@ -1,5 +1,6 @@
 package controllers;
 
+import analytics.DealGraph;
 import models.Contractor;
 import models.Deal;
 import models.DealPhase;
@@ -84,4 +85,5 @@ public class Deals extends Controller {
   public static Integer closedDealsCount() {
     return Deal.closedDealsCount();
   }
+
 }
