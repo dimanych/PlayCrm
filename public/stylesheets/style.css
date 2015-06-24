@@ -22,11 +22,15 @@ form label {
     overflow: hidden;
 }
 
-.doughnut-legend li span{
-    display: block;
-    left: 0;
-    top: 0;
+ul.chart-legend{
+    list-style-type: none;
+}
+
+ul.chart-legend li span{
+    display: inline-block;
     width: 20px;
     height: 20px;
-    border-radius: 5px;
+    border-radius: 4px;
+    margin-right: 15px;
+    padding-top: 10px;
 }
