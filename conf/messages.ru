@@ -46,6 +46,7 @@ info.payment.completed=Оплачен полностью
 info.unrestore=Удаленные данные будет невозможно восстановить
 
 contact.name=ФИО
+contact.post=Должность
 contractor=Контагент
 communication=Средства связи
 address=Адрес

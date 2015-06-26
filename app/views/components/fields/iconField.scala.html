@@ -1,10 +1,16 @@
 @(caption: String, title: String, icon: String)
 
 @import org.apache.commons.lang3.StringUtils
+@import helper._
 
-@if(StringUtils.isNotEmpty(caption)) {
+
+  @if(StringUtils.isNotEmpty(caption)) {
   <span class="text-muted">@title</span>
   <p>
     <i class="fa @icon fa-lg"></i>
+    @*
+    @inputText(dealForm("name").copy(value = Some(deal.name)),
+      '_label -> "Наименование", 'class -> "form-control")
+    *@
     @caption</p>
 }

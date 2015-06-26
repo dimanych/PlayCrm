@@ -1,37 +1,43 @@
-@(contact: Contact)
+@(contact: Contact, contactForm: Form[Contact])
 
 @import components.fields.iconField
+@import components._
+@import helper._
+@import utils.Util._
 
 @communication = @{contact.getCommunication}
+@contractorName = @{ name(contact.getContractor) }
+@contractorId = @{ id(contact.getContractor) }
 
 @main(Messages("menu.contacts")){
-  
-  <div class="col-md-8">
-    <div class="col-md-3 row">
-      <h4 class="text-muted">@Messages("contact.name")</h4>
-    </div>
-    <div class="col-md-5">
-      <h4>@contact.getName</h4>
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-md-3 row">
-      <h4 class="text-muted">Контрагент</h4>
-    </div>
-    <div class="col-md-5">
-    @if(contact.getContractor != null) {
-      <h4><a href="@routes.Contractors.contractor(contact.getContractor.getId)">
-      @contact.getContractor().getName()
-      </a></h4>
-    } else {
-      Контрагент не указан
-    }
-    </div>
+  @form(action = routes.Contacts.update(contact.getId),  'class -> "dl-horizontal") {
+    <fieldset>
+      <div class="col-md-8">
+        <div class="col-md-8">
+          @inputText(contactForm("name").copy(value = Some(contact.name)),
+            '_label -> Messages("contact.name"), 'class -> "form-control")
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-8">
+        @if(contact.getContractor != null) {
+          @selectList(contactForm("contractor.id"), Contractor.findAll(), contractorId, contractorName,
+            '_label -> "Контрагент", 'class -> "form-control")
+        } else {
+          Контрагент не указан
+        }
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          @inputText(contactForm("post").copy(value = Some(contact.getPost)),
+            '_label -> Messages("contact.post"), 'class -> "form-control")
+        </div>
+      </div>
 
-  </div>
-  <div class="col-md-4">
-    <h4>Должность</h4>
-    @contact.getPost
-  </div>
+
+    </fieldset>
+  }
+
   <div class="clearfix"></div>
   <hr>
   <div class="tab-pane fade active in" id="general">

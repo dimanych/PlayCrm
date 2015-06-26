@@ -37,6 +37,15 @@ public class Contacts extends Controller {
     return GO_CONTACTS;
   }
 
+  public static Result update(Long id) {
+    Form<Contact> contactForm = form(Contact.class).bindFromRequest();
+    if (contactForm.hasErrors()) {
+      throw new RuntimeException(contactForm.toString());
+    }
+    contactForm.get().update(id);
+    return GO_CONTACTS;
+  }
+
   public static Result delete(Long id) {
     Contact.findById(id).delete();
     return GO_CONTACTS;
@@ -47,7 +56,8 @@ public class Contacts extends Controller {
   }
 
   public static Result contact(Long id) {
-    return ok(contact.render(Contact.findById(id)));
+    Form<Contact> contactForm = form(Contact.class).bindFromRequest();
+    return ok(contact.render(Contact.findById(id), contactForm));
   }
 
   public static List<Contact> contactsByContractor(Contractor contractor) {
